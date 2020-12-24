@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,6 +43,9 @@
             this.btnDeleteList = new System.Windows.Forms.Button();
             this.btnInvert = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtBxCustomY = new System.Windows.Forms.TextBox();
+            this.txtBxCustomX = new System.Windows.Forms.TextBox();
+            this.rdBtnCustom = new System.Windows.Forms.RadioButton();
             this.rdBtnUHD = new System.Windows.Forms.RadioButton();
             this.rdBtnQHD = new System.Windows.Forms.RadioButton();
             this.rdBtnFullHD = new System.Windows.Forms.RadioButton();
@@ -53,9 +55,6 @@
             this.btnBuild = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.chrMain = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.rdBtnCustom = new System.Windows.Forms.RadioButton();
-            this.txtBxCustomX = new System.Windows.Forms.TextBox();
-            this.txtBxCustomY = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chrMain)).BeginInit();
@@ -136,9 +135,9 @@
             this.rdBtn2.AutoSize = true;
             this.rdBtn2.Location = new System.Drawing.Point(5, 55);
             this.rdBtn2.Name = "rdBtn2";
-            this.rdBtn2.Size = new System.Drawing.Size(58, 24);
+            this.rdBtn2.Size = new System.Drawing.Size(160, 24);
             this.rdBtn2.TabIndex = 9;
-            this.rdBtn2.Text = "FPS";
+            this.rdBtn2.Text = "Кадров в секунду";
             this.rdBtn2.UseVisualStyleBackColor = true;
             this.rdBtn2.CheckedChanged += new System.EventHandler(this.rdBtn2_CheckedChanged);
             // 
@@ -203,6 +202,37 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Выберите разрешение";
             // 
+            // txtBxCustomY
+            // 
+            this.txtBxCustomY.Enabled = false;
+            this.txtBxCustomY.Location = new System.Drawing.Point(206, 114);
+            this.txtBxCustomY.Name = "txtBxCustomY";
+            this.txtBxCustomY.Size = new System.Drawing.Size(57, 26);
+            this.txtBxCustomY.TabIndex = 11;
+            this.txtBxCustomY.Text = "900";
+            this.txtBxCustomY.TextChanged += new System.EventHandler(this.txtBxCustomY_TextChanged);
+            // 
+            // txtBxCustomX
+            // 
+            this.txtBxCustomX.Enabled = false;
+            this.txtBxCustomX.Location = new System.Drawing.Point(143, 114);
+            this.txtBxCustomX.Name = "txtBxCustomX";
+            this.txtBxCustomX.Size = new System.Drawing.Size(57, 26);
+            this.txtBxCustomX.TabIndex = 10;
+            this.txtBxCustomX.Text = "1600";
+            this.txtBxCustomX.TextChanged += new System.EventHandler(this.txtBxCustomX_TextChanged);
+            // 
+            // rdBtnCustom
+            // 
+            this.rdBtnCustom.AutoSize = true;
+            this.rdBtnCustom.Location = new System.Drawing.Point(6, 115);
+            this.rdBtnCustom.Name = "rdBtnCustom";
+            this.rdBtnCustom.Size = new System.Drawing.Size(126, 24);
+            this.rdBtnCustom.TabIndex = 9;
+            this.rdBtnCustom.Text = "Custom (X;Y):";
+            this.rdBtnCustom.UseVisualStyleBackColor = true;
+            this.rdBtnCustom.CheckedChanged += new System.EventHandler(this.rdBtnCustom_CheckedChanged);
+            // 
             // rdBtnUHD
             // 
             this.rdBtnUHD.AutoSize = true;
@@ -239,6 +269,7 @@
             // 
             // btnSave
             // 
+            this.btnSave.Enabled = false;
             this.btnSave.Location = new System.Drawing.Point(12, 494);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(143, 60);
@@ -289,45 +320,12 @@
             // 
             // chrMain
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chrMain.ChartAreas.Add(chartArea3);
             legend3.Name = "Legend1";
             this.chrMain.Legends.Add(legend3);
             this.chrMain.Location = new System.Drawing.Point(12, 192);
             this.chrMain.Name = "chrMain";
             this.chrMain.Size = new System.Drawing.Size(582, 295);
             this.chrMain.TabIndex = 17;
-            // 
-            // rdBtnCustom
-            // 
-            this.rdBtnCustom.AutoSize = true;
-            this.rdBtnCustom.Location = new System.Drawing.Point(6, 115);
-            this.rdBtnCustom.Name = "rdBtnCustom";
-            this.rdBtnCustom.Size = new System.Drawing.Size(130, 24);
-            this.rdBtnCustom.TabIndex = 9;
-            this.rdBtnCustom.Text = "Custom (X; Y):";
-            this.rdBtnCustom.UseVisualStyleBackColor = true;
-            this.rdBtnCustom.CheckedChanged += new System.EventHandler(this.rdBtnCustom_CheckedChanged);
-            // 
-            // txtBxCustomX
-            // 
-            this.txtBxCustomX.Enabled = false;
-            this.txtBxCustomX.Location = new System.Drawing.Point(143, 114);
-            this.txtBxCustomX.Name = "txtBxCustomX";
-            this.txtBxCustomX.Size = new System.Drawing.Size(57, 26);
-            this.txtBxCustomX.TabIndex = 10;
-            this.txtBxCustomX.Text = "1600";
-            this.txtBxCustomX.TextChanged += new System.EventHandler(this.txtBxCustomX_TextChanged);
-            // 
-            // txtBxCustomY
-            // 
-            this.txtBxCustomY.Enabled = false;
-            this.txtBxCustomY.Location = new System.Drawing.Point(206, 114);
-            this.txtBxCustomY.Name = "txtBxCustomY";
-            this.txtBxCustomY.Size = new System.Drawing.Size(57, 26);
-            this.txtBxCustomY.TabIndex = 11;
-            this.txtBxCustomY.Text = "900";
-            this.txtBxCustomY.TextChanged += new System.EventHandler(this.txtBxCustomY_TextChanged);
             // 
             // frmMain
             // 
@@ -355,7 +353,7 @@
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FVG v.0.1.0 by volkovskey";
+            this.Text = "FVG v.0.1.1 by volkovskey";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.groupBox1.ResumeLayout(false);
