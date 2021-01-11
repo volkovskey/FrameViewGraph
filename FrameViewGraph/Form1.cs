@@ -22,20 +22,6 @@ namespace FrameViewGraph
             InitializeComponent();
         }
 
-        private void txtBxNameTest_TextChanged(object sender, EventArgs e)
-        {
-            if (txtBxNameTest.Text == "")
-            {
-                nameOfTest = "test_" + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss");
-            }
-            else
-            {
-                nameOfTest = txtBxNameTest.Text;
-            }
-            chrMain.Titles.Clear();
-            chrMain.Titles.Add(nameOfTest);
-        }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (openFileDlg.ShowDialog() == DialogResult.OK && !chkListFile.Items.Contains(openFileDlg.SafeFileName))
@@ -93,39 +79,6 @@ namespace FrameViewGraph
             else
             {
                 MessageBox.Show("Нет открытых файлов.", "Ошибка");
-            }
-        }
-
-        private void rdBtnFullHD_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rdBtnFullHD.Checked)
-            {
-                resolutionWidth = 1920;
-                resolutionHeight = 1080;
-                txtBxCustomX.Enabled = false;
-                txtBxCustomY.Enabled = false;
-            }
-        }
-
-        private void rdBtnQHD_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rdBtnQHD.Checked)
-            {
-                resolutionWidth = 2560;
-                resolutionHeight = 1440;
-                txtBxCustomX.Enabled = false;
-                txtBxCustomY.Enabled = false;
-            }
-        }
-
-        private void rdBtnUHD_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rdBtnUHD.Checked)
-            {
-                resolutionWidth = 3840;
-                resolutionHeight = 2160;
-                txtBxCustomX.Enabled = false;
-                txtBxCustomY.Enabled = false;
             }
         }
 
@@ -208,41 +161,9 @@ namespace FrameViewGraph
             return instance;
         }
 
-        private void rdBtn1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rdBtn1.Checked)
-            {
-                typeOfGraph = 1;
-            }
-        }
-
-        private void rdBtn2_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rdBtn2.Checked)
-            {
-                typeOfGraph = 2;
-            }
-        }
-
-        private void rdBtn3_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rdBtn3.Checked)
-            {
-                typeOfGraph = 3;
-            }
-        }
-
-        private void rdBtn4_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rdBtn4.Checked)
-            {
-                typeOfGraph = 4;
-            }
-        }
-
         private void btnBuild_Click(object sender, EventArgs e)
         {
-            btnSave.Enabled = true;
+            menuFileSaveAs.Enabled = true;
             if (typeOfGraph == 1)
             {
                 graphFrameTime();
@@ -257,12 +178,12 @@ namespace FrameViewGraph
             }
             else if (typeOfGraph == 4)
             {
-                btnSave.Enabled = false;
+                menuFileSaveAs.Enabled = false;
                 MessageBox.Show("Не доступно", "Предупреждение");
             }
             else
             {
-                btnSave.Enabled = false;
+                menuFileSaveAs.Enabled = false;
                 MessageBox.Show("Ошибка выбора типа графика", "Ошибка");
             }
         }
@@ -433,7 +354,7 @@ namespace FrameViewGraph
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            btnSave.Enabled = false;
+            menuFileSaveAs.Enabled = false;
             cleanChart();
         }
 
@@ -446,6 +367,8 @@ namespace FrameViewGraph
         private void frmMain_Load(object sender, EventArgs e)
         {
             nameOfTest = "test_" + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss");
+            menuGrViewNameValue.Text = nameOfTest;
+            statusName.Text = nameOfTest;
             chrMain.Titles.Clear();
             chrMain.Titles.Add(nameOfTest);
         }
@@ -455,48 +378,365 @@ namespace FrameViewGraph
             Application.Exit();
         }
 
-        private void rdBtnCustom_CheckedChanged(object sender, EventArgs e)
+        private void сохранитьКакToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (rdBtnCustom.Checked)
+            int startedBorderWidth = chrMain.Series[0].BorderWidth;
+            Font startedFont = chrMain.Series[0].Font;
+            Font newFont = new Font("Verdana", (float)Math.Sqrt(resolutionWidth * resolutionHeight / (1920 * 1080)) * 12);
+            for (int i = 0; i < chrMain.Series.Count; i++)
             {
+                chrMain.Series[i].BorderWidth = (int)Math.Round(resolutionWidth * resolutionHeight / 2000000.0);
+            }
+            chrMain.ChartAreas[0].AxisX.LabelStyle.Font = newFont;
+            chrMain.ChartAreas[0].AxisY.LabelStyle.Font = newFont;
+            chrMain.ChartAreas[0].AxisX.TitleFont = newFont;
+            chrMain.ChartAreas[0].AxisY.TitleFont = newFont;
+            chrMain.Titles[0].Font = newFont;
+            chrMain.Legends[0].Font = newFont;
+            chrMain.Titles.Add(this.Text);
+            chrMain.Titles[0].Font = new Font("Verdana", (float)Math.Sqrt(resolutionWidth * resolutionHeight / (1920 * 1080)) * 8);
+            chrMain.Location = new Point(-10000, -10000);
+            chrMain.Width = resolutionWidth;
+            chrMain.Height = resolutionHeight;
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Title = "Сохранить изображение как ...";
+                sfd.Filter = "*.jpg|*.jpg;|*.png|*.png;|*.bmp|*.bmp";
+                sfd.AddExtension = true;
+                sfd.FileName = nameOfTest;
+                if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    switch (sfd.FilterIndex)
+                    {
+                        case 1: chrMain.SaveImage(sfd.FileName, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Jpeg); break;
+                        case 2: chrMain.SaveImage(sfd.FileName, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Png); break;
+                        case 3: chrMain.SaveImage(sfd.FileName, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Bmp); break;
+                    }
+                }
+            }
+            chrMain.Width = 582;
+            chrMain.Height = 295;
+            chrMain.Location = new System.Drawing.Point(12, 190);
+            for (int i = 0; i < chrMain.Series.Count; i++)
+            {
+                chrMain.Series[i].BorderWidth = startedBorderWidth;
+            }
+            chrMain.ChartAreas[0].AxisX.LabelStyle.Font = startedFont;
+            chrMain.ChartAreas[0].AxisY.LabelStyle.Font = startedFont;
+            chrMain.ChartAreas[0].AxisX.TitleFont = startedFont;
+            chrMain.ChartAreas[0].AxisY.TitleFont = startedFont;
+            chrMain.Titles[0].Font = startedFont;
+            chrMain.Legends[0].Font = startedFont;
+            chrMain.Titles.RemoveAt(1);
+        }
+
+        private void добавитьДанныеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openFileDlg.ShowDialog() == DialogResult.OK && !chkListFile.Items.Contains(openFileDlg.SafeFileName))
+            {
+                statusStatus.Text = "Идет загрузка данных с файла...";
+                chkListFile.Items.Add(openFileDlg.SafeFileName);
+                parsedData.Add(openCSV(openFileDlg.FileName));
+                filesName.Add(openFileDlg.SafeFileName);
+                statusStatus.Text = "Загрузка закончена.";
+            }
+            else if (openFileDlg.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("Нельзя добавлять файлы с одинаковым названием", "Ошибка");
+            }
+        }
+
+        private void удалитьВыбранныеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void инвертироватьВыбранныеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void menuGraph1_Click(object sender, EventArgs e)
+        {
+            if (menuGraph1.Checked)
+            {
+                //Построить
+            }
+            else
+            {
+                menuGraph1.Checked = true;
+                menuGraph2.Checked = false;
+                menuGraph3.Checked = false;
+                menuGraph4.Checked = false;
+                typeOfGraph = 1;
+            }
+        }
+
+        private void menuGraph4_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Пока не доступно", "Предупреждение");
+            //if (menuGraph4.Checked)
+            //{
+            //    //Построить
+            //}
+            //else
+            //{
+            //    menuGraph1.Checked = false;
+            //    menuGraph2.Checked = false;
+            //    menuGraph3.Checked = false;
+            //    menuGraph4.Checked = true;
+            //    typeOfGraph = 4;
+            //}
+        }
+
+        private void menuGraph2_Click(object sender, EventArgs e)
+        {
+            if (menuGraph2.Checked)
+            {
+                //Построить
+            }
+            else
+            {
+                menuGraph1.Checked = false;
+                menuGraph2.Checked = true;
+                menuGraph3.Checked = false;
+                menuGraph4.Checked = false;
+                typeOfGraph = 2;
+            }
+        }
+
+        private void menuGraph3_Click(object sender, EventArgs e)
+        {
+            if (menuGraph3.Checked)
+            {
+                //Построить
+            }
+            else
+            {
+                menuGraph1.Checked = false;
+                menuGraph2.Checked = false;
+                menuGraph3.Checked = true;
+                menuGraph4.Checked = false;
+                typeOfGraph = 3;
+            }
+        }
+
+        private void menuFileControlDelete_Click(object sender, EventArgs e)
+        {
+            if (chkListFile.Items.Count != 0)
+            {
+                if (chkListFile.CheckedItems.Count != 0)
+                {
+                    for (int i = chkListFile.Items.Count - 1; i >= 0; i--)
+                    {
+                        if (chkListFile.GetItemChecked(i))
+                        {
+                            int index = filesName.IndexOf(chkListFile.Items[i].ToString());
+                            chkListFile.Items.RemoveAt(i);
+                            filesName.RemoveAt(index);
+                            parsedData.RemoveAt(index);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Нет выделенных файлов.", "Ошибка");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Нет открытых файлов.", "Ошибка");
+            }
+        }
+
+        private void menuFileControlInvert_Click(object sender, EventArgs e)
+        {
+            if (chkListFile.Items.Count != 0)
+            {
+                for (int i = 0; i < chkListFile.Items.Count; i++)
+                {
+                    chkListFile.SetItemChecked(i, !chkListFile.GetItemChecked(i));
+                }
+            }
+            else
+            {
+                MessageBox.Show("Нет открытых файлов.", "Ошибка");
+            }
+        }
+
+        private void menuResolutionFullHD_Click(object sender, EventArgs e)
+        {
+            if (!menuResolutionFullHD.Checked)
+            {
+                menuResolutionFullHD.Checked = true;
+                menuResolutionQHD.Checked = false;
+                menuResolutionUHD.Checked = false;
+                menuResolutionCustom.Checked = false;
+                menuResolutionCustomX.Enabled = false;
+                menuResolutionCustomY.Enabled = false;
+                resolutionWidth = 1920;
+                resolutionHeight = 1080;
+            }
+        }
+
+        private void menuResolutionQHD_Click(object sender, EventArgs e)
+        {
+            if (!menuResolutionQHD.Checked)
+            {
+                menuResolutionFullHD.Checked = false;
+                menuResolutionQHD.Checked = true;
+                menuResolutionUHD.Checked = false;
+                menuResolutionCustom.Checked = false;
+                menuResolutionCustomX.Enabled = false;
+                menuResolutionCustomY.Enabled = false;
+                resolutionWidth = 2560;
+                resolutionHeight = 1440;
+            }
+        }
+
+        private void menuResolutionUHD_Click(object sender, EventArgs e)
+        {
+            if (!menuResolutionUHD.Checked)
+            {
+                menuResolutionFullHD.Checked = false;
+                menuResolutionQHD.Checked = false;
+                menuResolutionUHD.Checked = true;
+                menuResolutionCustom.Checked = false;
+                menuResolutionCustomX.Enabled = false;
+                menuResolutionCustomY.Enabled = false;
+                resolutionWidth = 3840;
+                resolutionHeight = 2160;
+            }
+        }
+
+        private void menuResolutionCustom_Click(object sender, EventArgs e)
+        {
+            if (!menuResolutionCustom.Checked)
+            {
+                menuResolutionFullHD.Checked = false;
+                menuResolutionQHD.Checked = false;
+                menuResolutionUHD.Checked = false;
+                menuResolutionCustom.Checked = true;
+                menuResolutionCustomX.Enabled = true;
+                menuResolutionCustomY.Enabled = true;
                 try
                 {
-                    resolutionWidth = Convert.ToInt16(txtBxCustomX.Text);
-                    resolutionHeight = Convert.ToInt16(txtBxCustomY.Text);
+                    resolutionWidth = Convert.ToInt16(menuResolutionCustomX.Text);
+                    resolutionHeight = Convert.ToInt16(menuResolutionCustomY.Text);
                 }
                 catch
                 {
                     MessageBox.Show("Возможно вы ввели не число", "Предупреждение");
                 }
-                txtBxCustomX.Enabled = true;
-                txtBxCustomY.Enabled = true;
             }
         }
 
-        private void txtBxCustomX_TextChanged(object sender, EventArgs e)
+        private void menuResolutionCustomX_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                resolutionWidth = Convert.ToInt16(txtBxCustomX.Text);
+                if (menuResolutionCustomX.Text == "")
+                {
+                    resolutionWidth = 1920;
+                }
+                else
+                {
+                    resolutionWidth = Convert.ToInt16(menuResolutionCustomX.Text);
+                }
             }
             catch
             {
-                txtBxCustomX.Text = "1920";
+                menuResolutionCustomX.Text = "1920";
                 resolutionWidth = 1920;
             }
         }
 
-        private void txtBxCustomY_TextChanged(object sender, EventArgs e)
+        private void menuResolutionCustomY_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                resolutionHeight = Convert.ToInt16(txtBxCustomY.Text);
+                if (menuResolutionCustomY.Text == "")
+                {
+                    resolutionHeight = 1080;
+                }
+                else
+                {
+                    resolutionHeight = Convert.ToInt16(menuResolutionCustomY.Text);
+                }
             }
             catch
             {
-                txtBxCustomY.Text = "1080";
-                resolutionHeight = 1080;
+                menuResolutionCustomY.Text = "1080";
+                resolutionWidth = 1080;
             }
+        }
+
+        private void menuGrDraw_Click(object sender, EventArgs e)
+        {
+            menuFileSaveAs.Enabled = true;
+            if (typeOfGraph == 1)
+            {
+                graphFrameTime();
+            }
+            else if (typeOfGraph == 2)
+            {
+                graphFPS();
+            }
+            else if (typeOfGraph == 3)
+            {
+                graphProbabilityDensity();
+            }
+            else if (typeOfGraph == 4)
+            {
+                menuFileSaveAs.Enabled = false;
+                MessageBox.Show("Не доступно", "Предупреждение");
+            }
+            else
+            {
+                menuFileSaveAs.Enabled = false;
+                MessageBox.Show("Ошибка выбора типа графика", "Ошибка");
+            }
+        }
+
+        private void menuGrClear_Click(object sender, EventArgs e)
+        {
+            menuFileSaveAs.Enabled = false;
+            cleanChart();
+        }
+
+        private void menuGrView_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Пока не доступно", "Предупреждение");
+        }
+
+        private void menuGrNewWindow_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Пока не доступно", "Предупреждение");
+        }
+
+        private void menuGrViewNameValue_TextChanged(object sender, EventArgs e)
+        {
+            if (menuGrViewNameValue.Text == "")
+            {
+                nameOfTest = "test_" + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss");
+            }
+            else
+            {
+                nameOfTest = menuGrViewNameValue.Text;
+            }
+            statusName.Text = nameOfTest;
+            chrMain.Titles.Clear();
+            chrMain.Titles.Add(nameOfTest);
+        }
+
+        private void menuHelpInfo_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("FVG - FrameViewGraph.\n\nДанная программа предназначена для анализа данных, полученных с программы FrameView. Можно построить несколько разных типов графиков и настроить их внешний вид под себя. Такие данные намного удобнее, чем сравнивать два, три, четыре видеофрагмента.\n\nИнструкция по использования появится на YT-канале 'volkovskey' в ближайшее время.", "О программе");
+        }
+
+        private void menuHelpVersion_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Название программы: FrameViewGraph\nВерсия программы: 0.2.0\nСтатус текущей версии программы: Beta\nНеобходимая версия FrameView: 1.1\nРазработчик: volkovskey\nКопирайт: Copyright ©volkovskey 2020-2021\nЛицензия: MIT License\nТекст лицензии:\n\n" + Properties.Resources.license, "Версия программы");
         }
     }
 }
