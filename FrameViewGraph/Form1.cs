@@ -345,14 +345,14 @@ namespace FrameViewGraph
             Axis ay3 = new Axis();
             ay3.Title = "Время (с)";
             chrMain.ChartAreas[0].AxisY = ay3;
-            for (int i = 0; i < parsedData.Count; i++)
+            for (int a = 0; a < parsedData.Count; a++)
             {
-                if (chkListFile.CheckedItems.Contains(filesName[i]))
+                if (chkListFile.CheckedItems.Contains(filesName[a]))
                 {
-                    float[,] data = new float[parsedData[i].GetLength(0), parsedData[i].GetLength(1)];
-                    Array.Copy((float[,])parsedData[i], data, parsedData[i].Length);
+                    float[,] data = new float[parsedData[a].GetLength(0), parsedData[a].GetLength(1)];
+                    Array.Copy((float[,])parsedData[a], data, parsedData[a].Length);
                     String nameTest = nameOfTest;
-                    String lineData = filesName[i];
+                    String lineData = filesName[a];
                     Series mySeriesOfPoint = new Series(lineData);
                     mySeriesOfPoint.ChartType = SeriesChartType.Line;
                     mySeriesOfPoint.ChartArea = nameTest;
@@ -363,27 +363,28 @@ namespace FrameViewGraph
                     }
                     Array.Sort(FPS);
                     Dictionary<int, int> Count = new Dictionary<int, int>();
-                    for (int k = 0; k < FPS.Length;)
+                    for (int i = 0; i < FPS.Length;)
                     {
                         int j;
-                        for (j = k + 1; j < FPS.Length; j++)
+                        for (j = i + 1; j < FPS.Length; j++)
                         {
-                            if (FPS[k] != FPS[j])
+                            if (FPS[i] != FPS[j])
                             {
-                                if (j - k > 3) Count.Add(FPS[k], j - k);
-                                k = j;
+                                if (j - i > 3 && FPS[i] > 0) Count.Add(FPS[i], j - i);
+                                i = j;
                                 break;
                             }
                         }
                         if (j == FPS.Length)
                         {
-                            if (j - k > 3) Count.Add(FPS[k], j - k);
+                            if (j - i > 3 && FPS[i] > 0) Count.Add(FPS[i], j - i);
                             break;
                         }
                     }
                     foreach (var fps in Count)
                     {
                         mySeriesOfPoint.Points.AddXY(fps.Key, fps.Value);
+                        Console.WriteLine(fps.Key + " " + fps.Value);
                     }
                     chrMain.Series.Add(mySeriesOfPoint);
                 }
