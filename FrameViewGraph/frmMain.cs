@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -12,6 +14,7 @@ namespace FrameViewGraph
     {
         private String nameOfTest = "";
         private Byte typeOfGraph = 1;
+        private Byte filter = 0;
         private Int16 resolutionWidth = 1920;
         private Int16 resolutionHeight = 1080;
         private List<String> filesName = new List<string>();
@@ -20,172 +23,6 @@ namespace FrameViewGraph
         public frmMain()
         {
             InitializeComponent();
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            if (openFileDlg.ShowDialog() == DialogResult.OK && !chkListFile.Items.Contains(openFileDlg.SafeFileName))
-            {
-                String frmText = this.Text;
-                this.Text = frmText + "              Идет загрузка данных с файла";
-                chkListFile.Items.Add(openFileDlg.SafeFileName);
-                parsedData.Add(openCSV(openFileDlg.FileName));
-                filesName.Add(openFileDlg.SafeFileName);
-                this.Text = frmText;
-            }
-            else if (openFileDlg.ShowDialog() == DialogResult.OK)
-            {
-                MessageBox.Show("Нельзя добавлять файлы с одинаковым названием", "Ошибка");
-            }
-        }
-
-        private void btnDeleteList_Click(object sender, EventArgs e)
-        {
-            if (chkListFile.Items.Count != 0)
-            {
-                if (chkListFile.CheckedItems.Count != 0)
-                {
-                    for (int i = chkListFile.Items.Count - 1; i >= 0; i--)
-                    {
-                        if (chkListFile.GetItemChecked(i))
-                        {
-                            int index = filesName.IndexOf(chkListFile.Items[i].ToString());
-                            chkListFile.Items.RemoveAt(i);
-                            filesName.RemoveAt(index);
-                            parsedData.RemoveAt(index);
-                        }
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Нет выделенных файлов.", "Ошибка");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Нет открытых файлов.", "Ошибка");
-            }
-        }
-
-        private void btnInvert_Click(object sender, EventArgs e)
-        {
-            if (chkListFile.Items.Count != 0)
-            {
-                for (int i = 0; i < chkListFile.Items.Count; i++)
-                {
-                    chkListFile.SetItemChecked(i, !chkListFile.GetItemChecked(i));
-                }
-            }
-            else
-            {
-                MessageBox.Show("Нет открытых файлов.", "Ошибка");
-            }
-        }
-
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Пока не доступно", "Предупреждение");
-        }
-
-        private void btnNewWindow_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Пока не доступно", "Предупреждение");
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            int startedBorderWidth = chrMain.Series[0].BorderWidth;
-            Font startedFont = chrMain.Series[0].Font;
-            Font newFont = new Font("Verdana", (float)Math.Sqrt(resolutionWidth * resolutionHeight / (1920 * 1080)) * 12);
-            for (int i = 0; i < chrMain.Series.Count; i++)
-            {
-                chrMain.Series[i].BorderWidth = (int)Math.Round(resolutionWidth * resolutionHeight / 2000000.0);
-            }
-            chrMain.ChartAreas[0].AxisX.LabelStyle.Font = newFont;
-            chrMain.ChartAreas[0].AxisY.LabelStyle.Font = newFont;
-            chrMain.ChartAreas[0].AxisX.TitleFont = newFont;
-            chrMain.ChartAreas[0].AxisY.TitleFont = newFont;
-            chrMain.Titles[0].Font = newFont;
-            chrMain.Legends[0].Font = newFont;
-            chrMain.Titles.Add(this.Text);
-            chrMain.Titles[0].Font = new Font("Verdana", (float)Math.Sqrt(resolutionWidth * resolutionHeight / (1920 * 1080)) * 8);
-            chrMain.Location = new Point(-10000, -10000);
-            chrMain.Width = resolutionWidth;
-            chrMain.Height = resolutionHeight;
-            using (SaveFileDialog sfd = new SaveFileDialog())
-            {
-                sfd.Title = "Сохранить изображение как ...";
-                sfd.Filter = "*.jpg|*.jpg;|*.png|*.png;|*.bmp|*.bmp";
-                sfd.AddExtension = true;
-                sfd.FileName = nameOfTest;
-                if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    switch (sfd.FilterIndex)
-                    {
-                        case 1: chrMain.SaveImage(sfd.FileName, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Jpeg); break;
-                        case 2: chrMain.SaveImage(sfd.FileName, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Png); break;
-                        case 3: chrMain.SaveImage(sfd.FileName, System.Windows.Forms.DataVisualization.Charting.ChartImageFormat.Bmp); break;
-                    }
-                }
-            }
-            chrMain.Width = 582;
-            chrMain.Height = 295;
-            chrMain.Location = new System.Drawing.Point(12, 190);
-            for (int i = 0; i < chrMain.Series.Count; i++)
-            {
-                chrMain.Series[i].BorderWidth = startedBorderWidth;
-            }
-            chrMain.ChartAreas[0].AxisX.LabelStyle.Font = startedFont;
-            chrMain.ChartAreas[0].AxisY.LabelStyle.Font = startedFont;
-            chrMain.ChartAreas[0].AxisX.TitleFont = startedFont;
-            chrMain.ChartAreas[0].AxisY.TitleFont = startedFont;
-            chrMain.Titles[0].Font = startedFont;
-            chrMain.Legends[0].Font = startedFont;
-            chrMain.Titles.RemoveAt(1);
-        }
-
-        public static T Clone<T>(T controlToClone) where T : Control
-        {
-            T instance = Activator.CreateInstance<T>();
-
-            Type control = controlToClone.GetType();
-            PropertyInfo[] info = control.GetProperties();
-            object p = control.InvokeMember("", System.Reflection.BindingFlags.CreateInstance, null, controlToClone, null);
-            foreach (PropertyInfo pi in info)
-            {
-                if ((pi.CanWrite) && !(pi.Name == "WindowTarget") && !(pi.Name == "Capture"))
-                {
-                    pi.SetValue(instance, pi.GetValue(controlToClone, null), null);
-                }
-            }
-            return instance;
-        }
-
-        private void btnBuild_Click(object sender, EventArgs e)
-        {
-            menuFileSaveAs.Enabled = true;
-            if (typeOfGraph == 1)
-            {
-                graphFrameTime();
-            }
-            else if (typeOfGraph == 2)
-            {
-                graphFPS();
-            }
-            else if (typeOfGraph == 3)
-            {
-                graphProbabilityDensity();
-            }
-            else if (typeOfGraph == 4)
-            {
-                menuFileSaveAs.Enabled = false;
-                MessageBox.Show("Не доступно", "Предупреждение");
-            }
-            else
-            {
-                menuFileSaveAs.Enabled = false;
-                MessageBox.Show("Ошибка выбора типа графика", "Ошибка");
-            }
         }
 
         private void graphFrameTime()
@@ -209,12 +46,57 @@ namespace FrameViewGraph
                     Series mySeriesOfPoint = new Series(lineData);
                     mySeriesOfPoint.ChartType = SeriesChartType.Line;
                     mySeriesOfPoint.ChartArea = nameTest;
-                    for (int j = 0; j < data.GetLength(1); j++)
+                    if (filter == 0)
                     {
-                        mySeriesOfPoint.Points.AddXY(data[0, j], data[1, j]);
+                        for (int j = 0; j < data.GetLength(1); j++)
+                        {
+                            mySeriesOfPoint.Points.AddXY(data[0, j], data[1, j]);
+                        }
                     }
+                    else if (filter >= 1 && filter <= 4)
+                    {
+                        float[] FrameTime = new float[data.GetLength(1)];
+                        for (int j = 0; j < data.GetLength(1); j++)
+                        {
+                            data[1, j] = (float)Math.Round(data[1, j], 2);
+                            FrameTime[j] = data[1, j];
+                        }
+                        Array.Sort(FrameTime);
+                        Dictionary<float, int> Count = new Dictionary<float, int>();
+                        for (int h = 0; h < FrameTime.Length;)
+                        {
+                            int y;
+                            for (y = h + 1; y < FrameTime.Length; y++)
+                            {
+                                if (FrameTime[h] != FrameTime[y])
+                                {
+                                    if (FrameTime[h] > 0) Count.Add(FrameTime[h], y - h);
+                                    h = y;
+                                    break;
+                                }
+                            }
+                            if (y == FrameTime.Length)
+                            {
+                                if (FrameTime[h] > 0) Count.Add(FrameTime[h], y - h);
+                                break;
+                            }
+                        }
+                        float FilterLevel = 0f;
+                        if (filter == 1) FilterLevel = 0.00001f;
+                        else if (filter == 2) FilterLevel = 0.0001f;
+                        else if (filter == 3) FilterLevel = 0.001f;
+                        else if (filter == 4) FilterLevel = 0.01f;
+                        for (int j = 0; j < data.GetLength(1); j++)
+                        {
+                            if ((float)Count[data[1, j]] / data.GetLength(1) > FilterLevel)
+                            {
+                                mySeriesOfPoint.Points.AddXY(data[0, j], data[1, j]);
+                            }
+                        }
+                    }
+
+
                     chrMain.Series.Add(mySeriesOfPoint);
-                    
                 }
             }
         }
@@ -305,14 +187,12 @@ namespace FrameViewGraph
                     foreach (var fps in Count)
                     {
                         mySeriesOfPoint.Points.AddXY(fps.Key, fps.Value);
-                        Console.WriteLine(fps.Key + " " + fps.Value);
                     }
                     chrMain.Series.Add(mySeriesOfPoint);
                 }
             }
-            
-        }
 
+        }
 
         private float[,] openCSV(String path)
         {
@@ -352,12 +232,6 @@ namespace FrameViewGraph
             return newArr;
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            menuFileSaveAs.Enabled = false;
-            cleanChart();
-        }
-
         private void cleanChart()
         {
             chrMain.Series.Clear();
@@ -367,7 +241,7 @@ namespace FrameViewGraph
         private void frmMain_Load(object sender, EventArgs e)
         {
             nameOfTest = "test_" + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss");
-            menuGrViewNameValue.Text = nameOfTest;
+            menuName.Text = nameOfTest;
             statusName.Text = nameOfTest;
             chrMain.Titles.Clear();
             chrMain.Titles.Add(nameOfTest);
@@ -378,14 +252,14 @@ namespace FrameViewGraph
             Application.Exit();
         }
 
-        private void сохранитьКакToolStripMenuItem_Click(object sender, EventArgs e)
+        private void menuFileSaveAs_Click(object sender, EventArgs e)
         {
             int startedBorderWidth = chrMain.Series[0].BorderWidth;
             Font startedFont = chrMain.Series[0].Font;
             Font newFont = new Font("Verdana", (float)Math.Sqrt(resolutionWidth * resolutionHeight / (1920 * 1080)) * 12);
             for (int i = 0; i < chrMain.Series.Count; i++)
             {
-                chrMain.Series[i].BorderWidth = (int)Math.Round(resolutionWidth * resolutionHeight / 2000000.0);
+                chrMain.Series[i].BorderWidth = (int)Math.Round(resolutionWidth * resolutionHeight / (1920 * 1080.0));
             }
             chrMain.ChartAreas[0].AxisX.LabelStyle.Font = newFont;
             chrMain.ChartAreas[0].AxisY.LabelStyle.Font = newFont;
@@ -394,7 +268,7 @@ namespace FrameViewGraph
             chrMain.Titles[0].Font = newFont;
             chrMain.Legends[0].Font = newFont;
             chrMain.Titles.Add(this.Text);
-            chrMain.Titles[0].Font = new Font("Verdana", (float)Math.Sqrt(resolutionWidth * resolutionHeight / (1920 * 1080)) * 8);
+            chrMain.Titles[1].Font = new Font("Verdana", (float)Math.Sqrt(resolutionWidth * resolutionHeight / (1920 * 1080)) * 10);
             chrMain.Location = new Point(-10000, -10000);
             chrMain.Width = resolutionWidth;
             chrMain.Height = resolutionHeight;
@@ -414,9 +288,11 @@ namespace FrameViewGraph
                     }
                 }
             }
-            chrMain.Width = 582;
-            chrMain.Height = 295;
-            chrMain.Location = new System.Drawing.Point(12, 190);
+
+            //To started
+            chrMain.Width = 860;
+            chrMain.Height = 425;
+            chrMain.Location = new System.Drawing.Point(12, 100);
             for (int i = 0; i < chrMain.Series.Count; i++)
             {
                 chrMain.Series[i].BorderWidth = startedBorderWidth;
@@ -430,39 +306,22 @@ namespace FrameViewGraph
             chrMain.Titles.RemoveAt(1);
         }
 
-        private void добавитьДанныеToolStripMenuItem_Click(object sender, EventArgs e)
+        private void menuFileAdd_Click(object sender, EventArgs e)
         {
             if (openFileDlg.ShowDialog() == DialogResult.OK && !chkListFile.Items.Contains(openFileDlg.SafeFileName))
             {
                 statusStatus.Text = "Идет загрузка данных с файла...";
+                statusStr.Refresh();
                 chkListFile.Items.Add(openFileDlg.SafeFileName);
                 parsedData.Add(openCSV(openFileDlg.FileName));
                 filesName.Add(openFileDlg.SafeFileName);
                 statusStatus.Text = "Загрузка закончена.";
             }
-            else if (openFileDlg.ShowDialog() == DialogResult.OK)
-            {
-                MessageBox.Show("Нельзя добавлять файлы с одинаковым названием", "Ошибка");
-            }
-        }
-
-        private void удалитьВыбранныеToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void инвертироватьВыбранныеToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void menuGraph1_Click(object sender, EventArgs e)
         {
-            if (menuGraph1.Checked)
-            {
-                //Построить
-            }
-            else
+            if (!menuGraph1.Checked)
             {
                 menuGraph1.Checked = true;
                 menuGraph2.Checked = false;
@@ -474,7 +333,6 @@ namespace FrameViewGraph
 
         private void menuGraph4_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Пока не доступно", "Предупреждение");
             //if (menuGraph4.Checked)
             //{
             //    //Построить
@@ -487,38 +345,6 @@ namespace FrameViewGraph
             //    menuGraph4.Checked = true;
             //    typeOfGraph = 4;
             //}
-        }
-
-        private void menuGraph2_Click(object sender, EventArgs e)
-        {
-            if (menuGraph2.Checked)
-            {
-                //Построить
-            }
-            else
-            {
-                menuGraph1.Checked = false;
-                menuGraph2.Checked = true;
-                menuGraph3.Checked = false;
-                menuGraph4.Checked = false;
-                typeOfGraph = 2;
-            }
-        }
-
-        private void menuGraph3_Click(object sender, EventArgs e)
-        {
-            if (menuGraph3.Checked)
-            {
-                //Построить
-            }
-            else
-            {
-                menuGraph1.Checked = false;
-                menuGraph2.Checked = false;
-                menuGraph3.Checked = true;
-                menuGraph4.Checked = false;
-                typeOfGraph = 3;
-            }
         }
 
         private void menuFileControlDelete_Click(object sender, EventArgs e)
@@ -688,8 +514,6 @@ namespace FrameViewGraph
             }
             else if (typeOfGraph == 4)
             {
-                menuFileSaveAs.Enabled = false;
-                MessageBox.Show("Не доступно", "Предупреждение");
             }
             else
             {
@@ -704,29 +528,9 @@ namespace FrameViewGraph
             cleanChart();
         }
 
-        private void menuGrView_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Пока не доступно", "Предупреждение");
-        }
-
         private void menuGrNewWindow_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Пока не доступно", "Предупреждение");
-        }
-
-        private void menuGrViewNameValue_TextChanged(object sender, EventArgs e)
-        {
-            if (menuGrViewNameValue.Text == "")
-            {
-                nameOfTest = "test_" + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss");
-            }
-            else
-            {
-                nameOfTest = menuGrViewNameValue.Text;
-            }
-            statusName.Text = nameOfTest;
-            chrMain.Titles.Clear();
-            chrMain.Titles.Add(nameOfTest);
         }
 
         private void menuHelpInfo_Click(object sender, EventArgs e)
@@ -736,7 +540,149 @@ namespace FrameViewGraph
 
         private void menuHelpVersion_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Название программы: FrameViewGraph\nВерсия программы: 0.2.0\nСтатус текущей версии программы: Beta\nНеобходимая версия FrameView: 1.1\nРазработчик: volkovskey\nКопирайт: Copyright ©volkovskey 2020-2021\nЛицензия: MIT License\nТекст лицензии:\n\n" + Properties.Resources.license, "Версия программы");
+            MessageBox.Show("Название программы: FrameViewGraph\nВерсия программы: 0.3.0\nСтатус текущей версии программы: Beta\nНеобходимая версия FrameView: 1.1\nРазработчик: volkovskey\nКопирайт: Copyright ©volkovskey 2020-2021\nЛицензия: MIT License\nТекст лицензии:\n\n" + Properties.Resources.license, "Версия программы");
+        }
+
+        private void menuName_TextChanged(object sender, EventArgs e)
+        {
+            if (menuName.Text == "")
+            {
+                nameOfTest = "test_" + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss");
+            }
+            else
+            {
+                nameOfTest = menuName.Text;
+            }
+            statusName.Text = nameOfTest;
+            chrMain.Titles.Clear();
+            chrMain.Titles.Add(nameOfTest);
+        }
+
+        private void menuGrLegend_Click(object sender, EventArgs e)
+        {
+            if (menuGrViewLegend.Checked)
+            {
+                chrMain.Legends[0].Enabled = false;
+                menuGrViewLegend.Checked = false;
+            }
+            else
+            {
+                chrMain.Legends[0].Enabled = true;
+                menuGrViewLegend.Checked = true;
+            }
+        }
+
+        private void menuGraph1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                graphFrameTime();
+            }
+            if (!menuGraph1.Checked)
+            {
+                menuGraph1.Checked = true;
+                menuGraph2.Checked = false;
+                menuGraph3.Checked = false;
+                menuGraph4.Checked = false;
+                typeOfGraph = 1;
+            }
+        }
+
+        private void menuGraph2_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                graphFPS();
+            }
+            if (!menuGraph1.Checked)
+            {
+                menuGraph1.Checked = false;
+                menuGraph2.Checked = true;
+                menuGraph3.Checked = false;
+                menuGraph4.Checked = false;
+                typeOfGraph = 1;
+            }
+        }
+
+        private void menuGraph3_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                graphProbabilityDensity();
+            }
+            if (!menuGraph1.Checked)
+            {
+                menuGraph1.Checked = false;
+                menuGraph2.Checked = false;
+                menuGraph3.Checked = false;
+                menuGraph4.Checked = true;
+                typeOfGraph = 1;
+            }
+        }
+
+        private void menuGrFilterNo_Click(object sender, EventArgs e)
+        {
+            if (!menuGrFilterNo.Checked)
+            {
+                menuGrFilterNo.Checked = true;
+                menuGrFilter1.Checked = false;
+                menuGrFilter2.Checked = false;
+                menuGrFilter3.Checked = false;
+                menuGrFilter4.Checked = false;
+                filter = 0;
+            }
+        }
+
+        private void menuGrFilter1_Click(object sender, EventArgs e)
+        {
+            if (!menuGrFilter1.Checked)
+            {
+                menuGrFilterNo.Checked = false;
+                menuGrFilter1.Checked = true;
+                menuGrFilter2.Checked = false;
+                menuGrFilter3.Checked = false;
+                menuGrFilter4.Checked = false;
+                filter = 1;
+            }
+        }
+
+        private void menuGrFilter2_Click(object sender, EventArgs e)
+        {
+            if (!menuGrFilter2.Checked)
+            {
+                menuGrFilterNo.Checked = false;
+                menuGrFilter1.Checked = false;
+                menuGrFilter2.Checked = true;
+                menuGrFilter3.Checked = false;
+                menuGrFilter4.Checked = false;
+                filter = 2;
+            }
+        }
+
+        private void menuGrFilter3_Click(object sender, EventArgs e)
+        {
+            if (!menuGrFilter3.Checked)
+            {
+                menuGrFilterNo.Checked = false;
+                menuGrFilter1.Checked = false;
+                menuGrFilter2.Checked = false;
+                menuGrFilter3.Checked = true;
+                menuGrFilter4.Checked = false;
+                filter = 3;
+            }
+        }
+
+        private void menuGrFilter4_Click(object sender, EventArgs e)
+        {
+            if (!menuGrFilter4.Checked)
+            {
+                menuGrFilterNo.Checked = false;
+                menuGrFilter1.Checked = false;
+                menuGrFilter2.Checked = false;
+                menuGrFilter3.Checked = false;
+                menuGrFilter4.Checked = true;
+                filter = 4;
+            }
         }
     }
 }
