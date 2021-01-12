@@ -56,6 +56,12 @@
             this.menuGr = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGrDraw = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGrClear = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGrFilter = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGrFilterNo = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGrFilter1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGrFilter2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGrFilter3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGrFilter4 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGrView = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGrViewLegend = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGrViewAxis = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,12 +75,6 @@
             this.menuGrViewFontSizeAuto = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGrViewFontSizeCustom = new System.Windows.Forms.ToolStripTextBox();
             this.menuGrNewWindow = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuGrFilter = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuGrFilterNo = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuGrFilter1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuGrFilter2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuGrFilter3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuGrFilter4 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuHelpInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuHelpVersion = new System.Windows.Forms.ToolStripMenuItem();
@@ -223,6 +223,7 @@
             // 
             // menuResolutionCustomX
             // 
+            this.menuResolutionCustomX.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.menuResolutionCustomX.Name = "menuResolutionCustomX";
             this.menuResolutionCustomX.Size = new System.Drawing.Size(100, 23);
             this.menuResolutionCustomX.Text = "1920";
@@ -231,6 +232,7 @@
             // 
             // menuResolutionCustomY
             // 
+            this.menuResolutionCustomY.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.menuResolutionCustomY.Name = "menuResolutionCustomY";
             this.menuResolutionCustomY.Size = new System.Drawing.Size(100, 23);
             this.menuResolutionCustomY.Text = "1080";
@@ -266,7 +268,6 @@
             | System.Windows.Forms.Keys.D1)));
             this.menuGraph1.Size = new System.Drawing.Size(302, 22);
             this.menuGraph1.Text = "Времени кадров";
-            this.menuGraph1.Click += new System.EventHandler(this.menuGraph1_Click);
             this.menuGraph1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuGraph1_MouseDown);
             // 
             // menuGraph2
@@ -295,7 +296,6 @@
             | System.Windows.Forms.Keys.D4)));
             this.menuGraph4.Size = new System.Drawing.Size(302, 22);
             this.menuGraph4.Text = "Распределения вероятности";
-            this.menuGraph4.Click += new System.EventHandler(this.menuGraph4_Click);
             // 
             // menuGr
             // 
@@ -325,112 +325,6 @@
             this.menuGrClear.Text = "Очистить";
             this.menuGrClear.Click += new System.EventHandler(this.menuGrClear_Click);
             // 
-            // menuGrView
-            // 
-            this.menuGrView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuGrViewLegend,
-            this.menuGrViewAxis,
-            this.menuGrViewFont});
-            this.menuGrView.Name = "menuGrView";
-            this.menuGrView.Size = new System.Drawing.Size(250, 22);
-            this.menuGrView.Text = "Внешний вид";
-            // 
-            // menuGrViewLegend
-            // 
-            this.menuGrViewLegend.Checked = true;
-            this.menuGrViewLegend.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.menuGrViewLegend.Name = "menuGrViewLegend";
-            this.menuGrViewLegend.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.menuGrViewLegend.Size = new System.Drawing.Size(180, 22);
-            this.menuGrViewLegend.Text = "Легенда";
-            this.menuGrViewLegend.Click += new System.EventHandler(this.menuGrLegend_Click);
-            // 
-            // menuGrViewAxis
-            // 
-            this.menuGrViewAxis.Checked = true;
-            this.menuGrViewAxis.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.menuGrViewAxis.Name = "menuGrViewAxis";
-            this.menuGrViewAxis.Size = new System.Drawing.Size(180, 22);
-            this.menuGrViewAxis.Text = "Подписи осей";
-            // 
-            // menuGrViewFont
-            // 
-            this.menuGrViewFont.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuGrViewFontFamily,
-            this.menuGrViewFontSize});
-            this.menuGrViewFont.Name = "menuGrViewFont";
-            this.menuGrViewFont.Size = new System.Drawing.Size(180, 22);
-            this.menuGrViewFont.Text = "Шрифт";
-            // 
-            // menuGrViewFontFamily
-            // 
-            this.menuGrViewFontFamily.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuGrViewFont1,
-            this.menuGrViewFont2,
-            this.menuGrViewFont3,
-            this.menuGrViewFont4});
-            this.menuGrViewFontFamily.Name = "menuGrViewFontFamily";
-            this.menuGrViewFontFamily.Size = new System.Drawing.Size(180, 22);
-            this.menuGrViewFontFamily.Text = "Семейство";
-            // 
-            // menuGrViewFont1
-            // 
-            this.menuGrViewFont1.Name = "menuGrViewFont1";
-            this.menuGrViewFont1.Size = new System.Drawing.Size(180, 22);
-            this.menuGrViewFont1.Text = "Arial";
-            // 
-            // menuGrViewFont2
-            // 
-            this.menuGrViewFont2.Checked = true;
-            this.menuGrViewFont2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.menuGrViewFont2.Name = "menuGrViewFont2";
-            this.menuGrViewFont2.Size = new System.Drawing.Size(180, 22);
-            this.menuGrViewFont2.Text = "Microsoft Sans Serif";
-            // 
-            // menuGrViewFont3
-            // 
-            this.menuGrViewFont3.Name = "menuGrViewFont3";
-            this.menuGrViewFont3.Size = new System.Drawing.Size(180, 22);
-            this.menuGrViewFont3.Text = "Times New Roman";
-            // 
-            // menuGrViewFont4
-            // 
-            this.menuGrViewFont4.Name = "menuGrViewFont4";
-            this.menuGrViewFont4.Size = new System.Drawing.Size(180, 22);
-            this.menuGrViewFont4.Text = "Verdana";
-            // 
-            // menuGrViewFontSize
-            // 
-            this.menuGrViewFontSize.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuGrViewFontSizeAuto,
-            this.menuGrViewFontSizeCustom});
-            this.menuGrViewFontSize.Name = "menuGrViewFontSize";
-            this.menuGrViewFontSize.Size = new System.Drawing.Size(180, 22);
-            this.menuGrViewFontSize.Text = "Размер";
-            // 
-            // menuGrViewFontSizeAuto
-            // 
-            this.menuGrViewFontSizeAuto.Checked = true;
-            this.menuGrViewFontSizeAuto.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.menuGrViewFontSizeAuto.Name = "menuGrViewFontSizeAuto";
-            this.menuGrViewFontSizeAuto.Size = new System.Drawing.Size(240, 22);
-            this.menuGrViewFontSizeAuto.Text = "Авто";
-            // 
-            // menuGrViewFontSizeCustom
-            // 
-            this.menuGrViewFontSizeCustom.Name = "menuGrViewFontSizeCustom";
-            this.menuGrViewFontSizeCustom.Size = new System.Drawing.Size(180, 23);
-            this.menuGrViewFontSizeCustom.Text = "14";
-            // 
-            // menuGrNewWindow
-            // 
-            this.menuGrNewWindow.Enabled = false;
-            this.menuGrNewWindow.Name = "menuGrNewWindow";
-            this.menuGrNewWindow.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.menuGrNewWindow.Size = new System.Drawing.Size(250, 22);
-            this.menuGrNewWindow.Text = "Открыть в новом окне...";
-            this.menuGrNewWindow.Click += new System.EventHandler(this.menuGrNewWindow_Click);
-            // 
             // menuGrFilter
             // 
             this.menuGrFilter.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -448,37 +342,144 @@
             this.menuGrFilterNo.Checked = true;
             this.menuGrFilterNo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuGrFilterNo.Name = "menuGrFilterNo";
-            this.menuGrFilterNo.Size = new System.Drawing.Size(180, 22);
+            this.menuGrFilterNo.Size = new System.Drawing.Size(150, 22);
             this.menuGrFilterNo.Text = "Нет";
             this.menuGrFilterNo.Click += new System.EventHandler(this.menuGrFilterNo_Click);
             // 
             // menuGrFilter1
             // 
             this.menuGrFilter1.Name = "menuGrFilter1";
-            this.menuGrFilter1.Size = new System.Drawing.Size(180, 22);
+            this.menuGrFilter1.Size = new System.Drawing.Size(150, 22);
             this.menuGrFilter1.Text = "Погрешность";
             this.menuGrFilter1.Click += new System.EventHandler(this.menuGrFilter1_Click);
             // 
             // menuGrFilter2
             // 
             this.menuGrFilter2.Name = "menuGrFilter2";
-            this.menuGrFilter2.Size = new System.Drawing.Size(180, 22);
+            this.menuGrFilter2.Size = new System.Drawing.Size(150, 22);
             this.menuGrFilter2.Text = "Слабый";
             this.menuGrFilter2.Click += new System.EventHandler(this.menuGrFilter2_Click);
             // 
             // menuGrFilter3
             // 
             this.menuGrFilter3.Name = "menuGrFilter3";
-            this.menuGrFilter3.Size = new System.Drawing.Size(180, 22);
+            this.menuGrFilter3.Size = new System.Drawing.Size(150, 22);
             this.menuGrFilter3.Text = "Обычный";
             this.menuGrFilter3.Click += new System.EventHandler(this.menuGrFilter3_Click);
             // 
             // menuGrFilter4
             // 
             this.menuGrFilter4.Name = "menuGrFilter4";
-            this.menuGrFilter4.Size = new System.Drawing.Size(180, 22);
+            this.menuGrFilter4.Size = new System.Drawing.Size(150, 22);
             this.menuGrFilter4.Text = "Сильный";
             this.menuGrFilter4.Click += new System.EventHandler(this.menuGrFilter4_Click);
+            // 
+            // menuGrView
+            // 
+            this.menuGrView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuGrViewLegend,
+            this.menuGrViewAxis,
+            this.menuGrViewFont});
+            this.menuGrView.Name = "menuGrView";
+            this.menuGrView.Size = new System.Drawing.Size(250, 22);
+            this.menuGrView.Text = "Внешний вид";
+            // 
+            // menuGrViewLegend
+            // 
+            this.menuGrViewLegend.Checked = true;
+            this.menuGrViewLegend.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.menuGrViewLegend.Name = "menuGrViewLegend";
+            this.menuGrViewLegend.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
+            this.menuGrViewLegend.Size = new System.Drawing.Size(158, 22);
+            this.menuGrViewLegend.Text = "Легенда";
+            this.menuGrViewLegend.Click += new System.EventHandler(this.menuGrLegend_Click);
+            // 
+            // menuGrViewAxis
+            // 
+            this.menuGrViewAxis.Checked = true;
+            this.menuGrViewAxis.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.menuGrViewAxis.Name = "menuGrViewAxis";
+            this.menuGrViewAxis.Size = new System.Drawing.Size(158, 22);
+            this.menuGrViewAxis.Text = "Подписи осей";
+            // 
+            // menuGrViewFont
+            // 
+            this.menuGrViewFont.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuGrViewFontFamily,
+            this.menuGrViewFontSize});
+            this.menuGrViewFont.Name = "menuGrViewFont";
+            this.menuGrViewFont.Size = new System.Drawing.Size(158, 22);
+            this.menuGrViewFont.Text = "Шрифт";
+            // 
+            // menuGrViewFontFamily
+            // 
+            this.menuGrViewFontFamily.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuGrViewFont1,
+            this.menuGrViewFont2,
+            this.menuGrViewFont3,
+            this.menuGrViewFont4});
+            this.menuGrViewFontFamily.Name = "menuGrViewFontFamily";
+            this.menuGrViewFontFamily.Size = new System.Drawing.Size(134, 22);
+            this.menuGrViewFontFamily.Text = "Семейство";
+            // 
+            // menuGrViewFont1
+            // 
+            this.menuGrViewFont1.Name = "menuGrViewFont1";
+            this.menuGrViewFont1.Size = new System.Drawing.Size(178, 22);
+            this.menuGrViewFont1.Text = "Arial";
+            // 
+            // menuGrViewFont2
+            // 
+            this.menuGrViewFont2.Checked = true;
+            this.menuGrViewFont2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.menuGrViewFont2.Name = "menuGrViewFont2";
+            this.menuGrViewFont2.Size = new System.Drawing.Size(178, 22);
+            this.menuGrViewFont2.Text = "Microsoft Sans Serif";
+            // 
+            // menuGrViewFont3
+            // 
+            this.menuGrViewFont3.Name = "menuGrViewFont3";
+            this.menuGrViewFont3.Size = new System.Drawing.Size(178, 22);
+            this.menuGrViewFont3.Text = "Times New Roman";
+            // 
+            // menuGrViewFont4
+            // 
+            this.menuGrViewFont4.Name = "menuGrViewFont4";
+            this.menuGrViewFont4.Size = new System.Drawing.Size(178, 22);
+            this.menuGrViewFont4.Text = "Verdana";
+            // 
+            // menuGrViewFontSize
+            // 
+            this.menuGrViewFontSize.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuGrViewFontSizeAuto,
+            this.menuGrViewFontSizeCustom});
+            this.menuGrViewFontSize.Name = "menuGrViewFontSize";
+            this.menuGrViewFontSize.Size = new System.Drawing.Size(134, 22);
+            this.menuGrViewFontSize.Text = "Размер";
+            // 
+            // menuGrViewFontSizeAuto
+            // 
+            this.menuGrViewFontSizeAuto.Checked = true;
+            this.menuGrViewFontSizeAuto.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.menuGrViewFontSizeAuto.Name = "menuGrViewFontSizeAuto";
+            this.menuGrViewFontSizeAuto.Size = new System.Drawing.Size(240, 22);
+            this.menuGrViewFontSizeAuto.Text = "Авто";
+            // 
+            // menuGrViewFontSizeCustom
+            // 
+            this.menuGrViewFontSizeCustom.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.menuGrViewFontSizeCustom.Name = "menuGrViewFontSizeCustom";
+            this.menuGrViewFontSizeCustom.Size = new System.Drawing.Size(180, 23);
+            this.menuGrViewFontSizeCustom.Text = "14";
+            // 
+            // menuGrNewWindow
+            // 
+            this.menuGrNewWindow.Enabled = false;
+            this.menuGrNewWindow.Name = "menuGrNewWindow";
+            this.menuGrNewWindow.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.menuGrNewWindow.Size = new System.Drawing.Size(250, 22);
+            this.menuGrNewWindow.Text = "Открыть в новом окне...";
+            this.menuGrNewWindow.Click += new System.EventHandler(this.menuGrNewWindow_Click);
             // 
             // menuHelp
             // 
@@ -508,6 +509,7 @@
             // menuName
             // 
             this.menuName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.menuName.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.menuName.Name = "menuName";
             this.menuName.Size = new System.Drawing.Size(300, 23);
             this.menuName.TextChanged += new System.EventHandler(this.menuName_TextChanged);
@@ -551,7 +553,7 @@
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FVG v.0.3.0 by volkovskey";
+            this.Text = "FVG v.0.3.1 by volkovskey";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chrMain)).EndInit();

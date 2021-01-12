@@ -319,34 +319,6 @@ namespace FrameViewGraph
             }
         }
 
-        private void menuGraph1_Click(object sender, EventArgs e)
-        {
-            if (!menuGraph1.Checked)
-            {
-                menuGraph1.Checked = true;
-                menuGraph2.Checked = false;
-                menuGraph3.Checked = false;
-                menuGraph4.Checked = false;
-                typeOfGraph = 1;
-            }
-        }
-
-        private void menuGraph4_Click(object sender, EventArgs e)
-        {
-            //if (menuGraph4.Checked)
-            //{
-            //    //Построить
-            //}
-            //else
-            //{
-            //    menuGraph1.Checked = false;
-            //    menuGraph2.Checked = false;
-            //    menuGraph3.Checked = false;
-            //    menuGraph4.Checked = true;
-            //    typeOfGraph = 4;
-            //}
-        }
-
         private void menuFileControlDelete_Click(object sender, EventArgs e)
         {
             if (chkListFile.Items.Count != 0)
@@ -540,7 +512,7 @@ namespace FrameViewGraph
 
         private void menuHelpVersion_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Название программы: FrameViewGraph\nВерсия программы: 0.3.0\nСтатус текущей версии программы: Beta\nНеобходимая версия FrameView: 1.1\nРазработчик: volkovskey\nКопирайт: Copyright ©volkovskey 2020-2021\nЛицензия: MIT License\nТекст лицензии:\n\n" + Properties.Resources.license, "Версия программы");
+            MessageBox.Show("Название программы: FrameViewGraph\nВерсия программы: 0.3.1\nСтатус текущей версии программы: Beta\nНеобходимая версия FrameView: 1.1\nРазработчик: volkovskey\nКопирайт: Copyright ©volkovskey 2020-2021\nЛицензия: MIT License\nТекст лицензии:\n\n" + Properties.Resources.license, "Версия программы");
         }
 
         private void menuName_TextChanged(object sender, EventArgs e)
@@ -594,7 +566,7 @@ namespace FrameViewGraph
             {
                 graphFPS();
             }
-            if (!menuGraph1.Checked)
+            if (!menuGraph2.Checked)
             {
                 menuGraph1.Checked = false;
                 menuGraph2.Checked = true;
@@ -610,12 +582,12 @@ namespace FrameViewGraph
             {
                 graphProbabilityDensity();
             }
-            if (!menuGraph1.Checked)
+            if (!menuGraph3.Checked)
             {
                 menuGraph1.Checked = false;
                 menuGraph2.Checked = false;
-                menuGraph3.Checked = false;
-                menuGraph4.Checked = true;
+                menuGraph3.Checked = true;
+                menuGraph4.Checked = false;
                 typeOfGraph = 1;
             }
         }
