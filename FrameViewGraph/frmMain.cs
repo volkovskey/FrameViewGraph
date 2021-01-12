@@ -53,7 +53,7 @@ namespace FrameViewGraph
                             mySeriesOfPoint.Points.AddXY(data[0, j], data[1, j]);
                         }
                     }
-                    else if (filter >= 1 && filter <= 4)
+                    else if (filter >= 1 && filter <= 3)
                     {
                         float[] FrameTime = new float[data.GetLength(1)];
                         for (int j = 0; j < data.GetLength(1); j++)
@@ -85,7 +85,6 @@ namespace FrameViewGraph
                         if (filter == 1) FilterLevel = 0.00001f;
                         else if (filter == 2) FilterLevel = 0.0001f;
                         else if (filter == 3) FilterLevel = 0.001f;
-                        else if (filter == 4) FilterLevel = 0.01f;
                         for (int j = 0; j < data.GetLength(1); j++)
                         {
                             if ((float)Count[data[1, j]] / data.GetLength(1) > FilterLevel)
@@ -94,8 +93,6 @@ namespace FrameViewGraph
                             }
                         }
                     }
-
-
                     chrMain.Series.Add(mySeriesOfPoint);
                 }
             }
@@ -122,16 +119,53 @@ namespace FrameViewGraph
                     Series mySeriesOfPoint = new Series(lineData);
                     mySeriesOfPoint.ChartType = SeriesChartType.Line;
                     mySeriesOfPoint.ChartArea = nameTest;
-                    float sum = 0f;
-                    for (int j = 0; j < data.GetLength(1); j++)
+                    if (filter == 0)
                     {
-                        data[1, j] = (float)Math.Round(1.0f / data[1, j] * 1000f, 2);
-                        sum += data[1, j];
+                        for (int j = 0; j < data.GetLength(1); j++)
+                        {
+                            data[1, j] = (float)Math.Round(1.0f / data[1, j] * 1000f, 2);
+                            mySeriesOfPoint.Points.AddXY(data[0, j], data[1, j]);
+                        }
                     }
-                    float avg = sum / data.GetLength(1);
-                    for (int j = 0; j < data.GetLength(1); j++)
+                    else if (filter >= 1 && filter <= 3)
                     {
-                        if (data[1, j] < avg * 3.0) mySeriesOfPoint.Points.AddXY(data[0, j], data[1, j]);
+                        float[] FPS = new float[data.GetLength(1)];
+                        for (int j = 0; j < data.GetLength(1); j++)
+                        {
+                            data[1, j] = (float)Math.Round(1.0f / data[1, j] * 1000f, 2);
+                            FPS[j] = data[1, j];
+                        }
+                        Array.Sort(FPS);
+                        Dictionary<float, int> Count = new Dictionary<float, int>();
+                        for (int h = 0; h < FPS.Length;)
+                        {
+                            int y;
+                            for (y = h + 1; y < FPS.Length; y++)
+                            {
+                                if (FPS[h] != FPS[y])
+                                {
+                                    if (FPS[h] > 0) Count.Add(FPS[h], y - h);
+                                    h = y;
+                                    break;
+                                }
+                            }
+                            if (y == FPS.Length)
+                            {
+                                if (FPS[h] > 0) Count.Add(FPS[h], y - h);
+                                break;
+                            }
+                        }
+                        float FilterLevel = 0f;
+                        if (filter == 1) FilterLevel = 0.00001f;
+                        else if (filter == 2) FilterLevel = 0.0001f;
+                        else if (filter == 3) FilterLevel = 0.001f;
+                        for (int j = 0; j < data.GetLength(1); j++)
+                        {
+                            if ((float)Count[data[1, j]] / data.GetLength(1) > FilterLevel)
+                            {
+                                mySeriesOfPoint.Points.AddXY(data[0, j], data[1, j]);
+                            }
+                        }
                     }
                     chrMain.Series.Add(mySeriesOfPoint);
                 }
@@ -173,20 +207,30 @@ namespace FrameViewGraph
                         {
                             if (FPS[i] != FPS[j])
                             {
-                                if (j - i > 3 && FPS[i] > 0) Count.Add(FPS[i], j - i);
+                                if (FPS[i] > 0) Count.Add(FPS[i], j - i);
                                 i = j;
                                 break;
                             }
                         }
                         if (j == FPS.Length)
                         {
-                            if (j - i > 3 && FPS[i] > 0) Count.Add(FPS[i], j - i);
+                            if (FPS[i] > 0) Count.Add(FPS[i], j - i);
                             break;
                         }
                     }
+
+                    int kol = data.GetLength(1);
+                    
+                    if (filter == 0) kol = 0;
+                    else if (filter == 1) kol = (int)(kol / 5000.0);
+                    else if (filter == 2) kol = (int)(kol / 1000.0);
+                    else if (filter == 3) kol = (int)(kol / 100.0);
                     foreach (var fps in Count)
                     {
-                        mySeriesOfPoint.Points.AddXY(fps.Key, fps.Value);
+                        if (fps.Value > kol)
+                        {
+                            mySeriesOfPoint.Points.AddXY(fps.Key, fps.Value);
+                        }
                     }
                     chrMain.Series.Add(mySeriesOfPoint);
                 }
@@ -198,25 +242,47 @@ namespace FrameViewGraph
         {
             //0 - Time
             //1 - FrameTime
-            float[,] result = new float[2, 0];
-            var reader = new StreamReader(File.OpenRead(path));
-            while (!reader.EndOfStream)
+            try
             {
-                var line = reader.ReadLine();
-                var values = line.Split(',');
-                if (values[14].Contains("."))
+                float[,] result = new float[2, 0];
+                var reader = new StreamReader(File.OpenRead(path));
+                while (!reader.EndOfStream)
                 {
-                    result = ResizeArray(result);
-                    result[0, result.GetLength(1) - 1] = (float)Math.Round(float.Parse(values[12]) * 1000f);
-                    result[1, result.GetLength(1) - 1] = float.Parse(values[14]);
+                    var line = reader.ReadLine();
+                    var values = line.Split(',');
+                    if (values[14].Contains("."))
+                    {
+                        result = ResizeArray(result);
+                        result[0, result.GetLength(1) - 1] = (float)Math.Round(float.Parse(values[12]) * 1000f);
+                        result[1, result.GetLength(1) - 1] = float.Parse(values[14]);
+                    }
                 }
+                float startTime = result[0, 0];
+                for (int i = 0; i < result.GetLength(1); i++)
+                {
+                    result[0, i] -= startTime;
+                }
+                return result;
             }
-            float startTime = result[0, 0];
-            for (int i = 0; i < result.GetLength(1); i++)
+            catch
             {
-                result[0, i] -= startTime;
+                return null;
             }
-            return result;
+        }
+
+        private float[,] tryOpenCSV(String path)
+        {
+            try
+            {
+                float[,] result = new float[2, 0];
+                var reader = new StreamReader(File.OpenRead(path));
+                return result;
+            }
+            catch
+            {
+                MessageBox.Show("Невозможно открыть данный файл. Возможно он открыт в другой программе.", "Ошибка");
+                return null;
+            }
         }
 
         private static float[,] ResizeArray(float[,] arr)
@@ -310,12 +376,15 @@ namespace FrameViewGraph
         {
             if (openFileDlg.ShowDialog() == DialogResult.OK && !chkListFile.Items.Contains(openFileDlg.SafeFileName))
             {
-                statusStatus.Text = "Идет загрузка данных с файла...";
-                statusStr.Refresh();
-                chkListFile.Items.Add(openFileDlg.SafeFileName);
-                parsedData.Add(openCSV(openFileDlg.FileName));
-                filesName.Add(openFileDlg.SafeFileName);
-                statusStatus.Text = "Загрузка закончена.";
+                if (tryOpenCSV(openFileDlg.FileName) != null)
+                {
+                    statusStatus.Text = "Идет загрузка данных с файла...";
+                    statusStr.Refresh();
+                    chkListFile.Items.Add(openFileDlg.SafeFileName);
+                    parsedData.Add(openCSV(openFileDlg.FileName));
+                    filesName.Add(openFileDlg.SafeFileName);
+                    statusStatus.Text = "Загрузка закончена.";
+                }
             }
         }
 
@@ -512,7 +581,7 @@ namespace FrameViewGraph
 
         private void menuHelpVersion_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Название программы: FrameViewGraph\nВерсия программы: 0.3.1\nСтатус текущей версии программы: Beta\nНеобходимая версия FrameView: 1.1\nРазработчик: volkovskey\nКопирайт: Copyright ©volkovskey 2020-2021\nЛицензия: MIT License\nТекст лицензии:\n\n" + Properties.Resources.license, "Версия программы");
+            MessageBox.Show("Название программы: FrameViewGraph\nВерсия программы: 0.3.2\nСтатус текущей версии программы: Beta\nНеобходимая версия FrameView: 1.1\nРазработчик: volkovskey\nКопирайт: Copyright ©volkovskey 2020-2021\nЛицензия: MIT License\nТекст лицензии:\n\n" + Properties.Resources.license, "Версия программы");
         }
 
         private void menuName_TextChanged(object sender, EventArgs e)
@@ -572,7 +641,7 @@ namespace FrameViewGraph
                 menuGraph2.Checked = true;
                 menuGraph3.Checked = false;
                 menuGraph4.Checked = false;
-                typeOfGraph = 1;
+                typeOfGraph = 2;
             }
         }
 
@@ -588,7 +657,7 @@ namespace FrameViewGraph
                 menuGraph2.Checked = false;
                 menuGraph3.Checked = true;
                 menuGraph4.Checked = false;
-                typeOfGraph = 1;
+                typeOfGraph = 3;
             }
         }
 
@@ -600,7 +669,6 @@ namespace FrameViewGraph
                 menuGrFilter1.Checked = false;
                 menuGrFilter2.Checked = false;
                 menuGrFilter3.Checked = false;
-                menuGrFilter4.Checked = false;
                 filter = 0;
             }
         }
@@ -613,7 +681,6 @@ namespace FrameViewGraph
                 menuGrFilter1.Checked = true;
                 menuGrFilter2.Checked = false;
                 menuGrFilter3.Checked = false;
-                menuGrFilter4.Checked = false;
                 filter = 1;
             }
         }
@@ -626,7 +693,6 @@ namespace FrameViewGraph
                 menuGrFilter1.Checked = false;
                 menuGrFilter2.Checked = true;
                 menuGrFilter3.Checked = false;
-                menuGrFilter4.Checked = false;
                 filter = 2;
             }
         }
@@ -639,21 +705,67 @@ namespace FrameViewGraph
                 menuGrFilter1.Checked = false;
                 menuGrFilter2.Checked = false;
                 menuGrFilter3.Checked = true;
-                menuGrFilter4.Checked = false;
                 filter = 3;
             }
         }
 
-        private void menuGrFilter4_Click(object sender, EventArgs e)
+        private void menuGraph1_Click(object sender, EventArgs e)
         {
-            if (!menuGrFilter4.Checked)
+            if (!menuGraph1.Checked)
             {
-                menuGrFilterNo.Checked = false;
-                menuGrFilter1.Checked = false;
-                menuGrFilter2.Checked = false;
-                menuGrFilter3.Checked = false;
-                menuGrFilter4.Checked = true;
-                filter = 4;
+                menuGraph1.Checked = true;
+                menuGraph2.Checked = false;
+                menuGraph3.Checked = false;
+                menuGraph4.Checked = false;
+                typeOfGraph = 1;
+            }
+        }
+
+        private void menuGraph2_Click(object sender, EventArgs e)
+        {
+            if (!menuGraph2.Checked)
+            {
+                menuGraph1.Checked = false;
+                menuGraph2.Checked = true;
+                menuGraph3.Checked = false;
+                menuGraph4.Checked = false;
+                typeOfGraph = 2;
+            }
+        }
+
+        private void menuGraph3_Click(object sender, EventArgs e)
+        {
+            if (!menuGraph3.Checked)
+            {
+                menuGraph1.Checked = false;
+                menuGraph2.Checked = false;
+                menuGraph3.Checked = true;
+                menuGraph4.Checked = false;
+                typeOfGraph = 3;
+            }
+        }
+
+        private void menuGraph4_Click(object sender, EventArgs e)
+        {
+            if (!menuGraph4.Checked)
+            {
+                menuGraph1.Checked = false;
+                menuGraph2.Checked = false;
+                menuGraph3.Checked = false;
+                menuGraph4.Checked = true;
+                typeOfGraph = 4;
+            }
+        }
+
+        private void menuGrViewAxis_Click(object sender, EventArgs e)
+        {
+            if (menuGrViewAxis.Checked)
+            {
+                menuGrViewAxis.Checked = false;
+            }
+            else
+            {
+                menuGrViewAxis.Checked = true;
             }
         }
     }
