@@ -78,12 +78,50 @@
             this.menuHelpInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuHelpVersion = new System.Windows.Forms.ToolStripMenuItem();
             this.menuName = new System.Windows.Forms.ToolStripTextBox();
+            this.menuCmbBx = new System.Windows.Forms.ToolStripComboBox();
             this.statusStr = new System.Windows.Forms.StatusStrip();
-            this.statusName = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.grpBxInfo = new System.Windows.Forms.GroupBox();
+            this.lblGpuFreq = new System.Windows.Forms.Label();
+            this.labelGpuFreq = new System.Windows.Forms.Label();
+            this.lblCpuFreq = new System.Windows.Forms.Label();
+            this.labelCpuFreq = new System.Windows.Forms.Label();
+            this.lbl01pc = new System.Windows.Forms.Label();
+            this.lbl1pc = new System.Windows.Forms.Label();
+            this.lbl10pc = new System.Windows.Forms.Label();
+            this.lbl50pc = new System.Windows.Forms.Label();
+            this.lblModeFPS = new System.Windows.Forms.Label();
+            this.lblAvgFPS = new System.Windows.Forms.Label();
+            this.lblGpuPower = new System.Windows.Forms.Label();
+            this.lblGpuTemp = new System.Windows.Forms.Label();
+            this.lblGpuUsage = new System.Windows.Forms.Label();
+            this.lblCpuPower = new System.Windows.Forms.Label();
+            this.lblCpuTemp = new System.Windows.Forms.Label();
+            this.lblCpuUsage = new System.Windows.Forms.Label();
+            this.lblGpuName = new System.Windows.Forms.Label();
+            this.lblCpuName = new System.Windows.Forms.Label();
+            this.lblApi = new System.Windows.Forms.Label();
+            this.lblApplication = new System.Windows.Forms.Label();
+            this.label10pc = new System.Windows.Forms.Label();
+            this.labelGpuTemp = new System.Windows.Forms.Label();
+            this.labelGpuPower = new System.Windows.Forms.Label();
+            this.labelGpuUsage = new System.Windows.Forms.Label();
+            this.labelGpuName = new System.Windows.Forms.Label();
+            this.labelCpuTemp = new System.Windows.Forms.Label();
+            this.labelCpuPower = new System.Windows.Forms.Label();
+            this.label01pc = new System.Windows.Forms.Label();
+            this.label1pc = new System.Windows.Forms.Label();
+            this.label50pc = new System.Windows.Forms.Label();
+            this.labelModeFPS = new System.Windows.Forms.Label();
+            this.labelAvgFPS = new System.Windows.Forms.Label();
+            this.labelApi = new System.Windows.Forms.Label();
+            this.labelCpuUsage = new System.Windows.Forms.Label();
+            this.labelCpuName = new System.Windows.Forms.Label();
+            this.labelApplication = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chrMain)).BeginInit();
             this.menuStr.SuspendLayout();
             this.statusStr.SuspendLayout();
+            this.grpBxInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -98,7 +136,7 @@
             this.chkListFile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.chkListFile.CheckOnClick = true;
             this.chkListFile.FormattingEnabled = true;
-            this.chkListFile.Location = new System.Drawing.Point(12, 27);
+            this.chkListFile.Location = new System.Drawing.Point(12, 30);
             this.chkListFile.Name = "chkListFile";
             this.chkListFile.Size = new System.Drawing.Size(860, 65);
             this.chkListFile.TabIndex = 5;
@@ -125,10 +163,11 @@
             this.menuGraph,
             this.menuGr,
             this.menuHelp,
-            this.menuName});
+            this.menuName,
+            this.menuCmbBx});
             this.menuStr.Location = new System.Drawing.Point(0, 0);
             this.menuStr.Name = "menuStr";
-            this.menuStr.Size = new System.Drawing.Size(884, 27);
+            this.menuStr.Size = new System.Drawing.Size(1184, 27);
             this.menuStr.TabIndex = 18;
             // 
             // menuFile
@@ -162,14 +201,16 @@
             // menuFileControlDelete
             // 
             this.menuFileControlDelete.Name = "menuFileControlDelete";
-            this.menuFileControlDelete.Size = new System.Drawing.Size(225, 22);
+            this.menuFileControlDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.menuFileControlDelete.Size = new System.Drawing.Size(262, 22);
             this.menuFileControlDelete.Text = "Удалить выбранные";
             this.menuFileControlDelete.Click += new System.EventHandler(this.menuFileControlDelete_Click);
             // 
             // menuFileControlInvert
             // 
             this.menuFileControlInvert.Name = "menuFileControlInvert";
-            this.menuFileControlInvert.Size = new System.Drawing.Size(225, 22);
+            this.menuFileControlInvert.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
+            this.menuFileControlInvert.Size = new System.Drawing.Size(262, 22);
             this.menuFileControlInvert.Text = "Инвертировать выбранные";
             this.menuFileControlInvert.Click += new System.EventHandler(this.menuFileControlInvert_Click);
             // 
@@ -505,34 +546,387 @@
             this.menuName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.menuName.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.menuName.Name = "menuName";
-            this.menuName.Size = new System.Drawing.Size(300, 23);
+            this.menuName.Size = new System.Drawing.Size(600, 23);
             this.menuName.TextChanged += new System.EventHandler(this.menuName_TextChanged);
+            // 
+            // menuCmbBx
+            // 
+            this.menuCmbBx.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.menuCmbBx.Name = "menuCmbBx";
+            this.menuCmbBx.Size = new System.Drawing.Size(300, 23);
+            this.menuCmbBx.SelectedIndexChanged += new System.EventHandler(this.menuCmbBx_SelectedIndexChanged);
             // 
             // statusStr
             // 
             this.statusStr.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.statusName,
             this.statusStatus});
             this.statusStr.Location = new System.Drawing.Point(0, 539);
             this.statusStr.Name = "statusStr";
-            this.statusStr.Size = new System.Drawing.Size(884, 22);
+            this.statusStr.Size = new System.Drawing.Size(1184, 22);
             this.statusStr.TabIndex = 19;
             this.statusStr.Text = "statusStr";
-            // 
-            // statusName
-            // 
-            this.statusName.Name = "statusName";
-            this.statusName.Size = new System.Drawing.Size(0, 17);
             // 
             // statusStatus
             // 
             this.statusStatus.Name = "statusStatus";
             this.statusStatus.Size = new System.Drawing.Size(0, 17);
             // 
+            // grpBxInfo
+            // 
+            this.grpBxInfo.Controls.Add(this.lblGpuFreq);
+            this.grpBxInfo.Controls.Add(this.labelGpuFreq);
+            this.grpBxInfo.Controls.Add(this.lblCpuFreq);
+            this.grpBxInfo.Controls.Add(this.labelCpuFreq);
+            this.grpBxInfo.Controls.Add(this.lbl01pc);
+            this.grpBxInfo.Controls.Add(this.lbl1pc);
+            this.grpBxInfo.Controls.Add(this.lbl10pc);
+            this.grpBxInfo.Controls.Add(this.lbl50pc);
+            this.grpBxInfo.Controls.Add(this.lblModeFPS);
+            this.grpBxInfo.Controls.Add(this.lblAvgFPS);
+            this.grpBxInfo.Controls.Add(this.lblGpuPower);
+            this.grpBxInfo.Controls.Add(this.lblGpuTemp);
+            this.grpBxInfo.Controls.Add(this.lblGpuUsage);
+            this.grpBxInfo.Controls.Add(this.lblCpuPower);
+            this.grpBxInfo.Controls.Add(this.lblCpuTemp);
+            this.grpBxInfo.Controls.Add(this.lblCpuUsage);
+            this.grpBxInfo.Controls.Add(this.lblGpuName);
+            this.grpBxInfo.Controls.Add(this.lblCpuName);
+            this.grpBxInfo.Controls.Add(this.lblApi);
+            this.grpBxInfo.Controls.Add(this.lblApplication);
+            this.grpBxInfo.Controls.Add(this.label10pc);
+            this.grpBxInfo.Controls.Add(this.labelGpuTemp);
+            this.grpBxInfo.Controls.Add(this.labelGpuPower);
+            this.grpBxInfo.Controls.Add(this.labelGpuUsage);
+            this.grpBxInfo.Controls.Add(this.labelGpuName);
+            this.grpBxInfo.Controls.Add(this.labelCpuTemp);
+            this.grpBxInfo.Controls.Add(this.labelCpuPower);
+            this.grpBxInfo.Controls.Add(this.label01pc);
+            this.grpBxInfo.Controls.Add(this.label1pc);
+            this.grpBxInfo.Controls.Add(this.label50pc);
+            this.grpBxInfo.Controls.Add(this.labelModeFPS);
+            this.grpBxInfo.Controls.Add(this.labelAvgFPS);
+            this.grpBxInfo.Controls.Add(this.labelApi);
+            this.grpBxInfo.Controls.Add(this.labelCpuUsage);
+            this.grpBxInfo.Controls.Add(this.labelCpuName);
+            this.grpBxInfo.Controls.Add(this.labelApplication);
+            this.grpBxInfo.Location = new System.Drawing.Point(878, 30);
+            this.grpBxInfo.Name = "grpBxInfo";
+            this.grpBxInfo.Size = new System.Drawing.Size(294, 495);
+            this.grpBxInfo.TabIndex = 20;
+            this.grpBxInfo.TabStop = false;
+            this.grpBxInfo.Text = "Информация про тест";
+            // 
+            // lblGpuFreq
+            // 
+            this.lblGpuFreq.Location = new System.Drawing.Point(172, 222);
+            this.lblGpuFreq.Name = "lblGpuFreq";
+            this.lblGpuFreq.Size = new System.Drawing.Size(116, 20);
+            this.lblGpuFreq.TabIndex = 37;
+            this.lblGpuFreq.Text = "-";
+            this.lblGpuFreq.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelGpuFreq
+            // 
+            this.labelGpuFreq.Location = new System.Drawing.Point(6, 222);
+            this.labelGpuFreq.Name = "labelGpuFreq";
+            this.labelGpuFreq.Size = new System.Drawing.Size(160, 20);
+            this.labelGpuFreq.TabIndex = 36;
+            this.labelGpuFreq.Text = "Частота GPU:";
+            // 
+            // lblCpuFreq
+            // 
+            this.lblCpuFreq.Location = new System.Drawing.Point(172, 102);
+            this.lblCpuFreq.Name = "lblCpuFreq";
+            this.lblCpuFreq.Size = new System.Drawing.Size(116, 20);
+            this.lblCpuFreq.TabIndex = 35;
+            this.lblCpuFreq.Text = "-";
+            this.lblCpuFreq.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelCpuFreq
+            // 
+            this.labelCpuFreq.Location = new System.Drawing.Point(6, 102);
+            this.labelCpuFreq.Name = "labelCpuFreq";
+            this.labelCpuFreq.Size = new System.Drawing.Size(160, 20);
+            this.labelCpuFreq.TabIndex = 34;
+            this.labelCpuFreq.Text = "Частота CPU:";
+            // 
+            // lbl01pc
+            // 
+            this.lbl01pc.Location = new System.Drawing.Point(172, 422);
+            this.lbl01pc.Name = "lbl01pc";
+            this.lbl01pc.Size = new System.Drawing.Size(116, 20);
+            this.lbl01pc.TabIndex = 33;
+            this.lbl01pc.Text = "-";
+            this.lbl01pc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lbl1pc
+            // 
+            this.lbl1pc.Location = new System.Drawing.Point(172, 402);
+            this.lbl1pc.Name = "lbl1pc";
+            this.lbl1pc.Size = new System.Drawing.Size(116, 20);
+            this.lbl1pc.TabIndex = 32;
+            this.lbl1pc.Text = "-";
+            this.lbl1pc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lbl10pc
+            // 
+            this.lbl10pc.Location = new System.Drawing.Point(172, 382);
+            this.lbl10pc.Name = "lbl10pc";
+            this.lbl10pc.Size = new System.Drawing.Size(116, 20);
+            this.lbl10pc.TabIndex = 31;
+            this.lbl10pc.Text = "-";
+            this.lbl10pc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lbl50pc
+            // 
+            this.lbl50pc.Location = new System.Drawing.Point(172, 362);
+            this.lbl50pc.Name = "lbl50pc";
+            this.lbl50pc.Size = new System.Drawing.Size(116, 20);
+            this.lbl50pc.TabIndex = 30;
+            this.lbl50pc.Text = "-";
+            this.lbl50pc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblModeFPS
+            // 
+            this.lblModeFPS.Location = new System.Drawing.Point(172, 342);
+            this.lblModeFPS.Name = "lblModeFPS";
+            this.lblModeFPS.Size = new System.Drawing.Size(116, 20);
+            this.lblModeFPS.TabIndex = 29;
+            this.lblModeFPS.Text = "-";
+            this.lblModeFPS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblAvgFPS
+            // 
+            this.lblAvgFPS.Location = new System.Drawing.Point(172, 322);
+            this.lblAvgFPS.Name = "lblAvgFPS";
+            this.lblAvgFPS.Size = new System.Drawing.Size(116, 20);
+            this.lblAvgFPS.TabIndex = 28;
+            this.lblAvgFPS.Text = "-";
+            this.lblAvgFPS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblGpuPower
+            // 
+            this.lblGpuPower.Location = new System.Drawing.Point(172, 282);
+            this.lblGpuPower.Name = "lblGpuPower";
+            this.lblGpuPower.Size = new System.Drawing.Size(116, 20);
+            this.lblGpuPower.TabIndex = 27;
+            this.lblGpuPower.Text = "-";
+            this.lblGpuPower.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblGpuTemp
+            // 
+            this.lblGpuTemp.Location = new System.Drawing.Point(172, 262);
+            this.lblGpuTemp.Name = "lblGpuTemp";
+            this.lblGpuTemp.Size = new System.Drawing.Size(116, 20);
+            this.lblGpuTemp.TabIndex = 26;
+            this.lblGpuTemp.Text = "-";
+            this.lblGpuTemp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblGpuUsage
+            // 
+            this.lblGpuUsage.Location = new System.Drawing.Point(172, 242);
+            this.lblGpuUsage.Name = "lblGpuUsage";
+            this.lblGpuUsage.Size = new System.Drawing.Size(116, 20);
+            this.lblGpuUsage.TabIndex = 25;
+            this.lblGpuUsage.Text = "-";
+            this.lblGpuUsage.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblCpuPower
+            // 
+            this.lblCpuPower.Location = new System.Drawing.Point(172, 162);
+            this.lblCpuPower.Name = "lblCpuPower";
+            this.lblCpuPower.Size = new System.Drawing.Size(116, 20);
+            this.lblCpuPower.TabIndex = 24;
+            this.lblCpuPower.Text = "-";
+            this.lblCpuPower.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblCpuTemp
+            // 
+            this.lblCpuTemp.Location = new System.Drawing.Point(172, 142);
+            this.lblCpuTemp.Name = "lblCpuTemp";
+            this.lblCpuTemp.Size = new System.Drawing.Size(116, 20);
+            this.lblCpuTemp.TabIndex = 23;
+            this.lblCpuTemp.Text = "-";
+            this.lblCpuTemp.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblCpuUsage
+            // 
+            this.lblCpuUsage.Location = new System.Drawing.Point(172, 122);
+            this.lblCpuUsage.Name = "lblCpuUsage";
+            this.lblCpuUsage.Size = new System.Drawing.Size(116, 20);
+            this.lblCpuUsage.TabIndex = 22;
+            this.lblCpuUsage.Text = "-";
+            this.lblCpuUsage.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblGpuName
+            // 
+            this.lblGpuName.Location = new System.Drawing.Point(62, 202);
+            this.lblGpuName.Name = "lblGpuName";
+            this.lblGpuName.Size = new System.Drawing.Size(226, 20);
+            this.lblGpuName.TabIndex = 21;
+            this.lblGpuName.Text = "-";
+            this.lblGpuName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblCpuName
+            // 
+            this.lblCpuName.Location = new System.Drawing.Point(62, 82);
+            this.lblCpuName.Name = "lblCpuName";
+            this.lblCpuName.Size = new System.Drawing.Size(226, 20);
+            this.lblCpuName.TabIndex = 20;
+            this.lblCpuName.Text = "-";
+            this.lblCpuName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblApi
+            // 
+            this.lblApi.Location = new System.Drawing.Point(132, 42);
+            this.lblApi.Name = "lblApi";
+            this.lblApi.Size = new System.Drawing.Size(156, 20);
+            this.lblApi.TabIndex = 19;
+            this.lblApi.Text = "-";
+            this.lblApi.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblApplication
+            // 
+            this.lblApplication.Location = new System.Drawing.Point(132, 22);
+            this.lblApplication.Name = "lblApplication";
+            this.lblApplication.Size = new System.Drawing.Size(156, 20);
+            this.lblApplication.TabIndex = 18;
+            this.lblApplication.Text = "-";
+            this.lblApplication.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label10pc
+            // 
+            this.label10pc.Location = new System.Drawing.Point(6, 382);
+            this.label10pc.Name = "label10pc";
+            this.label10pc.Size = new System.Drawing.Size(140, 20);
+            this.label10pc.TabIndex = 17;
+            this.label10pc.Text = "10%:";
+            // 
+            // labelGpuTemp
+            // 
+            this.labelGpuTemp.Location = new System.Drawing.Point(6, 262);
+            this.labelGpuTemp.Name = "labelGpuTemp";
+            this.labelGpuTemp.Size = new System.Drawing.Size(160, 20);
+            this.labelGpuTemp.TabIndex = 16;
+            this.labelGpuTemp.Text = "Температура GPU:";
+            // 
+            // labelGpuPower
+            // 
+            this.labelGpuPower.Location = new System.Drawing.Point(6, 282);
+            this.labelGpuPower.Name = "labelGpuPower";
+            this.labelGpuPower.Size = new System.Drawing.Size(160, 20);
+            this.labelGpuPower.TabIndex = 15;
+            this.labelGpuPower.Text = "Потребление GPU:";
+            // 
+            // labelGpuUsage
+            // 
+            this.labelGpuUsage.Location = new System.Drawing.Point(6, 242);
+            this.labelGpuUsage.Name = "labelGpuUsage";
+            this.labelGpuUsage.Size = new System.Drawing.Size(160, 20);
+            this.labelGpuUsage.TabIndex = 14;
+            this.labelGpuUsage.Text = "Загрузка GPU:";
+            // 
+            // labelGpuName
+            // 
+            this.labelGpuName.Location = new System.Drawing.Point(6, 202);
+            this.labelGpuName.Name = "labelGpuName";
+            this.labelGpuName.Size = new System.Drawing.Size(50, 20);
+            this.labelGpuName.TabIndex = 13;
+            this.labelGpuName.Text = "GPU:";
+            // 
+            // labelCpuTemp
+            // 
+            this.labelCpuTemp.Location = new System.Drawing.Point(6, 142);
+            this.labelCpuTemp.Name = "labelCpuTemp";
+            this.labelCpuTemp.Size = new System.Drawing.Size(160, 20);
+            this.labelCpuTemp.TabIndex = 12;
+            this.labelCpuTemp.Text = "Температура CPU:";
+            // 
+            // labelCpuPower
+            // 
+            this.labelCpuPower.Location = new System.Drawing.Point(6, 162);
+            this.labelCpuPower.Name = "labelCpuPower";
+            this.labelCpuPower.Size = new System.Drawing.Size(160, 20);
+            this.labelCpuPower.TabIndex = 11;
+            this.labelCpuPower.Text = "Потребление CPU:";
+            // 
+            // label01pc
+            // 
+            this.label01pc.Location = new System.Drawing.Point(6, 422);
+            this.label01pc.Name = "label01pc";
+            this.label01pc.Size = new System.Drawing.Size(140, 20);
+            this.label01pc.TabIndex = 10;
+            this.label01pc.Text = "0.1%:";
+            // 
+            // label1pc
+            // 
+            this.label1pc.Location = new System.Drawing.Point(6, 402);
+            this.label1pc.Name = "label1pc";
+            this.label1pc.Size = new System.Drawing.Size(140, 20);
+            this.label1pc.TabIndex = 9;
+            this.label1pc.Text = "1%:";
+            // 
+            // label50pc
+            // 
+            this.label50pc.Location = new System.Drawing.Point(6, 362);
+            this.label50pc.Name = "label50pc";
+            this.label50pc.Size = new System.Drawing.Size(140, 20);
+            this.label50pc.TabIndex = 8;
+            this.label50pc.Text = "50%:";
+            // 
+            // labelModeFPS
+            // 
+            this.labelModeFPS.Location = new System.Drawing.Point(6, 342);
+            this.labelModeFPS.Name = "labelModeFPS";
+            this.labelModeFPS.Size = new System.Drawing.Size(140, 20);
+            this.labelModeFPS.TabIndex = 7;
+            this.labelModeFPS.Text = "Модальный FPS:";
+            // 
+            // labelAvgFPS
+            // 
+            this.labelAvgFPS.Location = new System.Drawing.Point(6, 322);
+            this.labelAvgFPS.Name = "labelAvgFPS";
+            this.labelAvgFPS.Size = new System.Drawing.Size(140, 20);
+            this.labelAvgFPS.TabIndex = 6;
+            this.labelAvgFPS.Text = "Средний FPS:";
+            // 
+            // labelApi
+            // 
+            this.labelApi.Location = new System.Drawing.Point(6, 42);
+            this.labelApi.Name = "labelApi";
+            this.labelApi.Size = new System.Drawing.Size(120, 20);
+            this.labelApi.TabIndex = 3;
+            this.labelApi.Text = "API:";
+            // 
+            // labelCpuUsage
+            // 
+            this.labelCpuUsage.Location = new System.Drawing.Point(6, 122);
+            this.labelCpuUsage.Name = "labelCpuUsage";
+            this.labelCpuUsage.Size = new System.Drawing.Size(160, 20);
+            this.labelCpuUsage.TabIndex = 2;
+            this.labelCpuUsage.Text = "Загрузка CPU:";
+            // 
+            // labelCpuName
+            // 
+            this.labelCpuName.Location = new System.Drawing.Point(6, 82);
+            this.labelCpuName.Name = "labelCpuName";
+            this.labelCpuName.Size = new System.Drawing.Size(50, 20);
+            this.labelCpuName.TabIndex = 1;
+            this.labelCpuName.Text = "CPU:";
+            // 
+            // labelApplication
+            // 
+            this.labelApplication.Location = new System.Drawing.Point(6, 22);
+            this.labelApplication.Name = "labelApplication";
+            this.labelApplication.Size = new System.Drawing.Size(120, 20);
+            this.labelApplication.TabIndex = 0;
+            this.labelApplication.Text = "Программа:";
+            // 
             // frmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(884, 561);
+            this.ClientSize = new System.Drawing.Size(1184, 561);
+            this.Controls.Add(this.grpBxInfo);
             this.Controls.Add(this.statusStr);
             this.Controls.Add(this.chrMain);
             this.Controls.Add(this.textBox1);
@@ -547,7 +941,7 @@
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FVG v.0.3.3 by volkovskey";
+            this.Text = "FVG v.0.4.0 by volkovskey";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chrMain)).EndInit();
@@ -555,6 +949,7 @@
             this.menuStr.PerformLayout();
             this.statusStr.ResumeLayout(false);
             this.statusStr.PerformLayout();
+            this.grpBxInfo.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -595,7 +990,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuHelpInfo;
         private System.Windows.Forms.ToolStripMenuItem menuHelpVersion;
         private System.Windows.Forms.StatusStrip statusStr;
-        private System.Windows.Forms.ToolStripStatusLabel statusName;
         private System.Windows.Forms.ToolStripStatusLabel statusStatus;
         private System.Windows.Forms.ToolStripTextBox menuName;
         private System.Windows.Forms.ToolStripMenuItem menuGrViewAxis;
@@ -613,6 +1007,44 @@
         private System.Windows.Forms.ToolStripMenuItem menuGrFilter1;
         private System.Windows.Forms.ToolStripMenuItem menuGrFilter2;
         private System.Windows.Forms.ToolStripMenuItem menuGrFilter3;
+        private System.Windows.Forms.GroupBox grpBxInfo;
+        private System.Windows.Forms.Label labelCpuUsage;
+        private System.Windows.Forms.Label labelCpuName;
+        private System.Windows.Forms.Label labelApplication;
+        private System.Windows.Forms.Label labelApi;
+        private System.Windows.Forms.Label label01pc;
+        private System.Windows.Forms.Label label1pc;
+        private System.Windows.Forms.Label label50pc;
+        private System.Windows.Forms.Label labelModeFPS;
+        private System.Windows.Forms.Label labelAvgFPS;
+        private System.Windows.Forms.Label labelCpuTemp;
+        private System.Windows.Forms.Label labelCpuPower;
+        private System.Windows.Forms.Label labelGpuTemp;
+        private System.Windows.Forms.Label labelGpuPower;
+        private System.Windows.Forms.Label labelGpuUsage;
+        private System.Windows.Forms.Label labelGpuName;
+        private System.Windows.Forms.Label lblCpuPower;
+        private System.Windows.Forms.Label lblCpuTemp;
+        private System.Windows.Forms.Label lblCpuUsage;
+        private System.Windows.Forms.Label lblGpuName;
+        private System.Windows.Forms.Label lblCpuName;
+        private System.Windows.Forms.Label lblApi;
+        private System.Windows.Forms.Label lblApplication;
+        private System.Windows.Forms.Label label10pc;
+        private System.Windows.Forms.Label lblGpuPower;
+        private System.Windows.Forms.Label lblGpuTemp;
+        private System.Windows.Forms.Label lblGpuUsage;
+        private System.Windows.Forms.Label lblAvgFPS;
+        private System.Windows.Forms.Label lbl01pc;
+        private System.Windows.Forms.Label lbl1pc;
+        private System.Windows.Forms.Label lbl10pc;
+        private System.Windows.Forms.Label lbl50pc;
+        private System.Windows.Forms.Label lblModeFPS;
+        private System.Windows.Forms.Label lblGpuFreq;
+        private System.Windows.Forms.Label labelGpuFreq;
+        private System.Windows.Forms.Label lblCpuFreq;
+        private System.Windows.Forms.Label labelCpuFreq;
+        private System.Windows.Forms.ToolStripComboBox menuCmbBx;
     }
 }
 
