@@ -370,11 +370,6 @@ namespace FrameViewGraph
 
                 foreach (var fps in Count)
                 {
-                    if (countModeFPS < fps.Value)
-                    {
-                        countModeFPS = fps.Value;
-                        modeFPS = fps.Key;
-                    }
                     FPScount += fps.Value;
                     if (FPScount / counter >= 0.5 && !pc50b)
                     {
@@ -395,6 +390,40 @@ namespace FrameViewGraph
                     {
                         pc01b = !pc01b;
                         pc01 = fps.Key;
+                    }
+                }
+
+                for (int i = 0; i < result.GetLength(1); i++)
+                {
+                    FPS[i] = Math.Round(FPS[i]);
+                }
+                Array.Sort(FPS);
+                Count = new Dictionary<double, int>();
+                for (int i = 0; i < FPS.Length;)
+                {
+                    int j;
+                    for (j = i + 1; j < FPS.Length; j++)
+                    {
+                        if (FPS[i] != FPS[j])
+                        {
+                            if (FPS[i] > 0) Count.Add(FPS[i], j - i);
+                            i = j;
+                            break;
+                        }
+                    }
+                    if (j == FPS.Length)
+                    {
+                        if (FPS[i] > 0) Count.Add(FPS[i], j - i);
+                        break;
+                    }
+                }
+
+                foreach (var fps in Count)
+                {
+                    if (countModeFPS < fps.Value)
+                    {
+                        countModeFPS = fps.Value;
+                        modeFPS = fps.Key;
                     }
                 }
 
@@ -558,6 +587,7 @@ namespace FrameViewGraph
                             menuCmbBx.Items.RemoveAt(i);
                             filesName.RemoveAt(index);
                             parsedData.RemoveAt(index);
+                            infoData.RemoveAt(index);
                         }
                     }
                 }
@@ -737,7 +767,7 @@ namespace FrameViewGraph
 
         private void menuHelpVersion_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Название программы: FrameViewGraph\nВерсия программы: 0.4.0\nСтатус текущей версии программы: Beta\nНеобходимая версия FrameView: 1.1\nРазработчик: volkovskey\nКопирайт: Copyright ©volkovskey 2020-2021\nЛицензия: MIT License\nТекст лицензии:\n\n" + Properties.Resources.license, "Версия программы");
+            MessageBox.Show("Название программы: FrameViewGraph\nВерсия программы: 0.4.1\nСтатус текущей версии программы: Beta\nНеобходимая версия FrameView: 1.1\nРазработчик: volkovskey\nКопирайт: Copyright ©volkovskey 2020-2021\nЛицензия: MIT License\nТекст лицензии:\n\n" + Properties.Resources.license, "Версия программы");
         }
 
         private void menuName_TextChanged(object sender, EventArgs e)
