@@ -181,7 +181,7 @@ namespace FrameViewGraph
             ax3.Title = "Кадры в секунду (FPS)";
             chrMain.ChartAreas[0].AxisX = ax3;
             Axis ay3 = new Axis();
-            ay3.Title = "Время (с)";
+            ay3.Title = "Вероятность (%)";
             chrMain.ChartAreas[0].AxisY = ay3;
             for (int a = 0; a < parsedData.Count; a++)
             {
@@ -230,7 +230,7 @@ namespace FrameViewGraph
                     {
                         if (fps.Value > kol)
                         {
-                            mySeriesOfPoint.Points.AddXY(fps.Key, fps.Value);
+                            mySeriesOfPoint.Points.AddXY(fps.Key, fps.Value * 100.0 / data.GetLength(1));
                         }
                     }
                     chrMain.Series.Add(mySeriesOfPoint);
@@ -767,7 +767,7 @@ namespace FrameViewGraph
 
         private void menuHelpVersion_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Название программы: FrameViewGraph\nВерсия программы: 0.4.1\nСтатус текущей версии программы: Beta\nНеобходимая версия FrameView: 1.1\nРазработчик: volkovskey\nКопирайт: Copyright ©volkovskey 2020-2021\nЛицензия: MIT License\nТекст лицензии:\n\n" + Properties.Resources.license, "Версия программы");
+            MessageBox.Show("Название программы: FrameViewGraph\nВерсия программы: 0.4.3\nСтатус текущей версии программы: Beta\nНеобходимая версия FrameView: 1.1\nРазработчик: volkovskey\nКопирайт: Copyright ©volkovskey 2020-2021\nЛицензия: MIT License\nТекст лицензии:\n\n" + Properties.Resources.license, "Версия программы");
         }
 
         private void menuName_TextChanged(object sender, EventArgs e)

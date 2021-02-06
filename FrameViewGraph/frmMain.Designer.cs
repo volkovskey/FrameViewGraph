@@ -263,7 +263,6 @@
             // 
             // menuResolutionCustomX
             // 
-            this.menuResolutionCustomX.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.menuResolutionCustomX.Name = "menuResolutionCustomX";
             this.menuResolutionCustomX.Size = new System.Drawing.Size(100, 23);
             this.menuResolutionCustomX.Text = "1920";
@@ -272,7 +271,6 @@
             // 
             // menuResolutionCustomY
             // 
-            this.menuResolutionCustomY.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.menuResolutionCustomY.Name = "menuResolutionCustomY";
             this.menuResolutionCustomY.Size = new System.Drawing.Size(100, 23);
             this.menuResolutionCustomY.Text = "1080";
@@ -360,7 +358,7 @@
             // menuGrClear
             // 
             this.menuGrClear.Name = "menuGrClear";
-            this.menuGrClear.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this.menuGrClear.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Delete)));
             this.menuGrClear.Size = new System.Drawing.Size(250, 22);
             this.menuGrClear.Text = "Очистить";
             this.menuGrClear.Click += new System.EventHandler(this.menuGrClear_Click);
@@ -502,7 +500,6 @@
             // 
             // menuGrViewFontSizeCustom
             // 
-            this.menuGrViewFontSizeCustom.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.menuGrViewFontSizeCustom.Name = "menuGrViewFontSizeCustom";
             this.menuGrViewFontSizeCustom.Size = new System.Drawing.Size(180, 23);
             this.menuGrViewFontSizeCustom.Text = "14";
@@ -544,7 +541,6 @@
             // menuName
             // 
             this.menuName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.menuName.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.menuName.Name = "menuName";
             this.menuName.Size = new System.Drawing.Size(600, 23);
             this.menuName.TextChanged += new System.EventHandler(this.menuName_TextChanged);
@@ -941,7 +937,7 @@
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FVG v.0.4.1 by volkovskey";
+            this.Text = "FVG v.0.4.3 by volkovskey";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
             this.Load += new System.EventHandler(this.frmMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chrMain)).EndInit();
