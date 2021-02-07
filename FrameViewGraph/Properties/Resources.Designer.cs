@@ -76,7 +76,7 @@ namespace FrameViewGraph.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на 0.5.0.
+        ///   Ищет локализованную строку, похожую на 1.0.0.
         /// </summary>
         public static string version {
             get {

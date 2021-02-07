@@ -888,7 +888,7 @@ namespace FrameViewGraph
 
         private void menuHelpVersion_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Название программы: FrameViewGraph\nВерсия программы: " + Properties.Resources.version + "\nСтатус текущей версии программы: Alpha\nНеобходимая версия FrameView: 1.1\nРазработчик: volkovskey\nКопирайт: Copyright ©volkovskey 2020-2021\nЛицензия: MIT License\nТекст лицензии:\n\n" + Properties.Resources.license, "Версия программы");
+            MessageBox.Show("Название программы: FrameViewGraph\nВерсия программы: " + Properties.Resources.version + "\nСтатус текущей версии программы: Стабильная\nНеобходимая версия FrameView: 1.1\nРазработчик: volkovskey\nКопирайт: Copyright ©volkovskey 2020-2021\nЛицензия: MIT License\nТекст лицензии:\n\n" + Properties.Resources.license, "Версия программы");
         }
 
         private void menuName_TextChanged(object sender, EventArgs e)
@@ -1044,7 +1044,6 @@ namespace FrameViewGraph
             menuGraph1.Checked = false;
             menuGraph2.Checked = false;
             menuGraph3.Checked = false;
-            menuGraph4.Checked = false;
             menuGraph5.Checked = false;
             menuGraph6.Checked = false;
             menuGrViewDiagram.Enabled = false;
@@ -1080,16 +1079,6 @@ namespace FrameViewGraph
             }
         }
 
-        private void menuGraph4_Click(object sender, EventArgs e)
-        {
-            if (!menuGraph4.Checked)
-            {
-                disableAllGraphs();
-                menuGraph4.Checked = true;
-                typeOfGraph = 4;
-            }
-        }
-
         private void menuGraph5_Click(object sender, EventArgs e)
         {
             if (!menuGraph5.Checked)
@@ -1110,12 +1099,6 @@ namespace FrameViewGraph
                 typeOfGraph = 6;
                 menuGrViewDiagram.Enabled = true;
             }
-        }
-
-        private void menuGrViewAxis_Click(object sender, EventArgs e)
-        {
-            if (menuGrViewAxis.Checked) menuGrViewAxis.Checked = false;
-            else menuGrViewAxis.Checked = true;
         }
 
         private void menuCmbBx_SelectedIndexChanged(object sender, EventArgs e)
