@@ -240,7 +240,34 @@ namespace FrameViewGraph
 
         private void graphDiagrams()
         {
+            cleanChart();
+            chrMain.ChartAreas.Add(new ChartArea(nameOfTest));
+            Axis ay5 = new Axis();
+            ay5.Title = "Кадры в секунду (FPS)";
+            chrMain.ChartAreas[0].AxisY = ay5;
+            for (int a = 0; a < parsedData.Count; a++)
+            {
+                if (chkListFile.CheckedItems.Contains(filesName[a]))
+                {
+                    string[] FPSdata = (string[])infoData[a].Clone();
+                    String nameTest = nameOfTest;
+                    String lineData = filesName[a];
+                    Series mySeriesOfPoint = new Series(lineData);
+                    mySeriesOfPoint.ChartType = SeriesChartType.Column;
+                    mySeriesOfPoint.ChartArea = nameTest;
+                    mySeriesOfPoint.XValueType = ChartValueType.String;
+                    mySeriesOfPoint.IsValueShownAsLabel = true;
 
+                    mySeriesOfPoint.Points.AddXY("Avg", Math.Round(checkFloat(FPSdata[12]), 2));
+                    mySeriesOfPoint.Points.AddXY("Mode", Math.Round(checkFloat(FPSdata[13]), 2));
+                    mySeriesOfPoint.Points.AddXY("50%", Math.Round(checkFloat(FPSdata[14]), 2));
+                    mySeriesOfPoint.Points.AddXY("10%", Math.Round(checkFloat(FPSdata[15]), 2));
+                    mySeriesOfPoint.Points.AddXY("1%", Math.Round(checkFloat(FPSdata[16]), 2));
+                    mySeriesOfPoint.Points.AddXY("0.1%", Math.Round(checkFloat(FPSdata[17]), 2));
+
+                    chrMain.Series.Add(mySeriesOfPoint);
+                }
+            }
         }
 
         private float[,] openCSV(String path)
@@ -517,7 +544,7 @@ namespace FrameViewGraph
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            this.Text = "FVG v." + Properties.Resources.version + " Alpha 1 by volkovskey";
+            this.Text = "FVG v." + Properties.Resources.version + " Alpha 2 by volkovskey";
             nameOfTest = "test_" + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss");
             menuName.Text = nameOfTest;
             chrMain.Titles.Clear();
@@ -771,6 +798,10 @@ namespace FrameViewGraph
             else if (typeOfGraph == 4)
             {
             }
+            else if (typeOfGraph == 5)
+            {
+                graphDiagrams();
+            }
             else
             {
                 menuFileSaveAs.Enabled = false;
@@ -873,7 +904,7 @@ namespace FrameViewGraph
         {
             if (e.Button == MouseButtons.Right)
             {
-                graphProbabilityDensity();
+                graphDiagrams();
             }
             if (!menuGraph5.Checked)
             {
@@ -1037,6 +1068,8 @@ namespace FrameViewGraph
             menuGrViewDiagram.DropDown.AutoClose = !menuGrViewDiagram.DropDown.AutoClose;
             if (menuGrViewDiagram.DropDown.AutoClose) menuGrViewDiagram.DropDown.Close();
         }
+
+        
     }
 }
 
