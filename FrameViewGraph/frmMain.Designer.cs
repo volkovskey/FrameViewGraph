@@ -54,6 +54,7 @@
             this.menuGraph3 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGraph4 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGraph5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGraph6 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGr = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGrDraw = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGrClear = new System.Windows.Forms.ToolStripMenuItem();
@@ -126,7 +127,6 @@
             this.labelCpuUsage = new System.Windows.Forms.Label();
             this.labelCpuName = new System.Windows.Forms.Label();
             this.labelApplication = new System.Windows.Forms.Label();
-            this.сравненияСтатистикиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.chrMain)).BeginInit();
             this.menuStr.SuspendLayout();
             this.statusStr.SuspendLayout();
@@ -305,7 +305,7 @@
             this.menuGraph3,
             this.menuGraph4,
             this.menuGraph5,
-            this.сравненияСтатистикиToolStripMenuItem});
+            this.menuGraph6});
             this.menuGraph.Name = "menuGraph";
             this.menuGraph.Size = new System.Drawing.Size(88, 23);
             this.menuGraph.Text = "Тип графика";
@@ -356,6 +356,15 @@
             this.menuGraph5.Text = "Сравнения статистики (FPS)";
             this.menuGraph5.Click += new System.EventHandler(this.menuGraph5_Click);
             this.menuGraph5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuGraph5_MouseDown);
+            // 
+            // menuGraph6
+            // 
+            this.menuGraph6.Name = "menuGraph6";
+            this.menuGraph6.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D6)));
+            this.menuGraph6.Size = new System.Drawing.Size(270, 22);
+            this.menuGraph6.Text = "Сравнения статистики (%)";
+            this.menuGraph6.Click += new System.EventHandler(this.menuGraph6_Click);
+            this.menuGraph6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuGraph6_MouseDown);
             // 
             // menuGr
             // 
@@ -1009,13 +1018,6 @@
             this.labelApplication.TabIndex = 0;
             this.labelApplication.Text = "Программа:";
             // 
-            // сравненияСтатистикиToolStripMenuItem
-            // 
-            this.сравненияСтатистикиToolStripMenuItem.Name = "сравненияСтатистикиToolStripMenuItem";
-            this.сравненияСтатистикиToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D6)));
-            this.сравненияСтатистикиToolStripMenuItem.Size = new System.Drawing.Size(270, 22);
-            this.сравненияСтатистикиToolStripMenuItem.Text = "Сравнения статистики (%)";
-            // 
             // frmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1146,7 +1148,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuGrViewDiagram4;
         private System.Windows.Forms.ToolStripMenuItem menuGrViewDiagram5;
         private System.Windows.Forms.ToolStripMenuItem menuGrViewDiagram6;
-        private System.Windows.Forms.ToolStripMenuItem сравненияСтатистикиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuGraph6;
     }
 }
 

@@ -258,15 +258,56 @@ namespace FrameViewGraph
                     mySeriesOfPoint.XValueType = ChartValueType.String;
                     mySeriesOfPoint.IsValueShownAsLabel = true;
 
-                    mySeriesOfPoint.Points.AddXY("Avg", Math.Round(checkFloat(FPSdata[12]), 2));
-                    mySeriesOfPoint.Points.AddXY("Mode", Math.Round(checkFloat(FPSdata[13]), 2));
-                    mySeriesOfPoint.Points.AddXY("50%", Math.Round(checkFloat(FPSdata[14]), 2));
-                    mySeriesOfPoint.Points.AddXY("10%", Math.Round(checkFloat(FPSdata[15]), 2));
-                    mySeriesOfPoint.Points.AddXY("1%", Math.Round(checkFloat(FPSdata[16]), 2));
-                    mySeriesOfPoint.Points.AddXY("0.1%", Math.Round(checkFloat(FPSdata[17]), 2));
+                    if (menuGrViewDiagram1.Checked) mySeriesOfPoint.Points.AddXY("Avg", Math.Round(checkFloat(FPSdata[12]), 2));
+                    if (menuGrViewDiagram2.Checked) mySeriesOfPoint.Points.AddXY("Mode", Math.Round(checkFloat(FPSdata[13]), 2));
+                    if (menuGrViewDiagram3.Checked) mySeriesOfPoint.Points.AddXY("50%", Math.Round(checkFloat(FPSdata[14]), 2));
+                    if (menuGrViewDiagram4.Checked) mySeriesOfPoint.Points.AddXY("10%", Math.Round(checkFloat(FPSdata[15]), 2));
+                    if (menuGrViewDiagram5.Checked) mySeriesOfPoint.Points.AddXY("1%", Math.Round(checkFloat(FPSdata[16]), 2));
+                    if (menuGrViewDiagram6.Checked) mySeriesOfPoint.Points.AddXY("0.1%", Math.Round(checkFloat(FPSdata[17]), 2));
 
                     chrMain.Series.Add(mySeriesOfPoint);
                 }
+            }
+        }
+
+        private void graphDiagramsPC()
+        {
+            cleanChart();
+            chrMain.ChartAreas.Add(new ChartArea(nameOfTest));
+            Axis ay6 = new Axis();
+            ay6.Title = "Кадры в секунду (%)";
+            chrMain.ChartAreas[0].AxisY = ay6;
+            if (menuCmbBx.SelectedIndex > -1)
+            {
+                string[] mainData = new string[18];
+                Array.Copy(infoData[menuCmbBx.SelectedIndex], mainData, 18);
+                for (int a = 0; a < parsedData.Count; a++)
+                {
+                    if (chkListFile.CheckedItems.Contains(filesName[a]))
+                    {
+                        string[] FPSdata = (string[])infoData[a].Clone();
+                        String nameTest = nameOfTest;
+                        String lineData = filesName[a];
+                        Series mySeriesOfPoint = new Series(lineData);
+                        mySeriesOfPoint.ChartType = SeriesChartType.Column;
+                        mySeriesOfPoint.ChartArea = nameTest;
+                        mySeriesOfPoint.XValueType = ChartValueType.String;
+                        mySeriesOfPoint.IsValueShownAsLabel = true;
+
+                        if (menuGrViewDiagram1.Checked) mySeriesOfPoint.Points.AddXY("Avg", Math.Round(checkFloat(FPSdata[12]) / checkFloat(mainData[12]) * 100, 2));
+                        if (menuGrViewDiagram2.Checked) mySeriesOfPoint.Points.AddXY("Mode", Math.Round(checkFloat(FPSdata[13]) / checkFloat(mainData[13]) * 100, 2));
+                        if (menuGrViewDiagram3.Checked) mySeriesOfPoint.Points.AddXY("50%", Math.Round(checkFloat(FPSdata[14]) / checkFloat(mainData[14]) * 100, 2));
+                        if (menuGrViewDiagram4.Checked) mySeriesOfPoint.Points.AddXY("10%", Math.Round(checkFloat(FPSdata[15]) / checkFloat(mainData[15]) * 100, 2));
+                        if (menuGrViewDiagram5.Checked) mySeriesOfPoint.Points.AddXY("1%", Math.Round(checkFloat(FPSdata[16]) / checkFloat(mainData[16]) * 100, 2));
+                        if (menuGrViewDiagram6.Checked) mySeriesOfPoint.Points.AddXY("0.1%", Math.Round(checkFloat(FPSdata[17]) / checkFloat(mainData[17]) * 100, 2));
+
+                        chrMain.Series.Add(mySeriesOfPoint);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите справа сверху данные, которые надо принять за 100%.", "Ошибка");
             }
         }
 
@@ -544,7 +585,7 @@ namespace FrameViewGraph
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            this.Text = "FVG v." + Properties.Resources.version + " Alpha 2 by volkovskey";
+            this.Text = "FVG v." + Properties.Resources.version + " Alpha 3 by volkovskey";
             nameOfTest = "test_" + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss");
             menuName.Text = nameOfTest;
             chrMain.Titles.Clear();
@@ -802,6 +843,10 @@ namespace FrameViewGraph
             {
                 graphDiagrams();
             }
+            else if (typeOfGraph == 6)
+            {
+                graphDiagramsPC();
+            }
             else
             {
                 menuFileSaveAs.Enabled = false;
@@ -915,6 +960,21 @@ namespace FrameViewGraph
             }
         }
 
+        private void menuGraph6_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                graphDiagramsPC();
+            }
+            if (!menuGraph6.Checked)
+            {
+                disableAllGraphs();
+                menuGraph6.Checked = true;
+                typeOfGraph = 6;
+                menuGrViewDiagram.Enabled = true;
+            }
+        }
+
         private void disableAllFilters()
         {
             menuGrFilterNo.Checked = false;
@@ -970,6 +1030,7 @@ namespace FrameViewGraph
             menuGraph3.Checked = false;
             menuGraph4.Checked = false;
             menuGraph5.Checked = false;
+            menuGraph6.Checked = false;
             menuGrViewDiagram.Enabled = false;
         }
 
@@ -1024,6 +1085,17 @@ namespace FrameViewGraph
             }
         }
 
+        private void menuGraph6_Click(object sender, EventArgs e)
+        {
+            if (!menuGraph6.Checked)
+            {
+                disableAllGraphs();
+                menuGraph6.Checked = true;
+                typeOfGraph = 6;
+                menuGrViewDiagram.Enabled = true;
+            }
+        }
+
         private void menuGrViewAxis_Click(object sender, EventArgs e)
         {
             if (menuGrViewAxis.Checked) menuGrViewAxis.Checked = false;
@@ -1069,7 +1141,7 @@ namespace FrameViewGraph
             if (menuGrViewDiagram.DropDown.AutoClose) menuGrViewDiagram.DropDown.Close();
         }
 
-        
+       
     }
 }
 
