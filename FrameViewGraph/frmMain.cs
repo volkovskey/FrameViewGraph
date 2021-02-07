@@ -585,7 +585,7 @@ namespace FrameViewGraph
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            this.Text = "FVG v." + Properties.Resources.version + " Alpha 3 by volkovskey";
+            this.Text = "FVG v." + Properties.Resources.version + " by volkovskey";
             nameOfTest = "test_" + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss");
             menuName.Text = nameOfTest;
             chrMain.Titles.Clear();
@@ -824,33 +824,49 @@ namespace FrameViewGraph
         private void menuGrDraw_Click(object sender, EventArgs e)
         {
             menuFileSaveAs.Enabled = true;
-            if (typeOfGraph == 1)
+            if (chkListFile.Items.Count != 0)
             {
-                graphFrameTime();
-            }
-            else if (typeOfGraph == 2)
-            {
-                graphFPS();
-            }
-            else if (typeOfGraph == 3)
-            {
-                graphProbabilityDensity();
-            }
-            else if (typeOfGraph == 4)
-            {
-            }
-            else if (typeOfGraph == 5)
-            {
-                graphDiagrams();
-            }
-            else if (typeOfGraph == 6)
-            {
-                graphDiagramsPC();
+                if (chkListFile.CheckedItems.Count != 0)
+                {
+                    if (typeOfGraph == 1)
+                    {
+                        graphFrameTime();
+                    }
+                    else if (typeOfGraph == 2)
+                    {
+                        graphFPS();
+                    }
+                    else if (typeOfGraph == 3)
+                    {
+                        graphProbabilityDensity();
+                    }
+                    else if (typeOfGraph == 4)
+                    {
+                    }
+                    else if (typeOfGraph == 5)
+                    {
+                        graphDiagrams();
+                    }
+                    else if (typeOfGraph == 6)
+                    {
+                        graphDiagramsPC();
+                    }
+                    else
+                    {
+                        menuFileSaveAs.Enabled = false;
+                        MessageBox.Show("Ошибка выбора типа графика", "Ошибка");
+                    }
+                }
+                else
+                {
+                    menuFileSaveAs.Enabled = false;
+                    MessageBox.Show("Нет выделенных файлов.", "Ошибка");
+                }
             }
             else
             {
                 menuFileSaveAs.Enabled = false;
-                MessageBox.Show("Ошибка выбора типа графика", "Ошибка");
+                MessageBox.Show("Нет открытых файлов.", "Ошибка");
             }
         }
 
