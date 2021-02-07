@@ -221,7 +221,7 @@ namespace FrameViewGraph
                     }
 
                     int kol = data.GetLength(1);
-                    
+
                     if (filter == 0) kol = 0;
                     else if (filter == 1) kol = (int)(kol / 5000.0);
                     else if (filter == 2) kol = (int)(kol / 1000.0);
@@ -236,6 +236,10 @@ namespace FrameViewGraph
                     chrMain.Series.Add(mySeriesOfPoint);
                 }
             }
+        }
+
+        private void graphDiagrams()
+        {
 
         }
 
@@ -269,11 +273,12 @@ namespace FrameViewGraph
                 {
                     var line = reader.ReadLine();
                     var values = line.Split(',');
-                    if (values[14].Contains("."))
+                    if (values[12].Contains("."))
                     {
                         result = ResizeArray(result);
-                        result[0, result.GetLength(1) - 1] = (float)Math.Round(float.Parse(values[12]) * 1000f); //TimeInSeconds
-                        result[1, result.GetLength(1) - 1] = float.Parse(values[13]); //MsBetweenPresents
+
+                        result[0, result.GetLength(1) - 1] = checkFloat(values[12]) * 1000f; //TimeInSeconds
+                        result[1, result.GetLength(1) - 1] = checkFloat(values[13]); //MsBetweenPresents
 
                         if (k)
                         {
@@ -303,7 +308,7 @@ namespace FrameViewGraph
                             cpuPower += Convert.ToDouble(values[37]); //CPU Package Power(W)
                         }
                         catch { }
-                        
+
                         try
                         {
                             gpuFreq += Convert.ToInt32(values[19]); //GPU0Clk(MHz)
@@ -325,10 +330,18 @@ namespace FrameViewGraph
                         }
                         catch
                         {
-                            gpuPower += Convert.ToInt32(values[33]); //AMDPwr(W) (API)
+                            try
+                            {
+                                gpuPower += Convert.ToInt32(values[33]); //AMDPwr(W) (API)
+                            }
+                            catch
+                            {
+
+                            }
+
                         }
 
-                        avgFPS += 1000.0 / Convert.ToDouble(values[13]);
+                        avgFPS += 1000.0 / checkFloat(values[13]);
 
                         counter++;
                     }
@@ -453,6 +466,21 @@ namespace FrameViewGraph
             }
         }
 
+        private float checkFloat(string s)
+        {
+            float a;
+            try
+            {
+                a = float.Parse(s);
+            }
+            catch
+            {
+                s = s.Replace('.', ',');
+                a = float.Parse(s);
+            }
+            return a;
+        }
+
         private float[,] tryOpenCSV(String path)
         {
             try
@@ -489,6 +517,7 @@ namespace FrameViewGraph
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            this.Text = "FVG v." + Properties.Resources.version + " Alpha 1 by volkovskey";
             nameOfTest = "test_" + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss");
             menuName.Text = nameOfTest;
             chrMain.Titles.Clear();
@@ -767,7 +796,7 @@ namespace FrameViewGraph
 
         private void menuHelpVersion_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Название программы: FrameViewGraph\nВерсия программы: 0.4.3\nСтатус текущей версии программы: Beta\nНеобходимая версия FrameView: 1.1\nРазработчик: volkovskey\nКопирайт: Copyright ©volkovskey 2020-2021\nЛицензия: MIT License\nТекст лицензии:\n\n" + Properties.Resources.license, "Версия программы");
+            MessageBox.Show("Название программы: FrameViewGraph\nВерсия программы: " + Properties.Resources.version + "\nСтатус текущей версии программы: Alpha\nНеобходимая версия FrameView: 1.1\nРазработчик: volkovskey\nКопирайт: Copyright ©volkovskey 2020-2021\nЛицензия: MIT License\nТекст лицензии:\n\n" + Properties.Resources.license, "Версия программы");
         }
 
         private void menuName_TextChanged(object sender, EventArgs e)
@@ -806,10 +835,8 @@ namespace FrameViewGraph
             }
             if (!menuGraph1.Checked)
             {
+                disableAllGraphs();
                 menuGraph1.Checked = true;
-                menuGraph2.Checked = false;
-                menuGraph3.Checked = false;
-                menuGraph4.Checked = false;
                 typeOfGraph = 1;
             }
         }
@@ -822,10 +849,8 @@ namespace FrameViewGraph
             }
             if (!menuGraph2.Checked)
             {
-                menuGraph1.Checked = false;
+                disableAllGraphs();
                 menuGraph2.Checked = true;
-                menuGraph3.Checked = false;
-                menuGraph4.Checked = false;
                 typeOfGraph = 2;
             }
         }
@@ -838,22 +863,41 @@ namespace FrameViewGraph
             }
             if (!menuGraph3.Checked)
             {
-                menuGraph1.Checked = false;
-                menuGraph2.Checked = false;
+                disableAllGraphs();
                 menuGraph3.Checked = true;
-                menuGraph4.Checked = false;
                 typeOfGraph = 3;
             }
+        }
+
+        private void menuGraph5_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                graphProbabilityDensity();
+            }
+            if (!menuGraph5.Checked)
+            {
+                disableAllGraphs();
+                menuGraph5.Checked = true;
+                typeOfGraph = 5;
+                menuGrViewDiagram.Enabled = true;
+            }
+        }
+
+        private void disableAllFilters()
+        {
+            menuGrFilterNo.Checked = false;
+            menuGrFilter1.Checked = false;
+            menuGrFilter2.Checked = false;
+            menuGrFilter3.Checked = false;
         }
 
         private void menuGrFilterNo_Click(object sender, EventArgs e)
         {
             if (!menuGrFilterNo.Checked)
             {
+                disableAllFilters();
                 menuGrFilterNo.Checked = true;
-                menuGrFilter1.Checked = false;
-                menuGrFilter2.Checked = false;
-                menuGrFilter3.Checked = false;
                 filter = 0;
             }
         }
@@ -862,10 +906,8 @@ namespace FrameViewGraph
         {
             if (!menuGrFilter1.Checked)
             {
-                menuGrFilterNo.Checked = false;
+                disableAllFilters();
                 menuGrFilter1.Checked = true;
-                menuGrFilter2.Checked = false;
-                menuGrFilter3.Checked = false;
                 filter = 1;
             }
         }
@@ -874,10 +916,8 @@ namespace FrameViewGraph
         {
             if (!menuGrFilter2.Checked)
             {
-                menuGrFilterNo.Checked = false;
-                menuGrFilter1.Checked = false;
+                disableAllFilters();
                 menuGrFilter2.Checked = true;
-                menuGrFilter3.Checked = false;
                 filter = 2;
             }
         }
@@ -886,22 +926,28 @@ namespace FrameViewGraph
         {
             if (!menuGrFilter3.Checked)
             {
-                menuGrFilterNo.Checked = false;
-                menuGrFilter1.Checked = false;
-                menuGrFilter2.Checked = false;
+                disableAllFilters();
                 menuGrFilter3.Checked = true;
                 filter = 3;
             }
+        }
+
+        private void disableAllGraphs()
+        {
+            menuGraph1.Checked = false;
+            menuGraph2.Checked = false;
+            menuGraph3.Checked = false;
+            menuGraph4.Checked = false;
+            menuGraph5.Checked = false;
+            menuGrViewDiagram.Enabled = false;
         }
 
         private void menuGraph1_Click(object sender, EventArgs e)
         {
             if (!menuGraph1.Checked)
             {
+                disableAllGraphs();
                 menuGraph1.Checked = true;
-                menuGraph2.Checked = false;
-                menuGraph3.Checked = false;
-                menuGraph4.Checked = false;
                 typeOfGraph = 1;
             }
         }
@@ -910,10 +956,8 @@ namespace FrameViewGraph
         {
             if (!menuGraph2.Checked)
             {
-                menuGraph1.Checked = false;
+                disableAllGraphs();
                 menuGraph2.Checked = true;
-                menuGraph3.Checked = false;
-                menuGraph4.Checked = false;
                 typeOfGraph = 2;
             }
         }
@@ -922,10 +966,8 @@ namespace FrameViewGraph
         {
             if (!menuGraph3.Checked)
             {
-                menuGraph1.Checked = false;
-                menuGraph2.Checked = false;
+                disableAllGraphs();
                 menuGraph3.Checked = true;
-                menuGraph4.Checked = false;
                 typeOfGraph = 3;
             }
         }
@@ -934,24 +976,27 @@ namespace FrameViewGraph
         {
             if (!menuGraph4.Checked)
             {
-                menuGraph1.Checked = false;
-                menuGraph2.Checked = false;
-                menuGraph3.Checked = false;
+                disableAllGraphs();
                 menuGraph4.Checked = true;
                 typeOfGraph = 4;
             }
         }
 
+        private void menuGraph5_Click(object sender, EventArgs e)
+        {
+            if (!menuGraph5.Checked)
+            {
+                disableAllGraphs();
+                menuGraph5.Checked = true;
+                typeOfGraph = 5;
+                menuGrViewDiagram.Enabled = true;
+            }
+        }
+
         private void menuGrViewAxis_Click(object sender, EventArgs e)
         {
-            if (menuGrViewAxis.Checked)
-            {
-                menuGrViewAxis.Checked = false;
-            }
-            else
-            {
-                menuGrViewAxis.Checked = true;
-            }
+            if (menuGrViewAxis.Checked) menuGrViewAxis.Checked = false;
+            else menuGrViewAxis.Checked = true;
         }
 
         private void menuCmbBx_SelectedIndexChanged(object sender, EventArgs e)
@@ -983,6 +1028,14 @@ namespace FrameViewGraph
                 lbl1pc.Text = shortData[16];
                 lbl01pc.Text = shortData[17];
             }
+        }
+
+        private void menuGrViewDiagram_Click(object sender, EventArgs e)
+        {
+            menuGr.DropDown.AutoClose = !menuGr.DropDown.AutoClose;
+            menuGrView.DropDown.AutoClose = !menuGrView.DropDown.AutoClose;
+            menuGrViewDiagram.DropDown.AutoClose = !menuGrViewDiagram.DropDown.AutoClose;
+            if (menuGrViewDiagram.DropDown.AutoClose) menuGrViewDiagram.DropDown.Close();
         }
     }
 }
