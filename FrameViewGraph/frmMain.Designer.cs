@@ -229,7 +229,7 @@
             this.menuResolutionFullHD.Checked = true;
             this.menuResolutionFullHD.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuResolutionFullHD.Name = "menuResolutionFullHD";
-            this.menuResolutionFullHD.Size = new System.Drawing.Size(180, 22);
+            this.menuResolutionFullHD.Size = new System.Drawing.Size(176, 22);
             this.menuResolutionFullHD.Text = "FullHD";
             this.menuResolutionFullHD.ToolTipText = "Ширина: 1920. Высота: 1080.";
             this.menuResolutionFullHD.Click += new System.EventHandler(this.menuResolutionFullHD_Click);
@@ -237,7 +237,7 @@
             // menuResolutionQHD
             // 
             this.menuResolutionQHD.Name = "menuResolutionQHD";
-            this.menuResolutionQHD.Size = new System.Drawing.Size(180, 22);
+            this.menuResolutionQHD.Size = new System.Drawing.Size(176, 22);
             this.menuResolutionQHD.Text = "QHD";
             this.menuResolutionQHD.ToolTipText = "Ширина: 2560. Высота: 1440.";
             this.menuResolutionQHD.Click += new System.EventHandler(this.menuResolutionQHD_Click);
@@ -245,7 +245,7 @@
             // menuResolutionUHD
             // 
             this.menuResolutionUHD.Name = "menuResolutionUHD";
-            this.menuResolutionUHD.Size = new System.Drawing.Size(180, 22);
+            this.menuResolutionUHD.Size = new System.Drawing.Size(176, 22);
             this.menuResolutionUHD.Text = "UHD";
             this.menuResolutionUHD.ToolTipText = "Ширина: 3840. Высота: 2160.";
             this.menuResolutionUHD.Click += new System.EventHandler(this.menuResolutionUHD_Click);
@@ -256,7 +256,7 @@
             this.menuResolutionCustomX,
             this.menuResolutionCustomY});
             this.menuResolutionCustom.Name = "menuResolutionCustom";
-            this.menuResolutionCustom.Size = new System.Drawing.Size(180, 22);
+            this.menuResolutionCustom.Size = new System.Drawing.Size(176, 22);
             this.menuResolutionCustom.Text = "Пользовательское";
             this.menuResolutionCustom.Click += new System.EventHandler(this.menuResolutionCustom_Click);
             // 
@@ -387,28 +387,28 @@
             this.menuGrFilterNo.Checked = true;
             this.menuGrFilterNo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuGrFilterNo.Name = "menuGrFilterNo";
-            this.menuGrFilterNo.Size = new System.Drawing.Size(180, 22);
+            this.menuGrFilterNo.Size = new System.Drawing.Size(129, 22);
             this.menuGrFilterNo.Text = "Нет";
             this.menuGrFilterNo.Click += new System.EventHandler(this.menuGrFilterNo_Click);
             // 
             // menuGrFilter1
             // 
             this.menuGrFilter1.Name = "menuGrFilter1";
-            this.menuGrFilter1.Size = new System.Drawing.Size(180, 22);
+            this.menuGrFilter1.Size = new System.Drawing.Size(129, 22);
             this.menuGrFilter1.Text = "Слабый";
             this.menuGrFilter1.Click += new System.EventHandler(this.menuGrFilter1_Click);
             // 
             // menuGrFilter2
             // 
             this.menuGrFilter2.Name = "menuGrFilter2";
-            this.menuGrFilter2.Size = new System.Drawing.Size(180, 22);
+            this.menuGrFilter2.Size = new System.Drawing.Size(129, 22);
             this.menuGrFilter2.Text = "Обычный";
             this.menuGrFilter2.Click += new System.EventHandler(this.menuGrFilter2_Click);
             // 
             // menuGrFilter3
             // 
             this.menuGrFilter3.Name = "menuGrFilter3";
-            this.menuGrFilter3.Size = new System.Drawing.Size(180, 22);
+            this.menuGrFilter3.Size = new System.Drawing.Size(129, 22);
             this.menuGrFilter3.Text = "Сильный";
             this.menuGrFilter3.Click += new System.EventHandler(this.menuGrFilter3_Click);
             // 
@@ -432,7 +432,7 @@
             this.menuGrViewDiagram6});
             this.menuGrViewDiagram.Enabled = false;
             this.menuGrViewDiagram.Name = "menuGrViewDiagram";
-            this.menuGrViewDiagram.Size = new System.Drawing.Size(180, 22);
+            this.menuGrViewDiagram.Size = new System.Drawing.Size(158, 22);
             this.menuGrViewDiagram.Text = "Диаграмма";
             this.menuGrViewDiagram.Click += new System.EventHandler(this.menuGrViewDiagram_Click);
             // 
@@ -442,7 +442,7 @@
             this.menuGrViewDiagram1.CheckOnClick = true;
             this.menuGrViewDiagram1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuGrViewDiagram1.Name = "menuGrViewDiagram1";
-            this.menuGrViewDiagram1.Size = new System.Drawing.Size(180, 22);
+            this.menuGrViewDiagram1.Size = new System.Drawing.Size(162, 22);
             this.menuGrViewDiagram1.Text = "Средний FPS";
             // 
             // menuGrViewDiagram2
@@ -451,7 +451,7 @@
             this.menuGrViewDiagram2.CheckOnClick = true;
             this.menuGrViewDiagram2.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuGrViewDiagram2.Name = "menuGrViewDiagram2";
-            this.menuGrViewDiagram2.Size = new System.Drawing.Size(180, 22);
+            this.menuGrViewDiagram2.Size = new System.Drawing.Size(162, 22);
             this.menuGrViewDiagram2.Text = "Модальный FPS";
             // 
             // menuGrViewDiagram3
@@ -460,14 +460,14 @@
             this.menuGrViewDiagram3.CheckOnClick = true;
             this.menuGrViewDiagram3.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuGrViewDiagram3.Name = "menuGrViewDiagram3";
-            this.menuGrViewDiagram3.Size = new System.Drawing.Size(180, 22);
+            this.menuGrViewDiagram3.Size = new System.Drawing.Size(162, 22);
             this.menuGrViewDiagram3.Text = "Медианный FPS";
             // 
             // menuGrViewDiagram4
             // 
             this.menuGrViewDiagram4.CheckOnClick = true;
             this.menuGrViewDiagram4.Name = "menuGrViewDiagram4";
-            this.menuGrViewDiagram4.Size = new System.Drawing.Size(180, 22);
+            this.menuGrViewDiagram4.Size = new System.Drawing.Size(162, 22);
             this.menuGrViewDiagram4.Text = "10% low";
             // 
             // menuGrViewDiagram5
@@ -476,7 +476,7 @@
             this.menuGrViewDiagram5.CheckOnClick = true;
             this.menuGrViewDiagram5.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuGrViewDiagram5.Name = "menuGrViewDiagram5";
-            this.menuGrViewDiagram5.Size = new System.Drawing.Size(180, 22);
+            this.menuGrViewDiagram5.Size = new System.Drawing.Size(162, 22);
             this.menuGrViewDiagram5.Text = "1% low";
             // 
             // menuGrViewDiagram6
@@ -485,7 +485,7 @@
             this.menuGrViewDiagram6.CheckOnClick = true;
             this.menuGrViewDiagram6.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuGrViewDiagram6.Name = "menuGrViewDiagram6";
-            this.menuGrViewDiagram6.Size = new System.Drawing.Size(180, 22);
+            this.menuGrViewDiagram6.Size = new System.Drawing.Size(162, 22);
             this.menuGrViewDiagram6.Text = "0.1% low";
             // 
             // menuGrViewLegend
@@ -494,7 +494,7 @@
             this.menuGrViewLegend.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuGrViewLegend.Name = "menuGrViewLegend";
             this.menuGrViewLegend.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.menuGrViewLegend.Size = new System.Drawing.Size(180, 22);
+            this.menuGrViewLegend.Size = new System.Drawing.Size(158, 22);
             this.menuGrViewLegend.Text = "Легенда";
             this.menuGrViewLegend.Click += new System.EventHandler(this.menuGrLegend_Click);
             // 
