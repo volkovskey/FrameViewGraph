@@ -245,6 +245,7 @@ namespace FrameViewGraph
             Axis ay5 = new Axis();
             ay5.Title = "Кадры в секунду (FPS)";
             chrMain.ChartAreas[0].AxisY = ay5;
+            chrMain.ChartAreas[0].Axes[0].MajorGrid.Enabled = false;
             for (int a = 0; a < parsedData.Count; a++)
             {
                 if (chkListFile.CheckedItems.Contains(filesName[a]))
@@ -277,6 +278,7 @@ namespace FrameViewGraph
             Axis ay6 = new Axis();
             ay6.Title = "Кадры в секунду (%)";
             chrMain.ChartAreas[0].AxisY = ay6;
+            chrMain.ChartAreas[0].Axes[0].MajorGrid.Enabled = false;
             if (menuCmbBx.SelectedIndex > -1)
             {
                 string[] mainData = new string[18];
@@ -610,6 +612,10 @@ namespace FrameViewGraph
             chrMain.ChartAreas[0].AxisY.LabelStyle.Font = newFont;
             chrMain.ChartAreas[0].AxisX.TitleFont = newFont;
             chrMain.ChartAreas[0].AxisY.TitleFont = newFont;
+            for (int i = 0; i < chrMain.Series.Count; i++)
+            {
+                chrMain.Series[i].Font = newFont;
+            }
             chrMain.Titles[0].Font = newFont;
             chrMain.Legends[0].Font = newFont;
             chrMain.Titles.Add(this.Text);
@@ -641,6 +647,7 @@ namespace FrameViewGraph
             for (int i = 0; i < chrMain.Series.Count; i++)
             {
                 chrMain.Series[i].BorderWidth = startedBorderWidth;
+                chrMain.Series[i].Font = startedFont;
             }
             chrMain.ChartAreas[0].AxisX.LabelStyle.Font = startedFont;
             chrMain.ChartAreas[0].AxisY.LabelStyle.Font = startedFont;
@@ -883,7 +890,8 @@ namespace FrameViewGraph
 
         private void menuHelpInfo_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("FVG - FrameViewGraph.\n\nДанная программа предназначена для анализа данных, полученных с программы FrameView. Можно построить несколько разных типов графиков и настроить их внешний вид под себя. Такие данные намного удобнее, чем сравнивать два, три, четыре видеофрагмента.\n\nИнструкция по использования появится на YT-канале 'volkovskey' в ближайшее время.", "О программе");
+            String text = "FVG - FrameViewGraph.\n\nДанная программа предназначена для анализа данных, полученных с программы FrameView. Можно построить несколько разных типов графиков и настроить их внешний вид под себя. Такие данные намного удобнее, чем сравнивать два, три, четыре видеофрагмента.\n\nИнструкция по использования появится на YT-канале 'volkovskey' в ближайшее время.";
+            MessageBox.Show(text, "О программе");
         }
 
         private void menuHelpVersion_Click(object sender, EventArgs e)
@@ -1044,7 +1052,6 @@ namespace FrameViewGraph
             menuGraph1.Checked = false;
             menuGraph2.Checked = false;
             menuGraph3.Checked = false;
-            menuGraph4.Checked = false;
             menuGraph5.Checked = false;
             menuGraph6.Checked = false;
             menuGrViewDiagram.Enabled = false;
@@ -1080,16 +1087,6 @@ namespace FrameViewGraph
             }
         }
 
-        private void menuGraph4_Click(object sender, EventArgs e)
-        {
-            if (!menuGraph4.Checked)
-            {
-                disableAllGraphs();
-                menuGraph4.Checked = true;
-                typeOfGraph = 4;
-            }
-        }
-
         private void menuGraph5_Click(object sender, EventArgs e)
         {
             if (!menuGraph5.Checked)
@@ -1110,12 +1107,6 @@ namespace FrameViewGraph
                 typeOfGraph = 6;
                 menuGrViewDiagram.Enabled = true;
             }
-        }
-
-        private void menuGrViewAxis_Click(object sender, EventArgs e)
-        {
-            if (menuGrViewAxis.Checked) menuGrViewAxis.Checked = false;
-            else menuGrViewAxis.Checked = true;
         }
 
         private void menuCmbBx_SelectedIndexChanged(object sender, EventArgs e)
