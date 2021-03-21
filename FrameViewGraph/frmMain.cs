@@ -32,6 +32,7 @@ namespace FrameViewGraph
             chrMain.ChartAreas.Add(new ChartArea(nameOfTest));
             Axis ax1 = new Axis();
             ax1.Title = "Время (мс)";
+            ax1.Minimum = 0;
             chrMain.ChartAreas[0].AxisX = ax1;
             Axis ay1 = new Axis();
             ay1.Title = "Время кадра (мс)";
@@ -105,6 +106,7 @@ namespace FrameViewGraph
             chrMain.ChartAreas.Add(new ChartArea(nameOfTest));
             Axis ax2 = new Axis();
             ax2.Title = "Время (мс)";
+            ax2.Minimum = 0;
             chrMain.ChartAreas[0].AxisX = ax2;
             Axis ay2 = new Axis();
             ay2.Title = "Кадры в секунду (FPS)";
@@ -322,7 +324,7 @@ namespace FrameViewGraph
                 float[,] result = new float[2, 0];
 
                 bool k = true;
-                string[] info = new string[18];
+                string[] info = new string[19];
 
                 int counter = 0;
 
@@ -332,6 +334,7 @@ namespace FrameViewGraph
                 double cpuPower = 0;
 
                 int gpuFreq = 0;
+                int gpuMemFreq = 0;
                 int gpuUsage = 0;
                 int gpuTemp = 0;
                 int gpuPower = 0;
@@ -360,25 +363,24 @@ namespace FrameViewGraph
                         }
                         try
                         {
-                            cpuFreq += Convert.ToInt32(values[34]); //CPUClk(MHz)
+                            cpuFreq += Convert.ToInt32(values[36]); //CPUClk(MHz)
                         }
                         catch { }
                         try
                         {
-                            cpuUsage += Convert.ToInt32(values[35]); //CPUUtil(%)
+                            cpuUsage += Convert.ToInt32(values[37]); //CPUUtil(%)
                         }
                         catch { }
                         try
                         {
-                            cpuTemp += Convert.ToInt32(values[36]); //CPU Package Temp(C)
+                            cpuTemp += Convert.ToInt32(values[38]); //CPU Package Temp(C)
                         }
                         catch { }
                         try
                         {
-                            cpuPower += Convert.ToDouble(values[37]); //CPU Package Power(W)
+                            cpuPower += Convert.ToDouble(values[39]); //CPU Package Power(W)
                         }
                         catch { }
-
                         try
                         {
                             gpuFreq += Convert.ToInt32(values[19]); //GPU0Clk(MHz)
@@ -386,30 +388,31 @@ namespace FrameViewGraph
                         catch { }
                         try
                         {
-                            gpuUsage += Convert.ToInt32(values[20]); //GPU0Util(%)
+                            gpuMemFreq += Convert.ToInt32(values[20]); //GPU0MemClk(MHz)
                         }
                         catch { }
                         try
                         {
-                            gpuTemp += Convert.ToInt32(values[21]); //GPU0Temp(C)
+                            gpuUsage += Convert.ToInt32(values[21]); //GPU0Util(%)
                         }
                         catch { }
                         try
                         {
-                            gpuPower += Convert.ToInt32(values[32]); //NV Pwr(W) (API)
+                            gpuTemp += Convert.ToInt32(values[22]); //GPU0Temp(C)
                         }
-                        catch
+                        catch { }
+                        try
                         {
-                            try
+                            if (values[34] != "NA")
                             {
-                                gpuPower += Convert.ToInt32(values[33]); //AMDPwr(W) (API)
+                                gpuPower += Convert.ToInt32(values[34]); //NV Pwr(W) (API)
                             }
-                            catch
+                            else
                             {
-
+                                gpuPower += Convert.ToInt32(values[35]); //NV Pwr(W) (API)
                             }
-
                         }
+                        catch { }
 
                         avgFPS += 1000.0 / checkFloat(values[13]);
 
@@ -516,6 +519,7 @@ namespace FrameViewGraph
                 info[6] = Math.Round(cpuPower / counter, 2).ToString() + " Вт";
 
                 info[8] = Math.Round((double)gpuFreq / counter, 2).ToString() + " МГц";
+                info[18] = Math.Round((double)gpuMemFreq / counter, 2).ToString() + " МГц";
                 info[9] = Math.Round((double)gpuUsage / counter, 2).ToString() + " %";
                 info[10] = Math.Round((double)gpuTemp / counter, 2).ToString() + " C°";
                 info[11] = Math.Round((double)gpuPower / counter, 2).ToString() + " Вт";
@@ -539,15 +543,7 @@ namespace FrameViewGraph
         private float checkFloat(string s)
         {
             float a;
-            try
-            {
-                a = float.Parse(s);
-            }
-            catch
-            {
-                s = s.Replace('.', ',');
-                a = float.Parse(s);
-            }
+            a = float.Parse(s);
             return a;
         }
 
@@ -587,6 +583,7 @@ namespace FrameViewGraph
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             this.Text = "FVG v." + Properties.Resources.version + " by volkovskey";
             nameOfTest = "test_" + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss");
             menuName.Text = nameOfTest;
@@ -896,7 +893,7 @@ namespace FrameViewGraph
 
         private void menuHelpVersion_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Название программы: FrameViewGraph\nВерсия программы: " + Properties.Resources.version + "\nСтатус текущей версии программы: Beta\nНеобходимая версия FrameView: 1.1\nРазработчик: volkovskey\nКопирайт: Copyright ©volkovskey 2020-2021\nЛицензия: MIT License\nТекст лицензии:\n\n" + Properties.Resources.license, "Версия программы");
+            MessageBox.Show("Название программы: FrameViewGraph\nВерсия программы: " + Properties.Resources.version + "\nСтатус текущей версии программы: Стабильная\nНеобходимая версия FrameView: 1.2\nРазработчик: volkovskey\nКопирайт: Copyright ©volkovskey 2020-2021\nЛицензия: MIT License\nТекст лицензии:\n\n" + Properties.Resources.license, "Версия программы");
         }
 
         private void menuName_TextChanged(object sender, EventArgs e)
@@ -1113,8 +1110,8 @@ namespace FrameViewGraph
         {
             if (menuCmbBx.SelectedIndex > -1)
             {
-                string[] shortData = new string[18];
-                Array.Copy(infoData[menuCmbBx.SelectedIndex], shortData, 18);
+                string[] shortData = new string[19];
+                Array.Copy(infoData[menuCmbBx.SelectedIndex], shortData, 19);
 
                 lblApplication.Text = shortData[0];
                 lblApi.Text = shortData[1];
@@ -1127,6 +1124,7 @@ namespace FrameViewGraph
 
                 lblGpuName.Text = shortData[7];
                 lblGpuFreq.Text = shortData[8];
+                lblGpuMemFreq.Text = shortData[18];
                 lblGpuUsage.Text = shortData[9];
                 lblGpuTemp.Text = shortData[10];
                 lblGpuPower.Text = shortData[11];

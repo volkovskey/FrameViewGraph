@@ -115,6 +115,8 @@
             this.labelCpuUsage = new System.Windows.Forms.Label();
             this.labelCpuName = new System.Windows.Forms.Label();
             this.labelApplication = new System.Windows.Forms.Label();
+            this.labelGpuMemFreq = new System.Windows.Forms.Label();
+            this.lblGpuMemFreq = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chrMain)).BeginInit();
             this.menuStr.SuspendLayout();
             this.statusStr.SuspendLayout();
@@ -555,6 +557,8 @@
             // 
             // grpBxInfo
             // 
+            this.grpBxInfo.Controls.Add(this.lblGpuMemFreq);
+            this.grpBxInfo.Controls.Add(this.labelGpuMemFreq);
             this.grpBxInfo.Controls.Add(this.lblGpuFreq);
             this.grpBxInfo.Controls.Add(this.labelGpuFreq);
             this.grpBxInfo.Controls.Add(this.lblCpuFreq);
@@ -634,7 +638,7 @@
             // 
             // lbl01pc
             // 
-            this.lbl01pc.Location = new System.Drawing.Point(172, 422);
+            this.lbl01pc.Location = new System.Drawing.Point(172, 442);
             this.lbl01pc.Name = "lbl01pc";
             this.lbl01pc.Size = new System.Drawing.Size(116, 20);
             this.lbl01pc.TabIndex = 33;
@@ -643,7 +647,7 @@
             // 
             // lbl1pc
             // 
-            this.lbl1pc.Location = new System.Drawing.Point(172, 402);
+            this.lbl1pc.Location = new System.Drawing.Point(172, 422);
             this.lbl1pc.Name = "lbl1pc";
             this.lbl1pc.Size = new System.Drawing.Size(116, 20);
             this.lbl1pc.TabIndex = 32;
@@ -652,7 +656,7 @@
             // 
             // lbl10pc
             // 
-            this.lbl10pc.Location = new System.Drawing.Point(172, 382);
+            this.lbl10pc.Location = new System.Drawing.Point(172, 402);
             this.lbl10pc.Name = "lbl10pc";
             this.lbl10pc.Size = new System.Drawing.Size(116, 20);
             this.lbl10pc.TabIndex = 31;
@@ -661,7 +665,7 @@
             // 
             // lbl50pc
             // 
-            this.lbl50pc.Location = new System.Drawing.Point(172, 362);
+            this.lbl50pc.Location = new System.Drawing.Point(172, 382);
             this.lbl50pc.Name = "lbl50pc";
             this.lbl50pc.Size = new System.Drawing.Size(116, 20);
             this.lbl50pc.TabIndex = 30;
@@ -670,7 +674,7 @@
             // 
             // lblModeFPS
             // 
-            this.lblModeFPS.Location = new System.Drawing.Point(172, 342);
+            this.lblModeFPS.Location = new System.Drawing.Point(172, 362);
             this.lblModeFPS.Name = "lblModeFPS";
             this.lblModeFPS.Size = new System.Drawing.Size(116, 20);
             this.lblModeFPS.TabIndex = 29;
@@ -679,7 +683,7 @@
             // 
             // lblAvgFPS
             // 
-            this.lblAvgFPS.Location = new System.Drawing.Point(172, 322);
+            this.lblAvgFPS.Location = new System.Drawing.Point(172, 342);
             this.lblAvgFPS.Name = "lblAvgFPS";
             this.lblAvgFPS.Size = new System.Drawing.Size(116, 20);
             this.lblAvgFPS.TabIndex = 28;
@@ -688,7 +692,7 @@
             // 
             // lblGpuPower
             // 
-            this.lblGpuPower.Location = new System.Drawing.Point(172, 282);
+            this.lblGpuPower.Location = new System.Drawing.Point(172, 302);
             this.lblGpuPower.Name = "lblGpuPower";
             this.lblGpuPower.Size = new System.Drawing.Size(116, 20);
             this.lblGpuPower.TabIndex = 27;
@@ -697,7 +701,7 @@
             // 
             // lblGpuTemp
             // 
-            this.lblGpuTemp.Location = new System.Drawing.Point(172, 262);
+            this.lblGpuTemp.Location = new System.Drawing.Point(172, 282);
             this.lblGpuTemp.Name = "lblGpuTemp";
             this.lblGpuTemp.Size = new System.Drawing.Size(116, 20);
             this.lblGpuTemp.TabIndex = 26;
@@ -706,7 +710,7 @@
             // 
             // lblGpuUsage
             // 
-            this.lblGpuUsage.Location = new System.Drawing.Point(172, 242);
+            this.lblGpuUsage.Location = new System.Drawing.Point(172, 262);
             this.lblGpuUsage.Name = "lblGpuUsage";
             this.lblGpuUsage.Size = new System.Drawing.Size(116, 20);
             this.lblGpuUsage.TabIndex = 25;
@@ -778,7 +782,7 @@
             // 
             // label10pc
             // 
-            this.label10pc.Location = new System.Drawing.Point(6, 382);
+            this.label10pc.Location = new System.Drawing.Point(6, 402);
             this.label10pc.Name = "label10pc";
             this.label10pc.Size = new System.Drawing.Size(140, 20);
             this.label10pc.TabIndex = 17;
@@ -786,7 +790,7 @@
             // 
             // labelGpuTemp
             // 
-            this.labelGpuTemp.Location = new System.Drawing.Point(6, 262);
+            this.labelGpuTemp.Location = new System.Drawing.Point(6, 282);
             this.labelGpuTemp.Name = "labelGpuTemp";
             this.labelGpuTemp.Size = new System.Drawing.Size(160, 20);
             this.labelGpuTemp.TabIndex = 16;
@@ -794,7 +798,7 @@
             // 
             // labelGpuPower
             // 
-            this.labelGpuPower.Location = new System.Drawing.Point(6, 282);
+            this.labelGpuPower.Location = new System.Drawing.Point(6, 302);
             this.labelGpuPower.Name = "labelGpuPower";
             this.labelGpuPower.Size = new System.Drawing.Size(160, 20);
             this.labelGpuPower.TabIndex = 15;
@@ -802,7 +806,7 @@
             // 
             // labelGpuUsage
             // 
-            this.labelGpuUsage.Location = new System.Drawing.Point(6, 242);
+            this.labelGpuUsage.Location = new System.Drawing.Point(6, 262);
             this.labelGpuUsage.Name = "labelGpuUsage";
             this.labelGpuUsage.Size = new System.Drawing.Size(160, 20);
             this.labelGpuUsage.TabIndex = 14;
@@ -834,7 +838,7 @@
             // 
             // label01pc
             // 
-            this.label01pc.Location = new System.Drawing.Point(6, 422);
+            this.label01pc.Location = new System.Drawing.Point(6, 442);
             this.label01pc.Name = "label01pc";
             this.label01pc.Size = new System.Drawing.Size(140, 20);
             this.label01pc.TabIndex = 10;
@@ -842,7 +846,7 @@
             // 
             // label1pc
             // 
-            this.label1pc.Location = new System.Drawing.Point(6, 402);
+            this.label1pc.Location = new System.Drawing.Point(6, 422);
             this.label1pc.Name = "label1pc";
             this.label1pc.Size = new System.Drawing.Size(140, 20);
             this.label1pc.TabIndex = 9;
@@ -850,7 +854,7 @@
             // 
             // label50pc
             // 
-            this.label50pc.Location = new System.Drawing.Point(6, 362);
+            this.label50pc.Location = new System.Drawing.Point(6, 382);
             this.label50pc.Name = "label50pc";
             this.label50pc.Size = new System.Drawing.Size(140, 20);
             this.label50pc.TabIndex = 8;
@@ -858,7 +862,7 @@
             // 
             // labelModeFPS
             // 
-            this.labelModeFPS.Location = new System.Drawing.Point(6, 342);
+            this.labelModeFPS.Location = new System.Drawing.Point(6, 362);
             this.labelModeFPS.Name = "labelModeFPS";
             this.labelModeFPS.Size = new System.Drawing.Size(140, 20);
             this.labelModeFPS.TabIndex = 7;
@@ -866,7 +870,7 @@
             // 
             // labelAvgFPS
             // 
-            this.labelAvgFPS.Location = new System.Drawing.Point(6, 322);
+            this.labelAvgFPS.Location = new System.Drawing.Point(6, 342);
             this.labelAvgFPS.Name = "labelAvgFPS";
             this.labelAvgFPS.Size = new System.Drawing.Size(140, 20);
             this.labelAvgFPS.TabIndex = 6;
@@ -903,6 +907,23 @@
             this.labelApplication.Size = new System.Drawing.Size(120, 20);
             this.labelApplication.TabIndex = 0;
             this.labelApplication.Text = "Программа:";
+            // 
+            // labelGpuMemFreq
+            // 
+            this.labelGpuMemFreq.Location = new System.Drawing.Point(6, 242);
+            this.labelGpuMemFreq.Name = "labelGpuMemFreq";
+            this.labelGpuMemFreq.Size = new System.Drawing.Size(160, 20);
+            this.labelGpuMemFreq.TabIndex = 38;
+            this.labelGpuMemFreq.Text = "Память GPU:";
+            // 
+            // lblGpuMemFreq
+            // 
+            this.lblGpuMemFreq.Location = new System.Drawing.Point(172, 242);
+            this.lblGpuMemFreq.Name = "lblGpuMemFreq";
+            this.lblGpuMemFreq.Size = new System.Drawing.Size(116, 20);
+            this.lblGpuMemFreq.TabIndex = 39;
+            this.lblGpuMemFreq.Text = "-";
+            this.lblGpuMemFreq.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // frmMain
             // 
@@ -1023,6 +1044,8 @@
         private System.Windows.Forms.ToolStripMenuItem menuGrViewDiagram5;
         private System.Windows.Forms.ToolStripMenuItem menuGrViewDiagram6;
         private System.Windows.Forms.ToolStripMenuItem menuGraph6;
+        private System.Windows.Forms.Label lblGpuMemFreq;
+        private System.Windows.Forms.Label labelGpuMemFreq;
     }
 }
 
