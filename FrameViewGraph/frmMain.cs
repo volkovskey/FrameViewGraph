@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace FrameViewGraph
     public partial class frmMain : Form
     {
         private String nameOfTest = "";
+        private byte numberOfDataSet = 2;
         private Byte typeOfGraph = 1;
         private Byte filter = 0;
         private Int16 resolutionWidth = 1920;
@@ -20,6 +22,8 @@ namespace FrameViewGraph
         private List<String> filesName = new List<string>();
         private List<Array> parsedData = new List<Array>();
         private List<Array> infoData = new List<Array>();
+        private List<Array> apiData = new List<Array>();
+        private List<Array> displayData = new List<Array>();
 
         public frmMain()
         {
@@ -52,7 +56,7 @@ namespace FrameViewGraph
                     {
                         for (int j = 0; j < data.GetLength(1); j++)
                         {
-                            mySeriesOfPoint.Points.AddXY(data[0, j], data[1, j]);
+                            mySeriesOfPoint.Points.AddXY(data[0, j], data[numberOfDataSet, j]);
                         }
                     }
                     else if (filter >= 1 && filter <= 3)
@@ -60,8 +64,8 @@ namespace FrameViewGraph
                         float[] FrameTime = new float[data.GetLength(1)];
                         for (int j = 0; j < data.GetLength(1); j++)
                         {
-                            data[1, j] = (float)Math.Round(data[1, j], 2);
-                            FrameTime[j] = data[1, j];
+                            data[numberOfDataSet, j] = (float)Math.Round(data[numberOfDataSet, j], 2);
+                            FrameTime[j] = data[numberOfDataSet, j];
                         }
                         Array.Sort(FrameTime);
                         Dictionary<float, int> Count = new Dictionary<float, int>();
@@ -89,7 +93,7 @@ namespace FrameViewGraph
                         else if (filter == 3) FilterLevel = 0.001f;
                         for (int j = 0; j < data.GetLength(1); j++)
                         {
-                            if ((float)Count[data[1, j]] / data.GetLength(1) > FilterLevel)
+                            if ((float)Count[data[numberOfDataSet, j]] / data.GetLength(1) > FilterLevel)
                             {
                                 mySeriesOfPoint.Points.AddXY(data[0, j], data[1, j]);
                             }
@@ -126,8 +130,8 @@ namespace FrameViewGraph
                     {
                         for (int j = 0; j < data.GetLength(1); j++)
                         {
-                            data[1, j] = (float)Math.Round(1.0f / data[1, j] * 1000f, 2);
-                            mySeriesOfPoint.Points.AddXY(data[0, j], data[1, j]);
+                            data[numberOfDataSet, j] = (float)Math.Round(1.0f / data[numberOfDataSet, j] * 1000f, 2);
+                            mySeriesOfPoint.Points.AddXY(data[0, j], data[numberOfDataSet, j]);
                         }
                     }
                     else if (filter >= 1 && filter <= 3)
@@ -135,8 +139,8 @@ namespace FrameViewGraph
                         float[] FPS = new float[data.GetLength(1)];
                         for (int j = 0; j < data.GetLength(1); j++)
                         {
-                            data[1, j] = (float)Math.Round(1.0f / data[1, j] * 1000f, 2);
-                            FPS[j] = data[1, j];
+                            data[numberOfDataSet, j] = (float)Math.Round(1.0f / data[numberOfDataSet, j] * 1000f, 2);
+                            FPS[j] = data[numberOfDataSet, j];
                         }
                         Array.Sort(FPS);
                         Dictionary<float, int> Count = new Dictionary<float, int>();
@@ -164,9 +168,9 @@ namespace FrameViewGraph
                         else if (filter == 3) FilterLevel = 0.001f;
                         for (int j = 0; j < data.GetLength(1); j++)
                         {
-                            if ((float)Count[data[1, j]] / data.GetLength(1) > FilterLevel)
+                            if ((float)Count[data[numberOfDataSet, j]] / data.GetLength(1) > FilterLevel)
                             {
-                                mySeriesOfPoint.Points.AddXY(data[0, j], data[1, j]);
+                                mySeriesOfPoint.Points.AddXY(data[0, j], data[numberOfDataSet, j]);
                             }
                         }
                     }
@@ -199,7 +203,7 @@ namespace FrameViewGraph
                     int[] FPS = new int[data.GetLength(1)];
                     for (int k = 0; k < data.GetLength(1); k++)
                     {
-                        FPS[k] = (int)Math.Round(1.0f / data[1, k] * 1000f);
+                        FPS[k] = (int)Math.Round(1.0f / data[numberOfDataSet, k] * 1000f);
                     }
                     Array.Sort(FPS);
                     Dictionary<int, int> Count = new Dictionary<int, int>();
@@ -252,7 +256,15 @@ namespace FrameViewGraph
             {
                 if (chkListFile.CheckedItems.Contains(filesName[a]))
                 {
-                    string[] FPSdata = (string[])infoData[a].Clone();
+                    string[] FPSdata = { };
+                    if (numberOfDataSet == 1)
+                    {
+                        FPSdata = (string[])apiData[a].Clone();
+                    }
+                    else if (numberOfDataSet == 2)
+                    {
+                        FPSdata = (string[])displayData[a].Clone();
+                    }
                     String nameTest = nameOfTest;
                     String lineData = filesName[a];
                     Series mySeriesOfPoint = new Series(lineData);
@@ -261,12 +273,12 @@ namespace FrameViewGraph
                     mySeriesOfPoint.XValueType = ChartValueType.String;
                     mySeriesOfPoint.IsValueShownAsLabel = true;
 
-                    if (menuGrViewDiagram1.Checked) mySeriesOfPoint.Points.AddXY("Avg", Math.Round(checkFloat(FPSdata[12]), 2));
-                    if (menuGrViewDiagram2.Checked) mySeriesOfPoint.Points.AddXY("Mode", Math.Round(checkFloat(FPSdata[13]), 2));
-                    if (menuGrViewDiagram3.Checked) mySeriesOfPoint.Points.AddXY("50%", Math.Round(checkFloat(FPSdata[14]), 2));
-                    if (menuGrViewDiagram4.Checked) mySeriesOfPoint.Points.AddXY("10%", Math.Round(checkFloat(FPSdata[15]), 2));
-                    if (menuGrViewDiagram5.Checked) mySeriesOfPoint.Points.AddXY("1%", Math.Round(checkFloat(FPSdata[16]), 2));
-                    if (menuGrViewDiagram6.Checked) mySeriesOfPoint.Points.AddXY("0.1%", Math.Round(checkFloat(FPSdata[17]), 2));
+                    if (menuGrDataDiagram1.Checked) mySeriesOfPoint.Points.AddXY("Avg", Math.Round(checkFloat(FPSdata[0]), 2));
+                    if (menuGrDataDiagram2.Checked) mySeriesOfPoint.Points.AddXY("Mode", Math.Round(checkFloat(FPSdata[1]), 2));
+                    if (menuGrDataDiagram3.Checked) mySeriesOfPoint.Points.AddXY("50%", Math.Round(checkFloat(FPSdata[2]), 2));
+                    if (menuGrDataDiagram4.Checked) mySeriesOfPoint.Points.AddXY("10%", Math.Round(checkFloat(FPSdata[3]), 2));
+                    if (menuGrDataDiagram5.Checked) mySeriesOfPoint.Points.AddXY("1%", Math.Round(checkFloat(FPSdata[4]), 2));
+                    if (menuGrDataDiagram6.Checked) mySeriesOfPoint.Points.AddXY("0.1%", Math.Round(checkFloat(FPSdata[5]), 2));
 
                     chrMain.Series.Add(mySeriesOfPoint);
                 }
@@ -283,13 +295,28 @@ namespace FrameViewGraph
             chrMain.ChartAreas[0].Axes[0].MajorGrid.Enabled = false;
             if (menuCmbBx.SelectedIndex > -1)
             {
-                string[] mainData = new string[18];
-                Array.Copy(infoData[menuCmbBx.SelectedIndex], mainData, 18);
+                string[] mainData = new string[6];
+                if (numberOfDataSet == 1)
+                {
+                    Array.Copy(apiData[menuCmbBx.SelectedIndex], mainData, 6);
+                }
+                else if (numberOfDataSet == 2)
+                {
+                    Array.Copy(displayData[menuCmbBx.SelectedIndex], mainData, 6);
+                }
                 for (int a = 0; a < parsedData.Count; a++)
                 {
                     if (chkListFile.CheckedItems.Contains(filesName[a]))
                     {
-                        string[] FPSdata = (string[])infoData[a].Clone();
+                        string[] FPSdata = { };
+                        if (numberOfDataSet == 1)
+                        {
+                            FPSdata = (string[])apiData[a].Clone();
+                        }
+                        else if (numberOfDataSet == 2)
+                        {
+                            FPSdata = (string[])displayData[a].Clone();
+                        }
                         String nameTest = nameOfTest;
                         String lineData = filesName[a];
                         Series mySeriesOfPoint = new Series(lineData);
@@ -298,12 +325,12 @@ namespace FrameViewGraph
                         mySeriesOfPoint.XValueType = ChartValueType.String;
                         mySeriesOfPoint.IsValueShownAsLabel = true;
 
-                        if (menuGrViewDiagram1.Checked) mySeriesOfPoint.Points.AddXY("Avg", Math.Round(checkFloat(FPSdata[12]) / checkFloat(mainData[12]) * 100, 2));
-                        if (menuGrViewDiagram2.Checked) mySeriesOfPoint.Points.AddXY("Mode", Math.Round(checkFloat(FPSdata[13]) / checkFloat(mainData[13]) * 100, 2));
-                        if (menuGrViewDiagram3.Checked) mySeriesOfPoint.Points.AddXY("50%", Math.Round(checkFloat(FPSdata[14]) / checkFloat(mainData[14]) * 100, 2));
-                        if (menuGrViewDiagram4.Checked) mySeriesOfPoint.Points.AddXY("10%", Math.Round(checkFloat(FPSdata[15]) / checkFloat(mainData[15]) * 100, 2));
-                        if (menuGrViewDiagram5.Checked) mySeriesOfPoint.Points.AddXY("1%", Math.Round(checkFloat(FPSdata[16]) / checkFloat(mainData[16]) * 100, 2));
-                        if (menuGrViewDiagram6.Checked) mySeriesOfPoint.Points.AddXY("0.1%", Math.Round(checkFloat(FPSdata[17]) / checkFloat(mainData[17]) * 100, 2));
+                        if (menuGrDataDiagram1.Checked) mySeriesOfPoint.Points.AddXY("Avg", Math.Round(checkFloat(FPSdata[0]) / checkFloat(mainData[0]) * 100, 2));
+                        if (menuGrDataDiagram2.Checked) mySeriesOfPoint.Points.AddXY("Mode", Math.Round(checkFloat(FPSdata[1]) / checkFloat(mainData[1]) * 100, 2));
+                        if (menuGrDataDiagram3.Checked) mySeriesOfPoint.Points.AddXY("50%", Math.Round(checkFloat(FPSdata[2]) / checkFloat(mainData[2]) * 100, 2));
+                        if (menuGrDataDiagram4.Checked) mySeriesOfPoint.Points.AddXY("10%", Math.Round(checkFloat(FPSdata[3]) / checkFloat(mainData[3]) * 100, 2));
+                        if (menuGrDataDiagram5.Checked) mySeriesOfPoint.Points.AddXY("1%", Math.Round(checkFloat(FPSdata[4]) / checkFloat(mainData[4]) * 100, 2));
+                        if (menuGrDataDiagram6.Checked) mySeriesOfPoint.Points.AddXY("0.1%", Math.Round(checkFloat(FPSdata[5]) / checkFloat(mainData[5]) * 100, 2));
 
                         chrMain.Series.Add(mySeriesOfPoint);
                     }
@@ -318,13 +345,13 @@ namespace FrameViewGraph
         private float[,] openCSV(String path)
         {
             //0 - Time
-            //1 - FrameTime
+            //1 - MsBetweenPresents
+            //2 - MsBetweenDisplayChange
             try
             {
-                float[,] result = new float[2, 0];
+                float[,] result = new float[3, 0];
 
-                bool k = true;
-                string[] info = new string[19];
+                string[] info = new string[13];
 
                 int counter = 0;
 
@@ -339,199 +366,343 @@ namespace FrameViewGraph
                 int gpuTemp = 0;
                 int gpuPower = 0;
 
-                double avgFPS = 0;
-
                 var reader = new StreamReader(File.OpenRead(path));
-                while (!reader.EndOfStream)
+                var firstLine = reader.ReadLine();
+
+                if (firstLine == Properties.Resources.FV09)
                 {
-                    var line = reader.ReadLine();
-                    var values = line.Split(',');
-                    if (values[12].Contains("."))
+                    var secondLine = reader.ReadLine();
+                    var valuesSecondLine = secondLine.Split(',');
+
+                    info[0] = valuesSecondLine[0]; //Application
+                    info[1] = valuesSecondLine[2]; //Runtime
+                    info[2] = "NA"; //CPU
+                    info[7] = "NA"; //GPU
+
+                    while (!reader.EndOfStream)
                     {
-                        result = ResizeArray(result);
+                        var line = reader.ReadLine();
+                        var values = line.Split(',');
+                        if (values[8].Contains(".") && values[9].Contains(".") && values[10].Contains("."))
+                        {
+                            result = ResizeArray(result);
 
-                        result[0, result.GetLength(1) - 1] = checkFloat(values[12]) * 1000f; //TimeInSeconds
-                        result[1, result.GetLength(1) - 1] = checkFloat(values[13]); //MsBetweenPresents
-
-                        if (k)
-                        {
-                            k = false;
-                            info[0] = values[0]; //Application
-                            info[1] = values[4]; //Runtime
-                            info[2] = values[2]; //CPU
-                            info[7] = values[1]; //GPU
+                            result[0, result.GetLength(1) - 1] = checkFloat(values[8]) * 1000f; //TimeInSeconds
+                            result[1, result.GetLength(1) - 1] = checkFloat(values[9]); //MsBetweenPresents
+                            result[2, result.GetLength(1) - 1] = checkFloat(values[10]); //MsBetweenDisplayChangeActual
                         }
-                        try
-                        {
-                            cpuFreq += Convert.ToInt32(values[36]); //CPUClk(MHz)
-                        }
-                        catch { }
-                        try
-                        {
-                            cpuUsage += Convert.ToInt32(values[37]); //CPUUtil(%)
-                        }
-                        catch { }
-                        try
-                        {
-                            cpuTemp += Convert.ToInt32(values[38]); //CPU Package Temp(C)
-                        }
-                        catch { }
-                        try
-                        {
-                            cpuPower += Convert.ToDouble(values[39]); //CPU Package Power(W)
-                        }
-                        catch { }
-                        try
-                        {
-                            gpuFreq += Convert.ToInt32(values[19]); //GPU0Clk(MHz)
-                        }
-                        catch { }
-                        try
-                        {
-                            gpuMemFreq += Convert.ToInt32(values[20]); //GPU0MemClk(MHz)
-                        }
-                        catch { }
-                        try
-                        {
-                            gpuUsage += Convert.ToInt32(values[21]); //GPU0Util(%)
-                        }
-                        catch { }
-                        try
-                        {
-                            gpuTemp += Convert.ToInt32(values[22]); //GPU0Temp(C)
-                        }
-                        catch { }
-                        try
-                        {
-                            if (values[34] != "NA")
-                            {
-                                gpuPower += Convert.ToInt32(values[34]); //NV Pwr(W) (API)
-                            }
-                            else
-                            {
-                                gpuPower += Convert.ToInt32(values[35]); //NV Pwr(W) (API)
-                            }
-                        }
-                        catch { }
-
-                        avgFPS += 1000.0 / checkFloat(values[13]);
-
-                        counter++;
                     }
+
+                    info[3] = "NA";
+                    info[4] = "NA";
+                    info[5] = "NA";
+                    info[6] = "NA";
+
+                    info[8] = "NA";
+                    info[9] = "NA";
+                    info[10] = "NA";
+                    info[11] = "NA";
+                    info[12] = "NA";
+
+                    infoData.Add(info);
                 }
-                double[] FPS = new double[result.GetLength(1)];
-                float startTime = result[0, 0];
-                for (int i = 0; i < result.GetLength(1); i++)
+                else if (firstLine == Properties.Resources.FV11)
                 {
-                    result[0, i] -= startTime;
-                    FPS[i] = Math.Round(1000 / result[1, i], 1);
+                    var secondLine = reader.ReadLine();
+                    var valuesSecondLine = secondLine.Split(',');
+
+                    info[0] = valuesSecondLine[0]; //Application
+                    info[1] = valuesSecondLine[4]; //Runtime
+                    info[2] = valuesSecondLine[2]; //CPU
+                    info[7] = valuesSecondLine[1]; //GPU
+                    while (!reader.EndOfStream)
+                    {
+                        var line = reader.ReadLine();
+                        var values = line.Split(',');
+                        if (values[12].Contains(".") && values[13].Contains(".") && values[14].Contains("."))
+                        {
+                            result = ResizeArray(result);
+
+                            result[0, result.GetLength(1) - 1] = checkFloat(values[12]) * 1000f; //TimeInSeconds
+                            result[1, result.GetLength(1) - 1] = checkFloat(values[13]); //MsBetweenPresents
+                            result[2, result.GetLength(1) - 1] = checkFloat(values[14]); //MsBetweenDisplayChangeActual
+                            try
+                            {
+                                cpuFreq += Convert.ToInt32(values[34]); //CPUClk(MHz)
+                            }
+                            catch { }
+                            try
+                            {
+                                cpuUsage += Convert.ToInt32(values[35]); //CPUUtil(%)
+                            }
+                            catch { }
+                            try
+                            {
+                                cpuTemp += Convert.ToInt32(values[36]); //CPU Package Temp(C)
+                            }
+                            catch { }
+                            try
+                            {
+                                cpuPower += Convert.ToDouble(values[37]); //CPU Package Power(W)
+                            }
+                            catch { }
+                            try
+                            {
+                                gpuFreq += Convert.ToInt32(values[19]); //GPU0Clk(MHz)
+                            }
+                            catch { }
+                            try
+                            {
+                                gpuUsage += Convert.ToInt32(values[20]); //GPU0Util(%)
+                            }
+                            catch { }
+                            try
+                            {
+                                gpuTemp += Convert.ToInt32(values[21]); //GPU0Temp(C)
+                            }
+                            catch { }
+                            try
+                            {
+                                if (values[32] != "NA")
+                                {
+                                    gpuPower += Convert.ToInt32(values[32]); //NV Pwr(W) (API)
+                                }
+                                else if (values[33] != "NA")
+                                {
+                                    gpuPower += Convert.ToInt32(values[33]); //NV Pwr(W) (API)
+                                }
+                            }
+                            catch { }
+
+                            counter++;
+                        }
+                    }
+
+                    info[3] = Math.Round((double)cpuFreq / counter, 2).ToString() + " МГц";
+                    info[4] = Math.Round((double)cpuUsage / counter, 2).ToString() + " %";
+                    info[5] = Math.Round((double)cpuTemp / counter, 2).ToString() + " C°";
+                    info[6] = Math.Round(cpuPower / counter, 2).ToString() + " Вт";
+
+                    info[8] = Math.Round((double)gpuFreq / counter, 2).ToString() + " МГц";
+                    info[9] = "NA";
+                    info[10] = Math.Round((double)gpuUsage / counter, 2).ToString() + " %";
+                    info[11] = Math.Round((double)gpuTemp / counter, 2).ToString() + " C°";
+                    info[12] = Math.Round((double)gpuPower / counter, 2).ToString() + " Вт";
+
+                    infoData.Add(info);
+
+                }
+                else if (firstLine == Properties.Resources.FV12)
+                {
+                    var secondLine = reader.ReadLine();
+                    var valuesSecondLine = secondLine.Split(',');
+
+                    info[0] = valuesSecondLine[0]; //Application
+                    info[1] = valuesSecondLine[4]; //Runtime
+                    info[2] = valuesSecondLine[2]; //CPU
+                    info[7] = valuesSecondLine[1]; //GPU
+                    while (!reader.EndOfStream)
+                    {
+                        var line = reader.ReadLine();
+                        var values = line.Split(',');
+                        if (values[12].Contains(".") && values[13].Contains(".") && values[14].Contains("."))
+                        {
+                            result = ResizeArray(result);
+
+                            result[0, result.GetLength(1) - 1] = checkFloat(values[12]) * 1000f; //TimeInSeconds
+                            result[1, result.GetLength(1) - 1] = checkFloat(values[13]); //MsBetweenPresents
+                            result[2, result.GetLength(1) - 1] = checkFloat(values[14]); //MsBetweenDisplayChangeActual
+                            try
+                            {
+                                cpuFreq += Convert.ToInt32(values[36]); //CPUClk(MHz)
+                            }
+                            catch { }
+                            try
+                            {
+                                cpuUsage += Convert.ToInt32(values[37]); //CPUUtil(%)
+                            }
+                            catch { }
+                            try
+                            {
+                                cpuTemp += Convert.ToInt32(values[38]); //CPU Package Temp(C)
+                            }
+                            catch { }
+                            try
+                            {
+                                cpuPower += Convert.ToDouble(values[39]); //CPU Package Power(W)
+                            }
+                            catch { }
+                            try
+                            {
+                                gpuFreq += Convert.ToInt32(values[19]); //GPU0Clk(MHz)
+                            }
+                            catch { }
+                            try
+                            {
+                                gpuMemFreq += Convert.ToInt32(values[20]); //GPU0MemClk(MHz)
+                            }
+                            catch { }
+                            try
+                            {
+                                gpuUsage += Convert.ToInt32(values[21]); //GPU0Util(%)
+                            }
+                            catch { }
+                            try
+                            {
+                                gpuTemp += Convert.ToInt32(values[22]); //GPU0Temp(C)
+                            }
+                            catch { }
+                            try
+                            {
+                                if (values[34] != "NA")
+                                {
+                                    gpuPower += Convert.ToInt32(values[34]); //NV Pwr(W) (API)
+                                }
+                                else if (values[35] != "NA")
+                                {
+                                    gpuPower += Convert.ToInt32(values[35]); //NV Pwr(W) (API)
+                                }
+                            }
+                            catch { }
+
+                            counter++;
+                        }
+                    }
+
+                    info[3] = Math.Round((double)cpuFreq / counter, 2).ToString() + " МГц";
+                    info[4] = Math.Round((double)cpuUsage / counter, 2).ToString() + " %";
+                    info[5] = Math.Round((double)cpuTemp / counter, 2).ToString() + " C°";
+                    info[6] = Math.Round(cpuPower / counter, 2).ToString() + " Вт";
+
+                    info[8] = Math.Round((double)gpuFreq / counter, 2).ToString() + " МГц";
+                    info[9] = Math.Round((double)gpuMemFreq / counter, 2).ToString() + " МГц";
+                    info[10] = Math.Round((double)gpuUsage / counter, 2).ToString() + " %";
+                    info[11] = Math.Round((double)gpuTemp / counter, 2).ToString() + " C°";
+                    info[12] = Math.Round((double)gpuPower / counter, 2).ToString() + " Вт";
+
+                    infoData.Add(info);
+                }
+                else
+                {
+                    MessageBox.Show("Структура файла нарушена, удостоверьтесь, что используете правильную версию FrameView.", "Ошибка");
+                    return null;
                 }
 
-                Array.Sort(FPS);
-                Dictionary<double, int> Count = new Dictionary<double, int>();
-                for (int i = 0; i < FPS.Length;)
+                void calculateFPS(byte number)
                 {
-                    int j;
-                    for (j = i + 1; j < FPS.Length; j++)
+                    double[] FPS = new double[result.GetLength(1)];
+                    float startTime = result[0, 0];
+                    for (int i = 0; i < result.GetLength(1); i++)
                     {
-                        if (FPS[i] != FPS[j])
+                        result[0, i] -= startTime;
+                        FPS[i] = Math.Round(1000 / result[number, i], 1);
+                    }
+
+                    double avgFPS = FPS.Average();
+
+                    Array.Sort(FPS);
+                    Dictionary<double, int> Count = new Dictionary<double, int>();
+                    for (int i = 0; i < FPS.Length;)
+                    {
+                        int j;
+                        for (j = i + 1; j < FPS.Length; j++)
+                        {
+                            if (FPS[i] != FPS[j])
+                            {
+                                if (FPS[i] > 0) Count.Add(FPS[i], j - i);
+                                i = j;
+                                break;
+                            }
+                        }
+                        if (j == FPS.Length)
                         {
                             if (FPS[i] > 0) Count.Add(FPS[i], j - i);
-                            i = j;
                             break;
                         }
                     }
-                    if (j == FPS.Length)
-                    {
-                        if (FPS[i] > 0) Count.Add(FPS[i], j - i);
-                        break;
-                    }
-                }
 
-                double pc50 = 0, pc10 = 0, pc1 = 0, pc01 = 0;
-                bool pc50b = false, pc10b = false, pc1b = false, pc01b = false;
-                double FPScount = 0;
-                double modeFPS = 0;
-                double countModeFPS = 0;
+                    double pc50 = 0, pc10 = 0, pc1 = 0, pc01 = 0;
+                    bool pc50b = false, pc10b = false, pc1b = false, pc01b = false;
+                    double FPScount = 0;
+                    double modeFPS = 0;
+                    double countModeFPS = 0;
 
-                foreach (var fps in Count)
-                {
-                    FPScount += fps.Value;
-                    if (FPScount / counter >= 0.5 && !pc50b)
+                    foreach (var fps in Count)
                     {
-                        pc50b = !pc50b;
-                        pc50 = fps.Key;
+                        FPScount += fps.Value;
+                        if (FPScount / counter >= 0.5 && !pc50b)
+                        {
+                            pc50b = !pc50b;
+                            pc50 = fps.Key;
+                        }
+                        else if (FPScount / counter >= 0.1 && !pc10b)
+                        {
+                            pc10b = !pc10b;
+                            pc10 = fps.Key;
+                        }
+                        else if (FPScount / counter >= 0.01 && !pc1b)
+                        {
+                            pc1b = !pc1b;
+                            pc1 = fps.Key;
+                        }
+                        else if (FPScount / counter >= 0.001 && !pc01b)
+                        {
+                            pc01b = !pc01b;
+                            pc01 = fps.Key;
+                        }
                     }
-                    else if (FPScount / counter >= 0.1 && !pc10b)
-                    {
-                        pc10b = !pc10b;
-                        pc10 = fps.Key;
-                    }
-                    else if (FPScount / counter >= 0.01 && !pc1b)
-                    {
-                        pc1b = !pc1b;
-                        pc1 = fps.Key;
-                    }
-                    else if (FPScount / counter >= 0.001 && !pc01b)
-                    {
-                        pc01b = !pc01b;
-                        pc01 = fps.Key;
-                    }
-                }
 
-                for (int i = 0; i < result.GetLength(1); i++)
-                {
-                    FPS[i] = Math.Round(FPS[i]);
-                }
-                Array.Sort(FPS);
-                Count = new Dictionary<double, int>();
-                for (int i = 0; i < FPS.Length;)
-                {
-                    int j;
-                    for (j = i + 1; j < FPS.Length; j++)
+                    for (int i = 0; i < result.GetLength(1); i++)
                     {
-                        if (FPS[i] != FPS[j])
+                        FPS[i] = Math.Round(FPS[i]);
+                    }
+                    Array.Sort(FPS);
+                    Count = new Dictionary<double, int>();
+                    for (int i = 0; i < FPS.Length;)
+                    {
+                        int j;
+                        for (j = i + 1; j < FPS.Length; j++)
+                        {
+                            if (FPS[i] != FPS[j])
+                            {
+                                if (FPS[i] > 0) Count.Add(FPS[i], j - i);
+                                i = j;
+                                break;
+                            }
+                        }
+                        if (j == FPS.Length)
                         {
                             if (FPS[i] > 0) Count.Add(FPS[i], j - i);
-                            i = j;
                             break;
                         }
                     }
-                    if (j == FPS.Length)
+
+                    foreach (var fps in Count)
                     {
-                        if (FPS[i] > 0) Count.Add(FPS[i], j - i);
-                        break;
+                        if (countModeFPS < fps.Value)
+                        {
+                            countModeFPS = fps.Value;
+                            modeFPS = fps.Key;
+                        }
+                    }
+
+                    string[] tempData = { Math.Round((double)avgFPS, 2).ToString(), modeFPS.ToString(), pc50.ToString(), pc10.ToString(), pc1.ToString(), pc01.ToString() };
+                    if (number == 1)
+                    {
+                        apiData.Add(tempData);
+                    }
+                    else if (number == 2)
+                    {
+                        displayData.Add(tempData);
+                    }
+                    else
+                    {
+                        Application.Exit();
                     }
                 }
 
-                foreach (var fps in Count)
-                {
-                    if (countModeFPS < fps.Value)
-                    {
-                        countModeFPS = fps.Value;
-                        modeFPS = fps.Key;
-                    }
-                }
-
-                info[3] = Math.Round((double)cpuFreq / counter, 2).ToString() + " МГц";
-                info[4] = Math.Round((double)cpuUsage / counter, 2).ToString() + " %";
-                info[5] = Math.Round((double)cpuTemp / counter, 2).ToString() + " C°";
-                info[6] = Math.Round(cpuPower / counter, 2).ToString() + " Вт";
-
-                info[8] = Math.Round((double)gpuFreq / counter, 2).ToString() + " МГц";
-                info[18] = Math.Round((double)gpuMemFreq / counter, 2).ToString() + " МГц";
-                info[9] = Math.Round((double)gpuUsage / counter, 2).ToString() + " %";
-                info[10] = Math.Round((double)gpuTemp / counter, 2).ToString() + " C°";
-                info[11] = Math.Round((double)gpuPower / counter, 2).ToString() + " Вт";
-
-                info[12] = Math.Round((double)avgFPS / counter, 2).ToString();
-                info[13] = modeFPS.ToString();
-                info[14] = pc50.ToString();
-                info[15] = pc10.ToString();
-                info[16] = pc1.ToString();
-                info[17] = pc01.ToString();
-
-                infoData.Add(info);
+                calculateFPS(1);
+                calculateFPS(2);
                 return result;
             }
             catch
@@ -547,24 +718,38 @@ namespace FrameViewGraph
             return a;
         }
 
-        private float[,] tryOpenCSV(String path)
+        private bool tryOpenCSV(String path)
         {
             try
             {
-                float[,] result = new float[2, 0];
+                bool open = false;
                 var reader = new StreamReader(File.OpenRead(path));
-                return result;
+                var firstLine = reader.ReadLine();
+
+                if (firstLine == Properties.Resources.FV09)
+                {
+                    open = true;
+                }
+                else if (firstLine == Properties.Resources.FV11)
+                {
+                    open = true;
+                }
+                else if (firstLine == Properties.Resources.FV12)
+                {
+                    open = true;
+                }
+                return open;
             }
             catch
             {
                 MessageBox.Show("Невозможно открыть данный файл. Возможно он открыт в другой программе.", "Ошибка");
-                return null;
+                return false;
             }
         }
 
         private static float[,] ResizeArray(float[,] arr)
         {
-            float[,] newArr = new float[2, arr.GetLength(1) + 1];
+            float[,] newArr = new float[3, arr.GetLength(1) + 1];
             for (int i = 0; i < arr.GetLength(0); i++)
             {
                 for (int j = 0; j < arr.GetLength(1); j++)
@@ -659,7 +844,7 @@ namespace FrameViewGraph
         {
             if (openFileDlg.ShowDialog() == DialogResult.OK && !chkListFile.Items.Contains(openFileDlg.SafeFileName))
             {
-                if (tryOpenCSV(openFileDlg.FileName) != null)
+                if (tryOpenCSV(openFileDlg.FileName))
                 {
                     statusStatus.Text = "Идет загрузка данных с файла...";
                     statusStr.Refresh();
@@ -689,6 +874,8 @@ namespace FrameViewGraph
                             filesName.RemoveAt(index);
                             parsedData.RemoveAt(index);
                             infoData.RemoveAt(index);
+                            displayData.RemoveAt(index);
+                            apiData.RemoveAt(index);
                         }
                     }
                 }
@@ -893,7 +1080,7 @@ namespace FrameViewGraph
 
         private void menuHelpVersion_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Название программы: FrameViewGraph\nВерсия программы: " + Properties.Resources.version + "\nСтатус текущей версии программы: Stable\nНеобходимая версия FrameView: 1.2\nРазработчик: volkovskey\nКопирайт: Copyright ©volkovskey 2020-2021\nЛицензия: MIT License\nТекст лицензии:\n\n" + Properties.Resources.license, "Версия программы");
+            MessageBox.Show("Название программы: FrameViewGraph\nВерсия программы: " + Properties.Resources.version + "\nСтатус текущей версии программы: Стабильная\nПодходящие версии FrameView: 0.9, 1.1, 1.2\nРазработчик: volkovskey\nКопирайт: Copyright ©volkovskey 2020-2021\nЛицензия: MIT License\nТекст лицензии:\n\n" + Properties.Resources.license, "Версия программы");
         }
 
         private void menuName_TextChanged(object sender, EventArgs e)
@@ -977,7 +1164,7 @@ namespace FrameViewGraph
                 disableAllGraphs();
                 menuGraph5.Checked = true;
                 typeOfGraph = 5;
-                menuGrViewDiagram.Enabled = true;
+                menuGrDataDiagram.Enabled = true;
             }
         }
 
@@ -992,7 +1179,7 @@ namespace FrameViewGraph
                 disableAllGraphs();
                 menuGraph6.Checked = true;
                 typeOfGraph = 6;
-                menuGrViewDiagram.Enabled = true;
+                menuGrDataDiagram.Enabled = true;
             }
         }
 
@@ -1051,7 +1238,7 @@ namespace FrameViewGraph
             menuGraph3.Checked = false;
             menuGraph5.Checked = false;
             menuGraph6.Checked = false;
-            menuGrViewDiagram.Enabled = false;
+            menuGrDataDiagram.Enabled = false;
         }
 
         private void menuGraph1_Click(object sender, EventArgs e)
@@ -1091,7 +1278,7 @@ namespace FrameViewGraph
                 disableAllGraphs();
                 menuGraph5.Checked = true;
                 typeOfGraph = 5;
-                menuGrViewDiagram.Enabled = true;
+                menuGrDataDiagram.Enabled = true;
             }
         }
 
@@ -1102,7 +1289,7 @@ namespace FrameViewGraph
                 disableAllGraphs();
                 menuGraph6.Checked = true;
                 typeOfGraph = 6;
-                menuGrViewDiagram.Enabled = true;
+                menuGrDataDiagram.Enabled = true;
             }
         }
 
@@ -1110,8 +1297,17 @@ namespace FrameViewGraph
         {
             if (menuCmbBx.SelectedIndex > -1)
             {
-                string[] shortData = new string[19];
-                Array.Copy(infoData[menuCmbBx.SelectedIndex], shortData, 19);
+                string[] shortData = new string[13];
+                string[] fpsData = new string[6];
+                Array.Copy(infoData[menuCmbBx.SelectedIndex], shortData, 13);
+                if (numberOfDataSet == 1)
+                {
+                    Array.Copy(apiData[menuCmbBx.SelectedIndex], fpsData, 6);
+                }
+                else if (numberOfDataSet == 2)
+                {
+                    Array.Copy(displayData[menuCmbBx.SelectedIndex], fpsData, 6);
+                }
 
                 lblApplication.Text = shortData[0];
                 lblApi.Text = shortData[1];
@@ -1124,29 +1320,47 @@ namespace FrameViewGraph
 
                 lblGpuName.Text = shortData[7];
                 lblGpuFreq.Text = shortData[8];
-                lblGpuMemFreq.Text = shortData[18];
-                lblGpuUsage.Text = shortData[9];
-                lblGpuTemp.Text = shortData[10];
-                lblGpuPower.Text = shortData[11];
+                lblGpuMemFreq.Text = shortData[9];
+                lblGpuUsage.Text = shortData[10];
+                lblGpuTemp.Text = shortData[11];
+                lblGpuPower.Text = shortData[12];
 
-                lblAvgFPS.Text = shortData[12];
-                lblModeFPS.Text = shortData[13];
-                lbl50pc.Text = shortData[14];
-                lbl10pc.Text = shortData[15];
-                lbl1pc.Text = shortData[16];
-                lbl01pc.Text = shortData[17];
+                lblAvgFPS.Text = fpsData[0];
+                lblModeFPS.Text = fpsData[1];
+                lbl50pc.Text = fpsData[2];
+                lbl10pc.Text = fpsData[3];
+                lbl1pc.Text = fpsData[4];
+                lbl01pc.Text = fpsData[5];
             }
         }
 
-        private void menuGrViewDiagram_Click(object sender, EventArgs e)
+        private void menuGrDataDiagram_Click(object sender, EventArgs e)
         {
             menuGr.DropDown.AutoClose = !menuGr.DropDown.AutoClose;
-            menuGrView.DropDown.AutoClose = !menuGrView.DropDown.AutoClose;
-            menuGrViewDiagram.DropDown.AutoClose = !menuGrViewDiagram.DropDown.AutoClose;
-            if (menuGrViewDiagram.DropDown.AutoClose) menuGrViewDiagram.DropDown.Close();
+            menuGrData.DropDown.AutoClose = !menuGrData.DropDown.AutoClose;
+            menuGrDataDiagram.DropDown.AutoClose = !menuGrDataDiagram.DropDown.AutoClose;
+            if (menuGrDataDiagram.DropDown.AutoClose) menuGrDataDiagram.DropDown.Close();
         }
 
-       
+        private void menuGrDataSetDisplay_Click(object sender, EventArgs e)
+        {
+            menuGrDataSetAPI.Checked = false;
+            menuGrDataSetDisplay.Checked = true;
+            numberOfDataSet = 2;
+
+            menuGrDraw_Click(sender, e);
+            menuCmbBx_SelectedIndexChanged(sender, e);
+        }
+
+        private void menuGrDataSetAPI_Click(object sender, EventArgs e)
+        {
+            menuGrDataSetAPI.Checked = true;
+            menuGrDataSetDisplay.Checked = false;
+            numberOfDataSet = 1;
+
+            menuGrDraw_Click(sender, e);
+            menuCmbBx_SelectedIndexChanged(sender, e);
+        }
     }
 }
 
