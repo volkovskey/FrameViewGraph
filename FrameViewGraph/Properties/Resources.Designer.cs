@@ -101,14 +101,5 @@ namespace FrameViewGraph.Properties {
                 return ResourceManager.GetString("license", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на 1.2.0.
-        /// </summary>
-        public static string version {
-            get {
-                return ResourceManager.GetString("version", resourceCulture);
-            }
-        }
     }
 }

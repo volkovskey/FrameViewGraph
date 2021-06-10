@@ -121,6 +121,11 @@
             this.labelCpuUsage = new System.Windows.Forms.Label();
             this.labelCpuName = new System.Windows.Forms.Label();
             this.labelApplication = new System.Windows.Forms.Label();
+            this.menuGrDataTempAndPower = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGrDataTnP_CPUtemp = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGrDataTnP_GPUtemp = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGrDataTnP_CPUpower = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGrDataTnP_GPUpower = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.chrMain)).BeginInit();
             this.menuStr.SuspendLayout();
             this.statusStr.SuspendLayout();
@@ -268,7 +273,6 @@
             // 
             // menuResolutionCustomX
             // 
-            this.menuResolutionCustomX.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.menuResolutionCustomX.Name = "menuResolutionCustomX";
             this.menuResolutionCustomX.Size = new System.Drawing.Size(100, 23);
             this.menuResolutionCustomX.Text = "1920";
@@ -277,7 +281,6 @@
             // 
             // menuResolutionCustomY
             // 
-            this.menuResolutionCustomY.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.menuResolutionCustomY.Name = "menuResolutionCustomY";
             this.menuResolutionCustomY.Size = new System.Drawing.Size(100, 23);
             this.menuResolutionCustomY.Text = "1080";
@@ -396,28 +399,28 @@
             this.menuGrFilterNo.Checked = true;
             this.menuGrFilterNo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuGrFilterNo.Name = "menuGrFilterNo";
-            this.menuGrFilterNo.Size = new System.Drawing.Size(129, 22);
+            this.menuGrFilterNo.Size = new System.Drawing.Size(180, 22);
             this.menuGrFilterNo.Text = "Нет";
             this.menuGrFilterNo.Click += new System.EventHandler(this.menuGrFilterNo_Click);
             // 
             // menuGrFilter1
             // 
             this.menuGrFilter1.Name = "menuGrFilter1";
-            this.menuGrFilter1.Size = new System.Drawing.Size(129, 22);
+            this.menuGrFilter1.Size = new System.Drawing.Size(180, 22);
             this.menuGrFilter1.Text = "Слабый";
             this.menuGrFilter1.Click += new System.EventHandler(this.menuGrFilter1_Click);
             // 
             // menuGrFilter2
             // 
             this.menuGrFilter2.Name = "menuGrFilter2";
-            this.menuGrFilter2.Size = new System.Drawing.Size(129, 22);
+            this.menuGrFilter2.Size = new System.Drawing.Size(180, 22);
             this.menuGrFilter2.Text = "Обычный";
             this.menuGrFilter2.Click += new System.EventHandler(this.menuGrFilter2_Click);
             // 
             // menuGrFilter3
             // 
             this.menuGrFilter3.Name = "menuGrFilter3";
-            this.menuGrFilter3.Size = new System.Drawing.Size(129, 22);
+            this.menuGrFilter3.Size = new System.Drawing.Size(180, 22);
             this.menuGrFilter3.Text = "Сильный";
             this.menuGrFilter3.Click += new System.EventHandler(this.menuGrFilter3_Click);
             // 
@@ -435,7 +438,7 @@
             this.menuGrViewLegend.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuGrViewLegend.Name = "menuGrViewLegend";
             this.menuGrViewLegend.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.menuGrViewLegend.Size = new System.Drawing.Size(158, 22);
+            this.menuGrViewLegend.Size = new System.Drawing.Size(180, 22);
             this.menuGrViewLegend.Text = "Легенда";
             this.menuGrViewLegend.Click += new System.EventHandler(this.menuGrLegend_Click);
             // 
@@ -443,6 +446,7 @@
             // 
             this.menuGrData.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuGrDataDiagram,
+            this.menuGrDataTempAndPower,
             this.menuGrDataSet});
             this.menuGrData.Name = "menuGrData";
             this.menuGrData.Size = new System.Drawing.Size(180, 22);
@@ -459,8 +463,8 @@
             this.menuGrDataDiagram6});
             this.menuGrDataDiagram.Enabled = false;
             this.menuGrDataDiagram.Name = "menuGrDataDiagram";
-            this.menuGrDataDiagram.Size = new System.Drawing.Size(180, 22);
-            this.menuGrDataDiagram.Text = "Диаграмма";
+            this.menuGrDataDiagram.Size = new System.Drawing.Size(223, 22);
+            this.menuGrDataDiagram.Text = "Столбцы диаграммы";
             this.menuGrDataDiagram.Click += new System.EventHandler(this.menuGrDataDiagram_Click);
             // 
             // menuGrDataDiagram1
@@ -469,7 +473,7 @@
             this.menuGrDataDiagram1.CheckOnClick = true;
             this.menuGrDataDiagram1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuGrDataDiagram1.Name = "menuGrDataDiagram1";
-            this.menuGrDataDiagram1.Size = new System.Drawing.Size(162, 22);
+            this.menuGrDataDiagram1.Size = new System.Drawing.Size(180, 22);
             this.menuGrDataDiagram1.Text = "Средний FPS";
             // 
             // menuGrDataDiagram2
@@ -478,7 +482,7 @@
             this.menuGrDataDiagram2.CheckOnClick = true;
             this.menuGrDataDiagram2.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuGrDataDiagram2.Name = "menuGrDataDiagram2";
-            this.menuGrDataDiagram2.Size = new System.Drawing.Size(162, 22);
+            this.menuGrDataDiagram2.Size = new System.Drawing.Size(180, 22);
             this.menuGrDataDiagram2.Text = "Модальный FPS";
             // 
             // menuGrDataDiagram3
@@ -487,14 +491,14 @@
             this.menuGrDataDiagram3.CheckOnClick = true;
             this.menuGrDataDiagram3.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuGrDataDiagram3.Name = "menuGrDataDiagram3";
-            this.menuGrDataDiagram3.Size = new System.Drawing.Size(162, 22);
+            this.menuGrDataDiagram3.Size = new System.Drawing.Size(180, 22);
             this.menuGrDataDiagram3.Text = "Медианный FPS";
             // 
             // menuGrDataDiagram4
             // 
             this.menuGrDataDiagram4.CheckOnClick = true;
             this.menuGrDataDiagram4.Name = "menuGrDataDiagram4";
-            this.menuGrDataDiagram4.Size = new System.Drawing.Size(162, 22);
+            this.menuGrDataDiagram4.Size = new System.Drawing.Size(180, 22);
             this.menuGrDataDiagram4.Text = "10% low";
             // 
             // menuGrDataDiagram5
@@ -503,7 +507,7 @@
             this.menuGrDataDiagram5.CheckOnClick = true;
             this.menuGrDataDiagram5.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuGrDataDiagram5.Name = "menuGrDataDiagram5";
-            this.menuGrDataDiagram5.Size = new System.Drawing.Size(162, 22);
+            this.menuGrDataDiagram5.Size = new System.Drawing.Size(180, 22);
             this.menuGrDataDiagram5.Text = "1% low";
             // 
             // menuGrDataDiagram6
@@ -512,7 +516,7 @@
             this.menuGrDataDiagram6.CheckOnClick = true;
             this.menuGrDataDiagram6.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuGrDataDiagram6.Name = "menuGrDataDiagram6";
-            this.menuGrDataDiagram6.Size = new System.Drawing.Size(162, 22);
+            this.menuGrDataDiagram6.Size = new System.Drawing.Size(180, 22);
             this.menuGrDataDiagram6.Text = "0.1% low";
             // 
             // menuGrDataSet
@@ -521,8 +525,8 @@
             this.menuGrDataSetAPI,
             this.menuGrDataSetDisplay});
             this.menuGrDataSet.Name = "menuGrDataSet";
-            this.menuGrDataSet.Size = new System.Drawing.Size(180, 22);
-            this.menuGrDataSet.Text = "Набор данных";
+            this.menuGrDataSet.Size = new System.Drawing.Size(223, 22);
+            this.menuGrDataSet.Text = "Набор данных для анализа";
             // 
             // menuGrDataSetAPI
             // 
@@ -568,7 +572,6 @@
             // menuName
             // 
             this.menuName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.menuName.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.menuName.Name = "menuName";
             this.menuName.Size = new System.Drawing.Size(600, 23);
             this.menuName.TextChanged += new System.EventHandler(this.menuName_TextChanged);
@@ -966,6 +969,47 @@
             this.labelApplication.TabIndex = 0;
             this.labelApplication.Text = "Программа:";
             // 
+            // menuGrDataTempAndPower
+            // 
+            this.menuGrDataTempAndPower.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuGrDataTnP_CPUtemp,
+            this.menuGrDataTnP_GPUtemp,
+            this.menuGrDataTnP_CPUpower,
+            this.menuGrDataTnP_GPUpower});
+            this.menuGrDataTempAndPower.Enabled = false;
+            this.menuGrDataTempAndPower.Name = "menuGrDataTempAndPower";
+            this.menuGrDataTempAndPower.Size = new System.Drawing.Size(223, 22);
+            this.menuGrDataTempAndPower.Text = "Дополнительные данные";
+            this.menuGrDataTempAndPower.Click += new System.EventHandler(this.menuGrDataTempAndPower_Click);
+            // 
+            // menuGrDataTnP_CPUtemp
+            // 
+            this.menuGrDataTnP_CPUtemp.CheckOnClick = true;
+            this.menuGrDataTnP_CPUtemp.Name = "menuGrDataTnP_CPUtemp";
+            this.menuGrDataTnP_CPUtemp.Size = new System.Drawing.Size(180, 22);
+            this.menuGrDataTnP_CPUtemp.Text = "Температура CPU";
+            // 
+            // menuGrDataTnP_GPUtemp
+            // 
+            this.menuGrDataTnP_GPUtemp.CheckOnClick = true;
+            this.menuGrDataTnP_GPUtemp.Name = "menuGrDataTnP_GPUtemp";
+            this.menuGrDataTnP_GPUtemp.Size = new System.Drawing.Size(180, 22);
+            this.menuGrDataTnP_GPUtemp.Text = "Температура GPU";
+            // 
+            // menuGrDataTnP_CPUpower
+            // 
+            this.menuGrDataTnP_CPUpower.CheckOnClick = true;
+            this.menuGrDataTnP_CPUpower.Name = "menuGrDataTnP_CPUpower";
+            this.menuGrDataTnP_CPUpower.Size = new System.Drawing.Size(180, 22);
+            this.menuGrDataTnP_CPUpower.Text = "Потребление CPU";
+            // 
+            // menuGrDataTnP_GPUpower
+            // 
+            this.menuGrDataTnP_GPUpower.CheckOnClick = true;
+            this.menuGrDataTnP_GPUpower.Name = "menuGrDataTnP_GPUpower";
+            this.menuGrDataTnP_GPUpower.Size = new System.Drawing.Size(180, 22);
+            this.menuGrDataTnP_GPUpower.Text = "Потребление GPU";
+            // 
             // frmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1091,6 +1135,11 @@
         private System.Windows.Forms.ToolStripMenuItem menuGrDataDiagram4;
         private System.Windows.Forms.ToolStripMenuItem menuGrDataDiagram5;
         private System.Windows.Forms.ToolStripMenuItem menuGrDataDiagram6;
+        private System.Windows.Forms.ToolStripMenuItem menuGrDataTempAndPower;
+        private System.Windows.Forms.ToolStripMenuItem menuGrDataTnP_CPUtemp;
+        private System.Windows.Forms.ToolStripMenuItem menuGrDataTnP_GPUtemp;
+        private System.Windows.Forms.ToolStripMenuItem menuGrDataTnP_CPUpower;
+        private System.Windows.Forms.ToolStripMenuItem menuGrDataTnP_GPUpower;
     }
 }
 

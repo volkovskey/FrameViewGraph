@@ -130,6 +130,7 @@ namespace FrameViewGraph
                     {
                         for (int j = 0; j < data.GetLength(1); j++)
                         {
+                            //Console.WriteLine(data[0, j] + " " + data[numberOfDataSet, j]);
                             data[numberOfDataSet, j] = (float)Math.Round(1.0f / data[numberOfDataSet, j] * 1000f, 2);
                             mySeriesOfPoint.Points.AddXY(data[0, j], data[numberOfDataSet, j]);
                         }
@@ -265,6 +266,8 @@ namespace FrameViewGraph
                     {
                         FPSdata = (string[])displayData[a].Clone();
                     }
+                    string[] tnpData = { };
+                    tnpData = (string[])infoData[a].Clone();
                     String nameTest = nameOfTest;
                     String lineData = filesName[a];
                     Series mySeriesOfPoint = new Series(lineData);
@@ -279,6 +282,11 @@ namespace FrameViewGraph
                     if (menuGrDataDiagram4.Checked) mySeriesOfPoint.Points.AddXY("10%", Math.Round(checkFloat(FPSdata[3]), 2));
                     if (menuGrDataDiagram5.Checked) mySeriesOfPoint.Points.AddXY("1%", Math.Round(checkFloat(FPSdata[4]), 2));
                     if (menuGrDataDiagram6.Checked) mySeriesOfPoint.Points.AddXY("0.1%", Math.Round(checkFloat(FPSdata[5]), 2));
+
+                    if (menuGrDataTnP_CPUtemp.Checked) mySeriesOfPoint.Points.AddXY("CPU, °C", Math.Round(String2Float(tnpData[5]), 2));
+                    if (menuGrDataTnP_CPUpower.Checked) mySeriesOfPoint.Points.AddXY("CPU, Вт", Math.Round(String2Float(tnpData[6]), 2));
+                    if (menuGrDataTnP_GPUtemp.Checked) mySeriesOfPoint.Points.AddXY("GPU, °C", Math.Round(String2Float(tnpData[11]), 2));
+                    if (menuGrDataTnP_GPUpower.Checked) mySeriesOfPoint.Points.AddXY("GPU, Вт", Math.Round(String2Float(tnpData[12]), 2));
 
                     chrMain.Series.Add(mySeriesOfPoint);
                 }
@@ -304,6 +312,8 @@ namespace FrameViewGraph
                 {
                     Array.Copy(displayData[menuCmbBx.SelectedIndex], mainData, 6);
                 }
+                string[] mainTnPData = { };
+                mainTnPData = (string[])infoData[menuCmbBx.SelectedIndex].Clone();
                 for (int a = 0; a < parsedData.Count; a++)
                 {
                     if (chkListFile.CheckedItems.Contains(filesName[a]))
@@ -317,6 +327,8 @@ namespace FrameViewGraph
                         {
                             FPSdata = (string[])displayData[a].Clone();
                         }
+                        string[] tnpData = { };
+                        tnpData = (string[])infoData[a].Clone();
                         String nameTest = nameOfTest;
                         String lineData = filesName[a];
                         Series mySeriesOfPoint = new Series(lineData);
@@ -331,6 +343,11 @@ namespace FrameViewGraph
                         if (menuGrDataDiagram4.Checked) mySeriesOfPoint.Points.AddXY("10%", Math.Round(checkFloat(FPSdata[3]) / checkFloat(mainData[3]) * 100, 2));
                         if (menuGrDataDiagram5.Checked) mySeriesOfPoint.Points.AddXY("1%", Math.Round(checkFloat(FPSdata[4]) / checkFloat(mainData[4]) * 100, 2));
                         if (menuGrDataDiagram6.Checked) mySeriesOfPoint.Points.AddXY("0.1%", Math.Round(checkFloat(FPSdata[5]) / checkFloat(mainData[5]) * 100, 2));
+
+                        if (menuGrDataTnP_CPUtemp.Checked) mySeriesOfPoint.Points.AddXY("CPU, °C", Math.Round(String2Float(tnpData[5]) / String2Float(mainTnPData[5]) * 100, 2));
+                        if (menuGrDataTnP_CPUpower.Checked) mySeriesOfPoint.Points.AddXY("CPU, Вт", Math.Round(String2Float(tnpData[6]) / String2Float(mainTnPData[6]) * 100, 2));
+                        if (menuGrDataTnP_GPUtemp.Checked) mySeriesOfPoint.Points.AddXY("GPU, °C", Math.Round(String2Float(tnpData[11]) / String2Float(mainTnPData[11]) * 100, 2));
+                        if (menuGrDataTnP_GPUpower.Checked) mySeriesOfPoint.Points.AddXY("GPU, Вт", Math.Round(String2Float(tnpData[12]) / String2Float(mainTnPData[12]) * 100, 2));
 
                         chrMain.Series.Add(mySeriesOfPoint);
                     }
@@ -595,6 +612,9 @@ namespace FrameViewGraph
                     for (int i = 0; i < result.GetLength(1); i++)
                     {
                         result[0, i] -= startTime;
+                        if (result[number, i] == 0 && i != 0) result[number, i] = result[number, i - 1];
+                        else if (result[number, i] == 0 && i == 0) result[number, i] = result[number, i + 1];
+                        else if (result[number, i] == 0) Application.Exit();
                         FPS[i] = Math.Round(1000 / result[number, i], 1);
                     }
 
@@ -718,6 +738,14 @@ namespace FrameViewGraph
             return a;
         }
 
+        private float String2Float(string s)
+        {
+            float tempValue = 0;
+            int index = s.LastIndexOf(' ');
+            tempValue = float.Parse(s.Substring(0, index));
+            return tempValue;
+        }
+
         private bool tryOpenCSV(String path)
         {
             try
@@ -769,7 +797,10 @@ namespace FrameViewGraph
         private void frmMain_Load(object sender, EventArgs e)
         {
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
-            this.Text = "FVG v." + Properties.Resources.version + " by volkovskey";
+            String versionOfProgram = typeof(frmMain).Assembly.GetName().Version.ToString();
+            int lengthOfVersion = versionOfProgram.LastIndexOf('.');
+            Properties.Settings.Default.version = versionOfProgram.Substring(0, lengthOfVersion);
+            this.Text = "FVG v." + Properties.Settings.Default.version + " by volkovskey";
             nameOfTest = "test_" + DateTime.Now.ToString("yyyy_MM_dd_hh_mm_ss");
             menuName.Text = nameOfTest;
             chrMain.Titles.Clear();
@@ -1080,7 +1111,7 @@ namespace FrameViewGraph
 
         private void menuHelpVersion_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Название программы: FrameViewGraph\nВерсия программы: " + Properties.Resources.version + "\nСтатус текущей версии программы: Стабильная\nПодходящие версии FrameView: 0.9, 1.1, 1.2\nРазработчик: volkovskey\nКопирайт: Copyright ©volkovskey 2020-2021\nЛицензия: MIT License\nТекст лицензии:\n\n" + Properties.Resources.license, "Версия программы");
+            MessageBox.Show("Название программы: FrameViewGraph\nВерсия программы: " + Properties.Settings.Default.version + "\nСтатус текущей версии программы: Стабильная\nПодходящие версии FrameView: 0.9, 1.1, 1.2\nРазработчик: volkovskey\nКопирайт: Copyright ©volkovskey 2020-2021\nЛицензия: MIT License\nТекст лицензии:\n\n" + Properties.Resources.license, "Версия программы");
         }
 
         private void menuName_TextChanged(object sender, EventArgs e)
@@ -1165,6 +1196,7 @@ namespace FrameViewGraph
                 menuGraph5.Checked = true;
                 typeOfGraph = 5;
                 menuGrDataDiagram.Enabled = true;
+                menuGrDataTempAndPower.Enabled = true;
             }
         }
 
@@ -1180,6 +1212,7 @@ namespace FrameViewGraph
                 menuGraph6.Checked = true;
                 typeOfGraph = 6;
                 menuGrDataDiagram.Enabled = true;
+                menuGrDataTempAndPower.Enabled = true;
             }
         }
 
@@ -1239,6 +1272,7 @@ namespace FrameViewGraph
             menuGraph5.Checked = false;
             menuGraph6.Checked = false;
             menuGrDataDiagram.Enabled = false;
+            menuGrDataTempAndPower.Enabled = false;
         }
 
         private void menuGraph1_Click(object sender, EventArgs e)
@@ -1279,6 +1313,7 @@ namespace FrameViewGraph
                 menuGraph5.Checked = true;
                 typeOfGraph = 5;
                 menuGrDataDiagram.Enabled = true;
+                menuGrDataTempAndPower.Enabled = true;
             }
         }
 
@@ -1290,6 +1325,7 @@ namespace FrameViewGraph
                 menuGraph6.Checked = true;
                 typeOfGraph = 6;
                 menuGrDataDiagram.Enabled = true;
+                menuGrDataTempAndPower.Enabled = true;
             }
         }
 
@@ -1341,7 +1377,13 @@ namespace FrameViewGraph
             menuGrDataDiagram.DropDown.AutoClose = !menuGrDataDiagram.DropDown.AutoClose;
             if (menuGrDataDiagram.DropDown.AutoClose) menuGrDataDiagram.DropDown.Close();
         }
-
+        private void menuGrDataTempAndPower_Click(object sender, EventArgs e)
+        {
+            menuGr.DropDown.AutoClose = !menuGr.DropDown.AutoClose;
+            menuGrData.DropDown.AutoClose = !menuGrData.DropDown.AutoClose;
+            menuGrDataTempAndPower.DropDown.AutoClose = !menuGrDataTempAndPower.DropDown.AutoClose;
+            if (menuGrDataTempAndPower.DropDown.AutoClose) menuGrDataTempAndPower.DropDown.Close();
+        }
         private void menuGrDataSetDisplay_Click(object sender, EventArgs e)
         {
             menuGrDataSetAPI.Checked = false;
@@ -1361,6 +1403,8 @@ namespace FrameViewGraph
             menuGrDraw_Click(sender, e);
             menuCmbBx_SelectedIndexChanged(sender, e);
         }
+
+
     }
 }
 
