@@ -52,8 +52,13 @@
             this.menuGraph1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGraph2 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGraph3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGraph4 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGraph5 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGraph6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGraph7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGraph8 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGraph9 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGraph0 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGr = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGrDraw = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGrClear = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,6 +77,11 @@
             this.menuGrDataDiagram4 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGrDataDiagram5 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGrDataDiagram6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGrDataTempAndPower = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGrDataTnP_CPUtemp = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGrDataTnP_GPUtemp = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGrDataTnP_CPUpower = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGrDataTnP_GPUpower = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGrDataSet = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGrDataSetAPI = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGrDataSetDisplay = new System.Windows.Forms.ToolStripMenuItem();
@@ -121,11 +131,6 @@
             this.labelCpuUsage = new System.Windows.Forms.Label();
             this.labelCpuName = new System.Windows.Forms.Label();
             this.labelApplication = new System.Windows.Forms.Label();
-            this.menuGrDataTempAndPower = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuGrDataTnP_CPUtemp = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuGrDataTnP_GPUtemp = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuGrDataTnP_CPUpower = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuGrDataTnP_GPUpower = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.chrMain)).BeginInit();
             this.menuStr.SuspendLayout();
             this.statusStr.SuspendLayout();
@@ -302,8 +307,13 @@
             this.menuGraph1,
             this.menuGraph2,
             this.menuGraph3,
+            this.menuGraph4,
             this.menuGraph5,
-            this.menuGraph6});
+            this.menuGraph6,
+            this.menuGraph7,
+            this.menuGraph8,
+            this.menuGraph9,
+            this.menuGraph0});
             this.menuGraph.Name = "menuGraph";
             this.menuGraph.Size = new System.Drawing.Size(88, 23);
             this.menuGraph.Text = "Тип графика";
@@ -337,23 +347,68 @@
             this.menuGraph3.Click += new System.EventHandler(this.menuGraph3_Click);
             this.menuGraph3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuGraph3_MouseDown);
             // 
+            // menuGraph4
+            // 
+            this.menuGraph4.Name = "menuGraph4";
+            this.menuGraph4.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D4)));
+            this.menuGraph4.Size = new System.Drawing.Size(267, 22);
+            this.menuGraph4.Text = "Сравнения статистики (FPS)";
+            this.menuGraph4.Click += new System.EventHandler(this.menuGraph4_Click);
+            this.menuGraph4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuGraph4_MouseDown);
+            // 
             // menuGraph5
             // 
             this.menuGraph5.Name = "menuGraph5";
-            this.menuGraph5.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D4)));
+            this.menuGraph5.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D5)));
             this.menuGraph5.Size = new System.Drawing.Size(267, 22);
-            this.menuGraph5.Text = "Сравнения статистики (FPS)";
+            this.menuGraph5.Text = "Сравнения статистики (%)";
             this.menuGraph5.Click += new System.EventHandler(this.menuGraph5_Click);
             this.menuGraph5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuGraph5_MouseDown);
             // 
             // menuGraph6
             // 
             this.menuGraph6.Name = "menuGraph6";
-            this.menuGraph6.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D5)));
+            this.menuGraph6.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D6)));
             this.menuGraph6.Size = new System.Drawing.Size(267, 22);
-            this.menuGraph6.Text = "Сравнения статистики (%)";
+            this.menuGraph6.Text = "Уровня заряда батареи";
             this.menuGraph6.Click += new System.EventHandler(this.menuGraph6_Click);
             this.menuGraph6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuGraph6_MouseDown);
+            // 
+            // menuGraph7
+            // 
+            this.menuGraph7.Name = "menuGraph7";
+            this.menuGraph7.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D7)));
+            this.menuGraph7.Size = new System.Drawing.Size(267, 22);
+            this.menuGraph7.Text = "Температуры CPU";
+            this.menuGraph7.Click += new System.EventHandler(this.menuGraph7_Click);
+            this.menuGraph7.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuGraph7_MouseDown);
+            // 
+            // menuGraph8
+            // 
+            this.menuGraph8.Name = "menuGraph8";
+            this.menuGraph8.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D8)));
+            this.menuGraph8.Size = new System.Drawing.Size(267, 22);
+            this.menuGraph8.Text = "Температуры GPU";
+            this.menuGraph8.Click += new System.EventHandler(this.menuGraph8_Click);
+            this.menuGraph8.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuGraph8_MouseDown);
+            // 
+            // menuGraph9
+            // 
+            this.menuGraph9.Name = "menuGraph9";
+            this.menuGraph9.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D9)));
+            this.menuGraph9.Size = new System.Drawing.Size(267, 22);
+            this.menuGraph9.Text = "Потребление CPU";
+            this.menuGraph9.Click += new System.EventHandler(this.menuGraph9_Click);
+            this.menuGraph9.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuGraph9_MouseDown);
+            // 
+            // menuGraph0
+            // 
+            this.menuGraph0.Name = "menuGraph0";
+            this.menuGraph0.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D0)));
+            this.menuGraph0.Size = new System.Drawing.Size(267, 22);
+            this.menuGraph0.Text = "Потребление GPU";
+            this.menuGraph0.Click += new System.EventHandler(this.menuGraph0_Click);
+            this.menuGraph0.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuGraph0_MouseDown);
             // 
             // menuGr
             // 
@@ -399,28 +454,28 @@
             this.menuGrFilterNo.Checked = true;
             this.menuGrFilterNo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuGrFilterNo.Name = "menuGrFilterNo";
-            this.menuGrFilterNo.Size = new System.Drawing.Size(180, 22);
+            this.menuGrFilterNo.Size = new System.Drawing.Size(129, 22);
             this.menuGrFilterNo.Text = "Нет";
             this.menuGrFilterNo.Click += new System.EventHandler(this.menuGrFilterNo_Click);
             // 
             // menuGrFilter1
             // 
             this.menuGrFilter1.Name = "menuGrFilter1";
-            this.menuGrFilter1.Size = new System.Drawing.Size(180, 22);
+            this.menuGrFilter1.Size = new System.Drawing.Size(129, 22);
             this.menuGrFilter1.Text = "Слабый";
             this.menuGrFilter1.Click += new System.EventHandler(this.menuGrFilter1_Click);
             // 
             // menuGrFilter2
             // 
             this.menuGrFilter2.Name = "menuGrFilter2";
-            this.menuGrFilter2.Size = new System.Drawing.Size(180, 22);
+            this.menuGrFilter2.Size = new System.Drawing.Size(129, 22);
             this.menuGrFilter2.Text = "Обычный";
             this.menuGrFilter2.Click += new System.EventHandler(this.menuGrFilter2_Click);
             // 
             // menuGrFilter3
             // 
             this.menuGrFilter3.Name = "menuGrFilter3";
-            this.menuGrFilter3.Size = new System.Drawing.Size(180, 22);
+            this.menuGrFilter3.Size = new System.Drawing.Size(129, 22);
             this.menuGrFilter3.Text = "Сильный";
             this.menuGrFilter3.Click += new System.EventHandler(this.menuGrFilter3_Click);
             // 
@@ -438,7 +493,7 @@
             this.menuGrViewLegend.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuGrViewLegend.Name = "menuGrViewLegend";
             this.menuGrViewLegend.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.menuGrViewLegend.Size = new System.Drawing.Size(180, 22);
+            this.menuGrViewLegend.Size = new System.Drawing.Size(158, 22);
             this.menuGrViewLegend.Text = "Легенда";
             this.menuGrViewLegend.Click += new System.EventHandler(this.menuGrLegend_Click);
             // 
@@ -473,7 +528,7 @@
             this.menuGrDataDiagram1.CheckOnClick = true;
             this.menuGrDataDiagram1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuGrDataDiagram1.Name = "menuGrDataDiagram1";
-            this.menuGrDataDiagram1.Size = new System.Drawing.Size(180, 22);
+            this.menuGrDataDiagram1.Size = new System.Drawing.Size(162, 22);
             this.menuGrDataDiagram1.Text = "Средний FPS";
             // 
             // menuGrDataDiagram2
@@ -482,7 +537,7 @@
             this.menuGrDataDiagram2.CheckOnClick = true;
             this.menuGrDataDiagram2.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuGrDataDiagram2.Name = "menuGrDataDiagram2";
-            this.menuGrDataDiagram2.Size = new System.Drawing.Size(180, 22);
+            this.menuGrDataDiagram2.Size = new System.Drawing.Size(162, 22);
             this.menuGrDataDiagram2.Text = "Модальный FPS";
             // 
             // menuGrDataDiagram3
@@ -491,14 +546,14 @@
             this.menuGrDataDiagram3.CheckOnClick = true;
             this.menuGrDataDiagram3.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuGrDataDiagram3.Name = "menuGrDataDiagram3";
-            this.menuGrDataDiagram3.Size = new System.Drawing.Size(180, 22);
+            this.menuGrDataDiagram3.Size = new System.Drawing.Size(162, 22);
             this.menuGrDataDiagram3.Text = "Медианный FPS";
             // 
             // menuGrDataDiagram4
             // 
             this.menuGrDataDiagram4.CheckOnClick = true;
             this.menuGrDataDiagram4.Name = "menuGrDataDiagram4";
-            this.menuGrDataDiagram4.Size = new System.Drawing.Size(180, 22);
+            this.menuGrDataDiagram4.Size = new System.Drawing.Size(162, 22);
             this.menuGrDataDiagram4.Text = "10% low";
             // 
             // menuGrDataDiagram5
@@ -507,7 +562,7 @@
             this.menuGrDataDiagram5.CheckOnClick = true;
             this.menuGrDataDiagram5.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuGrDataDiagram5.Name = "menuGrDataDiagram5";
-            this.menuGrDataDiagram5.Size = new System.Drawing.Size(180, 22);
+            this.menuGrDataDiagram5.Size = new System.Drawing.Size(162, 22);
             this.menuGrDataDiagram5.Text = "1% low";
             // 
             // menuGrDataDiagram6
@@ -516,8 +571,49 @@
             this.menuGrDataDiagram6.CheckOnClick = true;
             this.menuGrDataDiagram6.CheckState = System.Windows.Forms.CheckState.Checked;
             this.menuGrDataDiagram6.Name = "menuGrDataDiagram6";
-            this.menuGrDataDiagram6.Size = new System.Drawing.Size(180, 22);
+            this.menuGrDataDiagram6.Size = new System.Drawing.Size(162, 22);
             this.menuGrDataDiagram6.Text = "0.1% low";
+            // 
+            // menuGrDataTempAndPower
+            // 
+            this.menuGrDataTempAndPower.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuGrDataTnP_CPUtemp,
+            this.menuGrDataTnP_GPUtemp,
+            this.menuGrDataTnP_CPUpower,
+            this.menuGrDataTnP_GPUpower});
+            this.menuGrDataTempAndPower.Enabled = false;
+            this.menuGrDataTempAndPower.Name = "menuGrDataTempAndPower";
+            this.menuGrDataTempAndPower.Size = new System.Drawing.Size(223, 22);
+            this.menuGrDataTempAndPower.Text = "Дополнительные данные";
+            this.menuGrDataTempAndPower.Click += new System.EventHandler(this.menuGrDataTempAndPower_Click);
+            // 
+            // menuGrDataTnP_CPUtemp
+            // 
+            this.menuGrDataTnP_CPUtemp.CheckOnClick = true;
+            this.menuGrDataTnP_CPUtemp.Name = "menuGrDataTnP_CPUtemp";
+            this.menuGrDataTnP_CPUtemp.Size = new System.Drawing.Size(174, 22);
+            this.menuGrDataTnP_CPUtemp.Text = "Температура CPU";
+            // 
+            // menuGrDataTnP_GPUtemp
+            // 
+            this.menuGrDataTnP_GPUtemp.CheckOnClick = true;
+            this.menuGrDataTnP_GPUtemp.Name = "menuGrDataTnP_GPUtemp";
+            this.menuGrDataTnP_GPUtemp.Size = new System.Drawing.Size(174, 22);
+            this.menuGrDataTnP_GPUtemp.Text = "Температура GPU";
+            // 
+            // menuGrDataTnP_CPUpower
+            // 
+            this.menuGrDataTnP_CPUpower.CheckOnClick = true;
+            this.menuGrDataTnP_CPUpower.Name = "menuGrDataTnP_CPUpower";
+            this.menuGrDataTnP_CPUpower.Size = new System.Drawing.Size(174, 22);
+            this.menuGrDataTnP_CPUpower.Text = "Потребление CPU";
+            // 
+            // menuGrDataTnP_GPUpower
+            // 
+            this.menuGrDataTnP_GPUpower.CheckOnClick = true;
+            this.menuGrDataTnP_GPUpower.Name = "menuGrDataTnP_GPUpower";
+            this.menuGrDataTnP_GPUpower.Size = new System.Drawing.Size(174, 22);
+            this.menuGrDataTnP_GPUpower.Text = "Потребление GPU";
             // 
             // menuGrDataSet
             // 
@@ -969,47 +1065,6 @@
             this.labelApplication.TabIndex = 0;
             this.labelApplication.Text = "Программа:";
             // 
-            // menuGrDataTempAndPower
-            // 
-            this.menuGrDataTempAndPower.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuGrDataTnP_CPUtemp,
-            this.menuGrDataTnP_GPUtemp,
-            this.menuGrDataTnP_CPUpower,
-            this.menuGrDataTnP_GPUpower});
-            this.menuGrDataTempAndPower.Enabled = false;
-            this.menuGrDataTempAndPower.Name = "menuGrDataTempAndPower";
-            this.menuGrDataTempAndPower.Size = new System.Drawing.Size(223, 22);
-            this.menuGrDataTempAndPower.Text = "Дополнительные данные";
-            this.menuGrDataTempAndPower.Click += new System.EventHandler(this.menuGrDataTempAndPower_Click);
-            // 
-            // menuGrDataTnP_CPUtemp
-            // 
-            this.menuGrDataTnP_CPUtemp.CheckOnClick = true;
-            this.menuGrDataTnP_CPUtemp.Name = "menuGrDataTnP_CPUtemp";
-            this.menuGrDataTnP_CPUtemp.Size = new System.Drawing.Size(180, 22);
-            this.menuGrDataTnP_CPUtemp.Text = "Температура CPU";
-            // 
-            // menuGrDataTnP_GPUtemp
-            // 
-            this.menuGrDataTnP_GPUtemp.CheckOnClick = true;
-            this.menuGrDataTnP_GPUtemp.Name = "menuGrDataTnP_GPUtemp";
-            this.menuGrDataTnP_GPUtemp.Size = new System.Drawing.Size(180, 22);
-            this.menuGrDataTnP_GPUtemp.Text = "Температура GPU";
-            // 
-            // menuGrDataTnP_CPUpower
-            // 
-            this.menuGrDataTnP_CPUpower.CheckOnClick = true;
-            this.menuGrDataTnP_CPUpower.Name = "menuGrDataTnP_CPUpower";
-            this.menuGrDataTnP_CPUpower.Size = new System.Drawing.Size(180, 22);
-            this.menuGrDataTnP_CPUpower.Text = "Потребление CPU";
-            // 
-            // menuGrDataTnP_GPUpower
-            // 
-            this.menuGrDataTnP_GPUpower.CheckOnClick = true;
-            this.menuGrDataTnP_GPUpower.Name = "menuGrDataTnP_GPUpower";
-            this.menuGrDataTnP_GPUpower.Size = new System.Drawing.Size(180, 22);
-            this.menuGrDataTnP_GPUpower.Text = "Потребление GPU";
-            // 
             // frmMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -1120,8 +1175,8 @@
         private System.Windows.Forms.Label lblCpuFreq;
         private System.Windows.Forms.Label labelCpuFreq;
         private System.Windows.Forms.ToolStripComboBox menuCmbBx;
+        private System.Windows.Forms.ToolStripMenuItem menuGraph4;
         private System.Windows.Forms.ToolStripMenuItem menuGraph5;
-        private System.Windows.Forms.ToolStripMenuItem menuGraph6;
         private System.Windows.Forms.Label lblGpuMemFreq;
         private System.Windows.Forms.Label labelGpuMemFreq;
         private System.Windows.Forms.ToolStripMenuItem menuGrData;
@@ -1140,6 +1195,11 @@
         private System.Windows.Forms.ToolStripMenuItem menuGrDataTnP_GPUtemp;
         private System.Windows.Forms.ToolStripMenuItem menuGrDataTnP_CPUpower;
         private System.Windows.Forms.ToolStripMenuItem menuGrDataTnP_GPUpower;
+        private System.Windows.Forms.ToolStripMenuItem menuGraph6;
+        private System.Windows.Forms.ToolStripMenuItem menuGraph7;
+        private System.Windows.Forms.ToolStripMenuItem menuGraph8;
+        private System.Windows.Forms.ToolStripMenuItem menuGraph9;
+        private System.Windows.Forms.ToolStripMenuItem menuGraph0;
     }
 }
 

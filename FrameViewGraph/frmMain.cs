@@ -19,11 +19,12 @@ namespace FrameViewGraph
         private Byte filter = 0;
         private Int16 resolutionWidth = 1920;
         private Int16 resolutionHeight = 1080;
-        private List<String> filesName = new List<string>();
-        private List<Array> parsedData = new List<Array>();
-        private List<Array> infoData = new List<Array>();
-        private List<Array> apiData = new List<Array>();
-        private List<Array> displayData = new List<Array>();
+        private List<String> filesName = new List<string>(); //list of file's name
+        private List<Array> parsedData = new List<Array>(); 
+        private List<Array> infoData = new List<Array>(); //name, api, temp etc 4 right column and diagrams
+        private List<Array> apiData = new List<Array>(); //stats data 4 right column and diagrams
+        private List<Array> displayData = new List<Array>(); //stats data 4 right column and diagrams
+        private List<Array> Data4BPT = new List<Array>(); //time, bat, cput, cpup, gput, gpup
 
         public frmMain()
         {
@@ -359,6 +360,166 @@ namespace FrameViewGraph
             }
         }
 
+        private void graphBattery()
+        {
+            cleanChart();
+            chrMain.ChartAreas.Add(new ChartArea(nameOfTest));
+            Axis ax7 = new Axis();
+            ax7.Title = "Время (мс)";
+            ax7.Minimum = 0;
+            chrMain.ChartAreas[0].AxisX = ax7;
+            Axis ay7 = new Axis();
+            ay7.Title = "Уровень заряда (%)";
+            chrMain.ChartAreas[0].AxisY = ay7;
+            for (int i = 0; i < parsedData.Count; i++)
+            {
+                if (chkListFile.CheckedItems.Contains(filesName[i]))
+                {
+                    float[,] data = new float[Data4BPT[i].GetLength(0), Data4BPT[i].GetLength(1)];
+                    Array.Copy((float[,])Data4BPT[i], data, Data4BPT[i].Length);
+                    String nameTest = nameOfTest;
+                    String lineData = filesName[i];
+                    Series mySeriesOfPoint = new Series(lineData);
+                    mySeriesOfPoint.ChartType = SeriesChartType.Line;
+                    mySeriesOfPoint.ChartArea = nameTest;
+
+                    for (int j = 0; j < data.GetLength(1); j++)
+                    {
+                        mySeriesOfPoint.Points.AddXY(data[0, j], data[1, j]);
+                    }
+                    chrMain.Series.Add(mySeriesOfPoint);
+                }
+            }
+        }
+
+        private void graphCPUtemp()
+        {
+            cleanChart();
+            chrMain.ChartAreas.Add(new ChartArea(nameOfTest));
+            Axis ax8 = new Axis();
+            ax8.Title = "Время (мс)";
+            ax8.Minimum = 0;
+            chrMain.ChartAreas[0].AxisX = ax8;
+            Axis ay8 = new Axis();
+            ay8.Title = "Температура CPU (C°)";
+            chrMain.ChartAreas[0].AxisY = ay8;
+            for (int i = 0; i < parsedData.Count; i++)
+            {
+                if (chkListFile.CheckedItems.Contains(filesName[i]))
+                {
+                    float[,] data = new float[Data4BPT[i].GetLength(0), Data4BPT[i].GetLength(1)];
+                    Array.Copy((float[,])Data4BPT[i], data, Data4BPT[i].Length);
+                    String nameTest = nameOfTest;
+                    String lineData = filesName[i];
+                    Series mySeriesOfPoint = new Series(lineData);
+                    mySeriesOfPoint.ChartType = SeriesChartType.Line;
+                    mySeriesOfPoint.ChartArea = nameTest;
+
+                    for (int j = 0; j < data.GetLength(1); j++)
+                    {
+                        mySeriesOfPoint.Points.AddXY(data[0, j], data[2, j]);
+                    }
+                    chrMain.Series.Add(mySeriesOfPoint);
+                }
+            }
+        }
+
+        private void graphCPUpower()
+        {
+            cleanChart();
+            chrMain.ChartAreas.Add(new ChartArea(nameOfTest));
+            Axis ax9 = new Axis();
+            ax9.Title = "Время (мс)";
+            ax9.Minimum = 0;
+            chrMain.ChartAreas[0].AxisX = ax9;
+            Axis ay9 = new Axis();
+            ay9.Title = "Потребление CPU (Вт)";
+            chrMain.ChartAreas[0].AxisY = ay9;
+            for (int i = 0; i < parsedData.Count; i++)
+            {
+                if (chkListFile.CheckedItems.Contains(filesName[i]))
+                {
+                    float[,] data = new float[Data4BPT[i].GetLength(0), Data4BPT[i].GetLength(1)];
+                    Array.Copy((float[,])Data4BPT[i], data, Data4BPT[i].Length);
+                    String nameTest = nameOfTest;
+                    String lineData = filesName[i];
+                    Series mySeriesOfPoint = new Series(lineData);
+                    mySeriesOfPoint.ChartType = SeriesChartType.Line;
+                    mySeriesOfPoint.ChartArea = nameTest;
+
+                    for (int j = 0; j < data.GetLength(1); j++)
+                    {
+                        mySeriesOfPoint.Points.AddXY(data[0, j], data[3, j]);
+                    }
+                    chrMain.Series.Add(mySeriesOfPoint);
+                }
+            }
+        }
+
+        private void graphGPUtemp()
+        {
+            cleanChart();
+            chrMain.ChartAreas.Add(new ChartArea(nameOfTest));
+            Axis ax10 = new Axis();
+            ax10.Title = "Время (мс)";
+            ax10.Minimum = 0;
+            chrMain.ChartAreas[0].AxisX = ax10;
+            Axis ay10 = new Axis();
+            ay10.Title = "Температура GPU (C°)";
+            chrMain.ChartAreas[0].AxisY = ay10;
+            for (int i = 0; i < parsedData.Count; i++)
+            {
+                if (chkListFile.CheckedItems.Contains(filesName[i]))
+                {
+                    float[,] data = new float[Data4BPT[i].GetLength(0), Data4BPT[i].GetLength(1)];
+                    Array.Copy((float[,])Data4BPT[i], data, Data4BPT[i].Length);
+                    String nameTest = nameOfTest;
+                    String lineData = filesName[i];
+                    Series mySeriesOfPoint = new Series(lineData);
+                    mySeriesOfPoint.ChartType = SeriesChartType.Line;
+                    mySeriesOfPoint.ChartArea = nameTest;
+
+                    for (int j = 0; j < data.GetLength(1); j++)
+                    {
+                        mySeriesOfPoint.Points.AddXY(data[0, j], data[4, j]);
+                    }
+                    chrMain.Series.Add(mySeriesOfPoint);
+                }
+            }
+        }
+
+        private void graphGPUpower()
+        {
+            cleanChart();
+            chrMain.ChartAreas.Add(new ChartArea(nameOfTest));
+            Axis ax11 = new Axis();
+            ax11.Title = "Время (мс)";
+            ax11.Minimum = 0;
+            chrMain.ChartAreas[0].AxisX = ax11;
+            Axis ay11 = new Axis();
+            ay11.Title = "Потребление GPU (Вт)";
+            chrMain.ChartAreas[0].AxisY = ay11;
+            for (int i = 0; i < parsedData.Count; i++)
+            {
+                if (chkListFile.CheckedItems.Contains(filesName[i]))
+                {
+                    float[,] data = new float[Data4BPT[i].GetLength(0), Data4BPT[i].GetLength(1)];
+                    Array.Copy((float[,])Data4BPT[i], data, Data4BPT[i].Length);
+                    String nameTest = nameOfTest;
+                    String lineData = filesName[i];
+                    Series mySeriesOfPoint = new Series(lineData);
+                    mySeriesOfPoint.ChartType = SeriesChartType.Line;
+                    mySeriesOfPoint.ChartArea = nameTest;
+
+                    for (int j = 0; j < data.GetLength(1); j++)
+                    {
+                        mySeriesOfPoint.Points.AddXY(data[0, j], data[5, j]);
+                    }
+                    chrMain.Series.Add(mySeriesOfPoint);
+                }
+            }
+        }
+
         private float[,] openCSV(String path)
         {
             //0 - Time
@@ -367,6 +528,7 @@ namespace FrameViewGraph
             try
             {
                 float[,] result = new float[3, 0];
+                float[,] PnTinfo = new float[6, 0];
 
                 string[] info = new string[13];
 
@@ -403,10 +565,18 @@ namespace FrameViewGraph
                         if (values[8].Contains(".") && values[9].Contains(".") && values[10].Contains("."))
                         {
                             result = ResizeArray(result);
+                            PnTinfo = ResizeArray(PnTinfo);
 
                             result[0, result.GetLength(1) - 1] = checkFloat(values[8]) * 1000f; //TimeInSeconds
+                            PnTinfo[0, PnTinfo.GetLength(1) - 1] = checkFloat(values[8]) * 1000f; //TimeInSeconds
                             result[1, result.GetLength(1) - 1] = checkFloat(values[9]); //MsBetweenPresents
                             result[2, result.GetLength(1) - 1] = checkFloat(values[10]); //MsBetweenDisplayChangeActual
+
+                            PnTinfo[1, PnTinfo.GetLength(1) - 1] = 0;
+                            PnTinfo[2, PnTinfo.GetLength(1) - 1] = 0;
+                            PnTinfo[3, PnTinfo.GetLength(1) - 1] = 0;
+                            PnTinfo[4, PnTinfo.GetLength(1) - 1] = 0;
+                            PnTinfo[5, PnTinfo.GetLength(1) - 1] = 0;
                         }
                     }
 
@@ -439,8 +609,10 @@ namespace FrameViewGraph
                         if (values[12].Contains(".") && values[13].Contains(".") && values[14].Contains("."))
                         {
                             result = ResizeArray(result);
+                            PnTinfo = ResizeArray(PnTinfo);
 
                             result[0, result.GetLength(1) - 1] = checkFloat(values[12]) * 1000f; //TimeInSeconds
+                            PnTinfo[0, PnTinfo.GetLength(1) - 1] = checkFloat(values[8]) * 1000f; //TimeInSeconds
                             result[1, result.GetLength(1) - 1] = checkFloat(values[13]); //MsBetweenPresents
                             result[2, result.GetLength(1) - 1] = checkFloat(values[14]); //MsBetweenDisplayChangeActual
                             try
@@ -456,11 +628,13 @@ namespace FrameViewGraph
                             try
                             {
                                 cpuTemp += Convert.ToInt32(values[36]); //CPU Package Temp(C)
+                                PnTinfo[2, PnTinfo.GetLength(1) - 1] = checkFloat(values[36]);
                             }
                             catch { }
                             try
                             {
                                 cpuPower += Convert.ToDouble(values[37]); //CPU Package Power(W)
+                                PnTinfo[3, PnTinfo.GetLength(1) - 1] = checkFloat(values[37]);
                             }
                             catch { }
                             try
@@ -476,6 +650,7 @@ namespace FrameViewGraph
                             try
                             {
                                 gpuTemp += Convert.ToInt32(values[21]); //GPU0Temp(C)
+                                PnTinfo[4, PnTinfo.GetLength(1) - 1] = checkFloat(values[21]);
                             }
                             catch { }
                             try
@@ -483,13 +658,16 @@ namespace FrameViewGraph
                                 if (values[32] != "NA")
                                 {
                                     gpuPower += Convert.ToInt32(values[32]); //NV Pwr(W) (API)
+                                    PnTinfo[5, PnTinfo.GetLength(1) - 1] = checkFloat(values[32]);
                                 }
                                 else if (values[33] != "NA")
                                 {
                                     gpuPower += Convert.ToInt32(values[33]); //NV Pwr(W) (API)
+                                    PnTinfo[5, PnTinfo.GetLength(1) - 1] = checkFloat(values[33]);
                                 }
                             }
                             catch { }
+                            PnTinfo[1, PnTinfo.GetLength(1) - 1] = 0;
 
                             counter++;
                         }
@@ -507,7 +685,6 @@ namespace FrameViewGraph
                     info[12] = Math.Round((double)gpuPower / counter, 2).ToString() + " Вт";
 
                     infoData.Add(info);
-
                 }
                 else if (firstLine == Properties.Resources.FV12)
                 {
@@ -525,8 +702,10 @@ namespace FrameViewGraph
                         if (values[12].Contains(".") && values[13].Contains(".") && values[14].Contains("."))
                         {
                             result = ResizeArray(result);
+                            PnTinfo = ResizeArray(PnTinfo);
 
                             result[0, result.GetLength(1) - 1] = checkFloat(values[12]) * 1000f; //TimeInSeconds
+                            PnTinfo[0, PnTinfo.GetLength(1) - 1] = checkFloat(values[12]) * 1000f;
                             result[1, result.GetLength(1) - 1] = checkFloat(values[13]); //MsBetweenPresents
                             result[2, result.GetLength(1) - 1] = checkFloat(values[14]); //MsBetweenDisplayChangeActual
                             try
@@ -542,11 +721,13 @@ namespace FrameViewGraph
                             try
                             {
                                 cpuTemp += Convert.ToInt32(values[38]); //CPU Package Temp(C)
+                                PnTinfo[3, PnTinfo.GetLength(1) - 1] = checkFloat(values[38]);
                             }
                             catch { }
                             try
                             {
                                 cpuPower += Convert.ToDouble(values[39]); //CPU Package Power(W)
+                                PnTinfo[3, PnTinfo.GetLength(1) - 1] = checkFloat(values[39]);
                             }
                             catch { }
                             try
@@ -567,6 +748,7 @@ namespace FrameViewGraph
                             try
                             {
                                 gpuTemp += Convert.ToInt32(values[22]); //GPU0Temp(C)
+                                PnTinfo[4, PnTinfo.GetLength(1) - 1] = checkFloat(values[22]);
                             }
                             catch { }
                             try
@@ -574,11 +756,27 @@ namespace FrameViewGraph
                                 if (values[34] != "NA")
                                 {
                                     gpuPower += Convert.ToInt32(values[34]); //NV Pwr(W) (API)
+                                    PnTinfo[5, PnTinfo.GetLength(1) - 1] = checkFloat(values[34]);
                                 }
                                 else if (values[35] != "NA")
                                 {
                                     gpuPower += Convert.ToInt32(values[35]); //NV Pwr(W) (API)
+                                    PnTinfo[5, PnTinfo.GetLength(1) - 1] = checkFloat(values[35]);
                                 }
+                            }
+                            catch { }
+
+                            try
+                            {
+                                if (values[107] != "NA")
+                                {
+                                    PnTinfo[1, PnTinfo.GetLength(1) - 1] = checkFloat(values[107]);
+                                }
+                                else
+                                {
+                                    PnTinfo[1, PnTinfo.GetLength(1) - 1] = 0;
+                                }
+
                             }
                             catch { }
 
@@ -721,8 +919,19 @@ namespace FrameViewGraph
                     }
                 }
 
+                void MoveData()
+                {
+                    float startTime = PnTinfo[0, 0];
+                    for (int i = 0; i < PnTinfo.GetLength(1); i++)
+                    {
+                        PnTinfo[0, i] -= startTime;
+                    }
+                }
+
                 calculateFPS(1);
                 calculateFPS(2);
+                MoveData();
+                Data4BPT.Add(PnTinfo);
                 return result;
             }
             catch
@@ -777,7 +986,7 @@ namespace FrameViewGraph
 
         private static float[,] ResizeArray(float[,] arr)
         {
-            float[,] newArr = new float[3, arr.GetLength(1) + 1];
+            float[,] newArr = new float[arr.GetLength(0), arr.GetLength(1) + 1];
             for (int i = 0; i < arr.GetLength(0); i++)
             {
                 for (int j = 0; j < arr.GetLength(1); j++)
@@ -907,6 +1116,7 @@ namespace FrameViewGraph
                             infoData.RemoveAt(index);
                             displayData.RemoveAt(index);
                             apiData.RemoveAt(index);
+                            Data4BPT.RemoveAt(index);
                         }
                     }
                 }
@@ -1064,14 +1274,31 @@ namespace FrameViewGraph
                     }
                     else if (typeOfGraph == 4)
                     {
+                        graphDiagrams();
                     }
                     else if (typeOfGraph == 5)
                     {
-                        graphDiagrams();
+                        graphDiagramsPC();
                     }
                     else if (typeOfGraph == 6)
                     {
-                        graphDiagramsPC();
+                        graphBattery();
+                    }
+                    else if (typeOfGraph == 7)
+                    {
+                        graphCPUtemp();
+                    }
+                    else if (typeOfGraph == 8)
+                    {
+                        graphCPUpower();
+                    }
+                    else if (typeOfGraph == 9)
+                    {
+                        graphGPUtemp();
+                    }
+                    else if (typeOfGraph == 0)
+                    {
+                        graphGPUpower();
                     }
                     else
                     {
@@ -1111,7 +1338,7 @@ namespace FrameViewGraph
 
         private void menuHelpVersion_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Название программы: FrameViewGraph\nВерсия программы: " + Properties.Settings.Default.version + "\nСтатус текущей версии программы: Стабильная\nПодходящие версии FrameView: 0.9, 1.1, 1.2\nРазработчик: volkovskey\nКопирайт: Copyright ©volkovskey 2020-2021\nЛицензия: MIT License\nТекст лицензии:\n\n" + Properties.Resources.license, "Версия программы");
+            MessageBox.Show("Название программы: FrameViewGraph\nВерсия программы: " + Properties.Settings.Default.version + "\nСтатус текущей версии программы: Beta 1\nПодходящие версии FrameView: 0.9, 1.1, 1.2\nРазработчик: volkovskey\nКопирайт: Copyright ©volkovskey 2020-2021\nЛицензия: MIT License\nТекст лицензии:\n\n" + Properties.Resources.license, "Версия программы");
         }
 
         private void menuName_TextChanged(object sender, EventArgs e)
@@ -1184,33 +1411,33 @@ namespace FrameViewGraph
             }
         }
 
-        private void menuGraph5_MouseDown(object sender, MouseEventArgs e)
+        private void menuGraph4_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
             {
                 graphDiagrams();
+            }
+            if (!menuGraph4.Checked)
+            {
+                disableAllGraphs();
+                menuGraph4.Checked = true;
+                typeOfGraph = 4;
+                menuGrDataDiagram.Enabled = true;
+                menuGrDataTempAndPower.Enabled = true;
+            }
+        }
+
+        private void menuGraph5_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                graphDiagramsPC();
             }
             if (!menuGraph5.Checked)
             {
                 disableAllGraphs();
                 menuGraph5.Checked = true;
                 typeOfGraph = 5;
-                menuGrDataDiagram.Enabled = true;
-                menuGrDataTempAndPower.Enabled = true;
-            }
-        }
-
-        private void menuGraph6_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
-            {
-                graphDiagramsPC();
-            }
-            if (!menuGraph6.Checked)
-            {
-                disableAllGraphs();
-                menuGraph6.Checked = true;
-                typeOfGraph = 6;
                 menuGrDataDiagram.Enabled = true;
                 menuGrDataTempAndPower.Enabled = true;
             }
@@ -1269,8 +1496,13 @@ namespace FrameViewGraph
             menuGraph1.Checked = false;
             menuGraph2.Checked = false;
             menuGraph3.Checked = false;
+            menuGraph4.Checked = false;
             menuGraph5.Checked = false;
             menuGraph6.Checked = false;
+            menuGraph7.Checked = false;
+            menuGraph8.Checked = false;
+            menuGraph9.Checked = false;
+            menuGraph0.Checked = false;
             menuGrDataDiagram.Enabled = false;
             menuGrDataTempAndPower.Enabled = false;
         }
@@ -1305,6 +1537,18 @@ namespace FrameViewGraph
             }
         }
 
+        private void menuGraph4_Click(object sender, EventArgs e)
+        {
+            if (!menuGraph4.Checked)
+            {
+                disableAllGraphs();
+                menuGraph4.Checked = true;
+                typeOfGraph = 4;
+                menuGrDataDiagram.Enabled = true;
+                menuGrDataTempAndPower.Enabled = true;
+            }
+        }
+
         private void menuGraph5_Click(object sender, EventArgs e)
         {
             if (!menuGraph5.Checked)
@@ -1312,18 +1556,6 @@ namespace FrameViewGraph
                 disableAllGraphs();
                 menuGraph5.Checked = true;
                 typeOfGraph = 5;
-                menuGrDataDiagram.Enabled = true;
-                menuGrDataTempAndPower.Enabled = true;
-            }
-        }
-
-        private void menuGraph6_Click(object sender, EventArgs e)
-        {
-            if (!menuGraph6.Checked)
-            {
-                disableAllGraphs();
-                menuGraph6.Checked = true;
-                typeOfGraph = 6;
                 menuGrDataDiagram.Enabled = true;
                 menuGrDataTempAndPower.Enabled = true;
             }
@@ -1404,7 +1636,135 @@ namespace FrameViewGraph
             menuCmbBx_SelectedIndexChanged(sender, e);
         }
 
+        private void menuGraph6_Click(object sender, EventArgs e)
+        {
+            if (!menuGraph6.Checked)
+            {
+                disableAllGraphs();
+                menuGraph6.Checked = true;
+                typeOfGraph = 6;
+                menuGrDataDiagram.Enabled = true;
+                menuGrDataTempAndPower.Enabled = true;
+            }
+        }
 
+        private void menuGraph7_Click(object sender, EventArgs e)
+        {
+            if (!menuGraph7.Checked)
+            {
+                disableAllGraphs();
+                menuGraph7.Checked = true;
+                typeOfGraph = 7;
+                menuGrDataDiagram.Enabled = true;
+                menuGrDataTempAndPower.Enabled = true;
+            }
+        }
+
+        private void menuGraph8_Click(object sender, EventArgs e)
+        {
+            if (!menuGraph8.Checked)
+            {
+                disableAllGraphs();
+                menuGraph8.Checked = true;
+                typeOfGraph = 8;
+                menuGrDataDiagram.Enabled = true;
+                menuGrDataTempAndPower.Enabled = true;
+            }
+        }
+
+        private void menuGraph9_Click(object sender, EventArgs e)
+        {
+            if (!menuGraph9.Checked)
+            {
+                disableAllGraphs();
+                menuGraph9.Checked = true;
+                typeOfGraph = 9;
+                menuGrDataDiagram.Enabled = true;
+                menuGrDataTempAndPower.Enabled = true;
+            }
+        }
+
+        private void menuGraph0_Click(object sender, EventArgs e)
+        {
+            if (!menuGraph5.Checked)
+            {
+                disableAllGraphs();
+                menuGraph0.Checked = true;
+                typeOfGraph = 0;
+                menuGrDataDiagram.Enabled = true;
+                menuGrDataTempAndPower.Enabled = true;
+            }
+        }
+
+        private void menuGraph6_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                graphBattery();
+            }
+            if (!menuGraph6.Checked)
+            {
+                disableAllGraphs();
+                menuGraph6.Checked = true;
+                typeOfGraph = 6;
+            }
+        }
+
+        private void menuGraph7_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                graphCPUtemp();
+            }
+            if (!menuGraph7.Checked)
+            {
+                disableAllGraphs();
+                menuGraph7.Checked = true;
+                typeOfGraph = 7;
+            }
+        }
+
+        private void menuGraph8_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                graphCPUpower();
+            }
+            if (!menuGraph8.Checked)
+            {
+                disableAllGraphs();
+                menuGraph8.Checked = true;
+                typeOfGraph = 8;
+            }
+        }
+
+        private void menuGraph9_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                graphGPUtemp();
+            }
+            if (!menuGraph9.Checked)
+            {
+                disableAllGraphs();
+                menuGraph9.Checked = true;
+                typeOfGraph = 9;
+            }
+        }
+
+        private void menuGraph0_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                graphGPUpower();
+            }
+            if (!menuGraph0.Checked)
+            {
+                disableAllGraphs();
+                menuGraph0.Checked = true;
+                typeOfGraph = 0;
+            }
+        }
     }
 }
 
