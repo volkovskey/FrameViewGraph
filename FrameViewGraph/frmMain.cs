@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Diagnostics;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -20,7 +21,7 @@ namespace FrameViewGraph
         private Int16 resolutionWidth = 1920;
         private Int16 resolutionHeight = 1080;
         private List<String> filesName = new List<string>(); //list of file's name
-        private List<Array> parsedData = new List<Array>(); 
+        private List<Array> parsedData = new List<Array>();
         private List<Array> infoData = new List<Array>(); //name, api, temp etc 4 right column and diagrams
         private List<Array> apiData = new List<Array>(); //stats data 4 right column and diagrams
         private List<Array> displayData = new List<Array>(); //stats data 4 right column and diagrams
@@ -522,6 +523,8 @@ namespace FrameViewGraph
 
         private float[,] openCSV(String path)
         {
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
             //0 - Time
             //1 - MsBetweenPresents
             //2 - MsBetweenDisplayChange
@@ -608,65 +611,84 @@ namespace FrameViewGraph
                         var values = line.Split(',');
                         if (values[12].Contains(".") && values[13].Contains(".") && values[14].Contains("."))
                         {
-                            result = ResizeArray(result);
-                            PnTinfo = ResizeArray(PnTinfo);
-
-                            result[0, result.GetLength(1) - 1] = checkFloat(values[12]) * 1000f; //TimeInSeconds
-                            PnTinfo[0, PnTinfo.GetLength(1) - 1] = checkFloat(values[8]) * 1000f; //TimeInSeconds
-                            result[1, result.GetLength(1) - 1] = checkFloat(values[13]); //MsBetweenPresents
-                            result[2, result.GetLength(1) - 1] = checkFloat(values[14]); //MsBetweenDisplayChangeActual
-                            try
-                            {
-                                cpuFreq += Convert.ToInt32(values[34]); //CPUClk(MHz)
-                            }
-                            catch { }
-                            try
-                            {
-                                cpuUsage += Convert.ToInt32(values[35]); //CPUUtil(%)
-                            }
-                            catch { }
-                            try
-                            {
-                                cpuTemp += Convert.ToInt32(values[36]); //CPU Package Temp(C)
-                                PnTinfo[2, PnTinfo.GetLength(1) - 1] = checkFloat(values[36]);
-                            }
-                            catch { }
-                            try
-                            {
-                                cpuPower += Convert.ToDouble(values[37]); //CPU Package Power(W)
-                                PnTinfo[3, PnTinfo.GetLength(1) - 1] = checkFloat(values[37]);
-                            }
-                            catch { }
-                            try
-                            {
-                                gpuFreq += Convert.ToInt32(values[19]); //GPU0Clk(MHz)
-                            }
-                            catch { }
-                            try
-                            {
-                                gpuUsage += Convert.ToInt32(values[20]); //GPU0Util(%)
-                            }
-                            catch { }
-                            try
-                            {
-                                gpuTemp += Convert.ToInt32(values[21]); //GPU0Temp(C)
-                                PnTinfo[4, PnTinfo.GetLength(1) - 1] = checkFloat(values[21]);
-                            }
-                            catch { }
-                            try
-                            {
-                                if (values[32] != "NA")
+                            Parallel.Invoke(
+                                () =>
                                 {
-                                    gpuPower += Convert.ToInt32(values[32]); //NV Pwr(W) (API)
-                                    PnTinfo[5, PnTinfo.GetLength(1) - 1] = checkFloat(values[32]);
-                                }
-                                else if (values[33] != "NA")
+                                    result = ResizeArray(result);
+                                },
+                                () =>
                                 {
-                                    gpuPower += Convert.ToInt32(values[33]); //NV Pwr(W) (API)
-                                    PnTinfo[5, PnTinfo.GetLength(1) - 1] = checkFloat(values[33]);
-                                }
-                            }
-                            catch { }
+                                    PnTinfo = ResizeArray(PnTinfo);
+                                });
+                            Parallel.Invoke(
+                                () =>
+                                {
+                                    result[0, result.GetLength(1) - 1] = checkFloat(values[12]) * 1000f; //TimeInSeconds
+                                    PnTinfo[0, PnTinfo.GetLength(1) - 1] = checkFloat(values[8]) * 1000f; //TimeInSeconds
+                                    result[1, result.GetLength(1) - 1] = checkFloat(values[13]); //MsBetweenPresents
+                                    result[2, result.GetLength(1) - 1] = checkFloat(values[14]); //MsBetweenDisplayChangeActual
+                                },
+                                () =>
+                                {
+                                    try
+                                    {
+                                        cpuFreq += Convert.ToInt32(values[34]); //CPUClk(MHz)
+                                    }
+                                    catch { }
+                                    try
+                                    {
+                                        cpuUsage += Convert.ToInt32(values[35]); //CPUUtil(%)
+                                    }
+                                    catch { }
+                                    try
+                                    {
+                                        cpuTemp += Convert.ToInt32(values[36]); //CPU Package Temp(C)
+                                        PnTinfo[2, PnTinfo.GetLength(1) - 1] = checkFloat(values[36]);
+                                    }
+                                    catch { }
+                                },
+                                () =>
+                                {
+                                    try
+                                    {
+                                        cpuPower += Convert.ToDouble(values[37]); //CPU Package Power(W)
+                                        PnTinfo[3, PnTinfo.GetLength(1) - 1] = checkFloat(values[37]);
+                                    }
+                                    catch { }
+                                    try
+                                    {
+                                        gpuFreq += Convert.ToInt32(values[19]); //GPU0Clk(MHz)
+                                    }
+                                    catch { }
+                                    try
+                                    {
+                                        gpuUsage += Convert.ToInt32(values[20]); //GPU0Util(%)
+                                    }
+                                    catch { }
+                                    try
+                                    {
+                                        gpuTemp += Convert.ToInt32(values[21]); //GPU0Temp(C)
+                                        PnTinfo[4, PnTinfo.GetLength(1) - 1] = checkFloat(values[21]);
+                                    }
+                                    catch { }
+                                },
+                                () =>
+                                {
+                                    try
+                                    {
+                                        if (values[32] != "NA")
+                                        {
+                                            gpuPower += Convert.ToInt32(values[32]); //NV Pwr(W) (API)
+                                            PnTinfo[5, PnTinfo.GetLength(1) - 1] = checkFloat(values[32]);
+                                        }
+                                        else if (values[33] != "NA")
+                                        {
+                                            gpuPower += Convert.ToInt32(values[33]); //NV Pwr(W) (API)
+                                            PnTinfo[5, PnTinfo.GetLength(1) - 1] = checkFloat(values[33]);
+                                        }
+                                    }
+                                    catch { }
+                                });
                             PnTinfo[1, PnTinfo.GetLength(1) - 1] = 0;
 
                             counter++;
@@ -701,84 +723,103 @@ namespace FrameViewGraph
                         var values = line.Split(',');
                         if (values[12].Contains(".") && values[13].Contains(".") && values[14].Contains("."))
                         {
-                            result = ResizeArray(result);
-                            PnTinfo = ResizeArray(PnTinfo);
+                            Parallel.Invoke(
+                                () =>
+                                {
+                                    result = ResizeArray(result);
+                                },
+                                () =>
+                                {
+                                    PnTinfo = ResizeArray(PnTinfo);
+                                });
+                            Parallel.Invoke(
+                                () =>
+                                {
+                                    result[0, result.GetLength(1) - 1] = checkFloat(values[12]) * 1000f; //TimeInSeconds
+                                    PnTinfo[0, PnTinfo.GetLength(1) - 1] = checkFloat(values[12]) * 1000f;
+                                    result[1, result.GetLength(1) - 1] = checkFloat(values[13]); //MsBetweenPresents
+                                    result[2, result.GetLength(1) - 1] = checkFloat(values[14]); //MsBetweenDisplayChangeActual
+                                },
+                                () =>
+                                {
+                                    try
+                                    {
+                                        cpuFreq += Convert.ToInt32(values[36]); //CPUClk(MHz)
+                                    }
+                                    catch { }
+                                    try
+                                    {
+                                        cpuUsage += Convert.ToInt32(values[37]); //CPUUtil(%)
+                                    }
+                                    catch { }
+                                    try
+                                    {
+                                        cpuTemp += Convert.ToInt32(values[38]); //CPU Package Temp(C)
+                                        PnTinfo[3, PnTinfo.GetLength(1) - 1] = checkFloat(values[38]);
+                                    }
+                                    catch { }
+                                    try
+                                    {
+                                        cpuPower += Convert.ToDouble(values[39]); //CPU Package Power(W)
+                                        PnTinfo[3, PnTinfo.GetLength(1) - 1] = checkFloat(values[39]);
+                                    }
+                                    catch { }
+                                },
+                                () =>
+                                {
+                                    try
+                                    {
+                                        gpuFreq += Convert.ToInt32(values[19]); //GPU0Clk(MHz)
+                                    }
+                                    catch { }
+                                    try
+                                    {
+                                        gpuMemFreq += Convert.ToInt32(values[20]); //GPU0MemClk(MHz)
+                                    }
+                                    catch { }
+                                    try
+                                    {
+                                        gpuUsage += Convert.ToInt32(values[21]); //GPU0Util(%)
+                                    }
+                                    catch { }
+                                    try
+                                    {
+                                        gpuTemp += Convert.ToInt32(values[22]); //GPU0Temp(C)
+                                        PnTinfo[4, PnTinfo.GetLength(1) - 1] = checkFloat(values[22]);
+                                    }
+                                    catch { }
+                                },
+                                () =>
+                                {
+                                    try
+                                    {
+                                        if (values[34] != "NA")
+                                        {
+                                            gpuPower += Convert.ToInt32(values[34]); //NV Pwr(W) (API)
+                                            PnTinfo[5, PnTinfo.GetLength(1) - 1] = checkFloat(values[34]);
+                                        }
+                                        else if (values[35] != "NA")
+                                        {
+                                            gpuPower += Convert.ToInt32(values[35]); //NV Pwr(W) (API)
+                                            PnTinfo[5, PnTinfo.GetLength(1) - 1] = checkFloat(values[35]);
+                                        }
+                                    }
+                                    catch { }
 
-                            result[0, result.GetLength(1) - 1] = checkFloat(values[12]) * 1000f; //TimeInSeconds
-                            PnTinfo[0, PnTinfo.GetLength(1) - 1] = checkFloat(values[12]) * 1000f;
-                            result[1, result.GetLength(1) - 1] = checkFloat(values[13]); //MsBetweenPresents
-                            result[2, result.GetLength(1) - 1] = checkFloat(values[14]); //MsBetweenDisplayChangeActual
-                            try
-                            {
-                                cpuFreq += Convert.ToInt32(values[36]); //CPUClk(MHz)
-                            }
-                            catch { }
-                            try
-                            {
-                                cpuUsage += Convert.ToInt32(values[37]); //CPUUtil(%)
-                            }
-                            catch { }
-                            try
-                            {
-                                cpuTemp += Convert.ToInt32(values[38]); //CPU Package Temp(C)
-                                PnTinfo[3, PnTinfo.GetLength(1) - 1] = checkFloat(values[38]);
-                            }
-                            catch { }
-                            try
-                            {
-                                cpuPower += Convert.ToDouble(values[39]); //CPU Package Power(W)
-                                PnTinfo[3, PnTinfo.GetLength(1) - 1] = checkFloat(values[39]);
-                            }
-                            catch { }
-                            try
-                            {
-                                gpuFreq += Convert.ToInt32(values[19]); //GPU0Clk(MHz)
-                            }
-                            catch { }
-                            try
-                            {
-                                gpuMemFreq += Convert.ToInt32(values[20]); //GPU0MemClk(MHz)
-                            }
-                            catch { }
-                            try
-                            {
-                                gpuUsage += Convert.ToInt32(values[21]); //GPU0Util(%)
-                            }
-                            catch { }
-                            try
-                            {
-                                gpuTemp += Convert.ToInt32(values[22]); //GPU0Temp(C)
-                                PnTinfo[4, PnTinfo.GetLength(1) - 1] = checkFloat(values[22]);
-                            }
-                            catch { }
-                            try
-                            {
-                                if (values[34] != "NA")
-                                {
-                                    gpuPower += Convert.ToInt32(values[34]); //NV Pwr(W) (API)
-                                    PnTinfo[5, PnTinfo.GetLength(1) - 1] = checkFloat(values[34]);
-                                }
-                                else if (values[35] != "NA")
-                                {
-                                    gpuPower += Convert.ToInt32(values[35]); //NV Pwr(W) (API)
-                                    PnTinfo[5, PnTinfo.GetLength(1) - 1] = checkFloat(values[35]);
-                                }
-                            }
-                            catch { }
+                                    try
+                                    {
+                                        if (values[107] != "NA")
+                                        {
+                                            PnTinfo[1, PnTinfo.GetLength(1) - 1] = checkFloat(values[107]);
+                                        }
+                                        else
+                                        {
+                                            PnTinfo[1, PnTinfo.GetLength(1) - 1] = 0;
+                                        }
 
-                            try
-                            {
-                                if (values[107] != "NA")
-                                {
-                                    PnTinfo[1, PnTinfo.GetLength(1) - 1] = checkFloat(values[107]);
-                                }
-                                else
-                                {
-                                    PnTinfo[1, PnTinfo.GetLength(1) - 1] = 0;
-                                }
-
-                            }
-                            catch { }
+                                    }
+                                    catch { }
+                                });
 
                             counter++;
                         }
@@ -932,12 +973,24 @@ namespace FrameViewGraph
                 calculateFPS(2);
                 MoveData();
                 Data4BPT.Add(PnTinfo);
+
+
+                stopWatch.Stop();
+                TimeSpan ts = stopWatch.Elapsed;
+                string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                ts.Hours, ts.Minutes, ts.Seconds,
+                ts.Milliseconds / 10);
+                this.Text = "RunTime " + elapsedTime;
+
+
                 return result;
             }
             catch
             {
                 return null;
             }
+
+
         }
 
         private float checkFloat(string s)
@@ -1338,7 +1391,7 @@ namespace FrameViewGraph
 
         private void menuHelpVersion_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Название программы: FrameViewGraph\nВерсия программы: " + Properties.Settings.Default.version + "\nСтатус текущей версии программы: Beta 1\nПодходящие версии FrameView: 0.9, 1.1, 1.2\nРазработчик: volkovskey\nКопирайт: Copyright ©volkovskey 2020-2021\nЛицензия: MIT License\nТекст лицензии:\n\n" + Properties.Resources.license, "Версия программы");
+            MessageBox.Show("Название программы: FrameViewGraph\nВерсия программы: " + Properties.Settings.Default.version + "\nСтатус текущей версии программы: Beta 2\nПодходящие версии FrameView: 0.9, 1.1, 1.2\nРазработчик: volkovskey\nКопирайт: Copyright ©volkovskey 2020-2021\nЛицензия: MIT License\nТекст лицензии:\n\n" + Properties.Resources.license, "Версия программы");
         }
 
         private void menuName_TextChanged(object sender, EventArgs e)
