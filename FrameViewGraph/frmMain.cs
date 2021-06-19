@@ -6,7 +6,6 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Diagnostics;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -523,8 +522,6 @@ namespace FrameViewGraph
 
         private float[,] openCSV(String path)
         {
-            Stopwatch stopWatch = new Stopwatch();
-            stopWatch.Start();
             //0 - Time
             //1 - MsBetweenPresents
             //2 - MsBetweenDisplayChange
@@ -755,7 +752,7 @@ namespace FrameViewGraph
                                     try
                                     {
                                         cpuTemp += Convert.ToInt32(values[38]); //CPU Package Temp(C)
-                                        PnTinfo[3, PnTinfo.GetLength(1) - 1] = checkFloat(values[38]);
+                                        PnTinfo[2, PnTinfo.GetLength(1) - 1] = checkFloat(values[38]);
                                     }
                                     catch { }
                                     try
@@ -973,15 +970,6 @@ namespace FrameViewGraph
                 calculateFPS(2);
                 MoveData();
                 Data4BPT.Add(PnTinfo);
-
-
-                stopWatch.Stop();
-                TimeSpan ts = stopWatch.Elapsed;
-                string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-                ts.Hours, ts.Minutes, ts.Seconds,
-                ts.Milliseconds / 10);
-                this.Text = "RunTime " + elapsedTime;
-
 
                 return result;
             }
@@ -1391,7 +1379,7 @@ namespace FrameViewGraph
 
         private void menuHelpVersion_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Название программы: FrameViewGraph\nВерсия программы: " + Properties.Settings.Default.version + "\nСтатус текущей версии программы: Beta 2\nПодходящие версии FrameView: 0.9, 1.1, 1.2\nРазработчик: volkovskey\nКопирайт: Copyright ©volkovskey 2020-2021\nЛицензия: MIT License\nТекст лицензии:\n\n" + Properties.Resources.license, "Версия программы");
+            MessageBox.Show("Название программы: FrameViewGraph\nВерсия программы: " + Properties.Settings.Default.version + "\nСтатус текущей версии программы: Beta 3\nПодходящие версии FrameView: 0.9, 1.1, 1.2\nРазработчик: volkovskey\nКопирайт: Copyright ©volkovskey 2020-2021\nЛицензия: MIT License\nТекст лицензии:\n\n" + Properties.Resources.license, "Версия программы");
         }
 
         private void menuName_TextChanged(object sender, EventArgs e)
@@ -1426,7 +1414,7 @@ namespace FrameViewGraph
         {
             if (e.Button == MouseButtons.Right)
             {
-                graphFrameTime();
+                menuGrDraw_Click(sender, e);
             }
             if (!menuGraph1.Checked)
             {
@@ -1440,7 +1428,7 @@ namespace FrameViewGraph
         {
             if (e.Button == MouseButtons.Right)
             {
-                graphFPS();
+                menuGrDraw_Click(sender, e);
             }
             if (!menuGraph2.Checked)
             {
@@ -1454,7 +1442,7 @@ namespace FrameViewGraph
         {
             if (e.Button == MouseButtons.Right)
             {
-                graphProbabilityDensity();
+                menuGrDraw_Click(sender, e);
             }
             if (!menuGraph3.Checked)
             {
@@ -1468,7 +1456,7 @@ namespace FrameViewGraph
         {
             if (e.Button == MouseButtons.Right)
             {
-                graphDiagrams();
+                menuGrDraw_Click(sender, e);
             }
             if (!menuGraph4.Checked)
             {
@@ -1484,7 +1472,7 @@ namespace FrameViewGraph
         {
             if (e.Button == MouseButtons.Right)
             {
-                graphDiagramsPC();
+                menuGrDraw_Click(sender, e);
             }
             if (!menuGraph5.Checked)
             {
@@ -1753,7 +1741,7 @@ namespace FrameViewGraph
         {
             if (e.Button == MouseButtons.Right)
             {
-                graphBattery();
+                menuGrDraw_Click(sender, e);
             }
             if (!menuGraph6.Checked)
             {
@@ -1767,7 +1755,7 @@ namespace FrameViewGraph
         {
             if (e.Button == MouseButtons.Right)
             {
-                graphCPUtemp();
+                menuGrDraw_Click(sender, e);
             }
             if (!menuGraph7.Checked)
             {
@@ -1781,7 +1769,7 @@ namespace FrameViewGraph
         {
             if (e.Button == MouseButtons.Right)
             {
-                graphCPUpower();
+                menuGrDraw_Click(sender, e);
             }
             if (!menuGraph8.Checked)
             {
@@ -1795,7 +1783,7 @@ namespace FrameViewGraph
         {
             if (e.Button == MouseButtons.Right)
             {
-                graphGPUtemp();
+                menuGrDraw_Click(sender, e);
             }
             if (!menuGraph9.Checked)
             {
@@ -1809,7 +1797,7 @@ namespace FrameViewGraph
         {
             if (e.Button == MouseButtons.Right)
             {
-                graphGPUpower();
+                menuGrDraw_Click(sender, e);
             }
             if (!menuGraph0.Checked)
             {

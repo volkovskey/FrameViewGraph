@@ -278,6 +278,7 @@
             // 
             // menuResolutionCustomX
             // 
+            this.menuResolutionCustomX.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.menuResolutionCustomX.Name = "menuResolutionCustomX";
             this.menuResolutionCustomX.Size = new System.Drawing.Size(100, 23);
             this.menuResolutionCustomX.Text = "1920";
@@ -286,6 +287,7 @@
             // 
             // menuResolutionCustomY
             // 
+            this.menuResolutionCustomY.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.menuResolutionCustomY.Name = "menuResolutionCustomY";
             this.menuResolutionCustomY.Size = new System.Drawing.Size(100, 23);
             this.menuResolutionCustomY.Text = "1080";
@@ -668,6 +670,7 @@
             // menuName
             // 
             this.menuName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.menuName.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.menuName.Name = "menuName";
             this.menuName.Size = new System.Drawing.Size(600, 23);
             this.menuName.TextChanged += new System.EventHandler(this.menuName_TextChanged);
