@@ -1412,52 +1412,48 @@ namespace FrameViewGraph
 
         private void menuGraph1_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
-            {
-                menuGrDraw_Click(sender, e);
-            }
             if (!menuGraph1.Checked)
             {
                 disableAllGraphs();
                 menuGraph1.Checked = true;
                 typeOfGraph = 1;
             }
-        }
-
-        private void menuGraph2_MouseDown(object sender, MouseEventArgs e)
-        {
             if (e.Button == MouseButtons.Right)
             {
                 menuGrDraw_Click(sender, e);
             }
+        }
+
+        private void menuGraph2_MouseDown(object sender, MouseEventArgs e)
+        {
             if (!menuGraph2.Checked)
             {
                 disableAllGraphs();
                 menuGraph2.Checked = true;
                 typeOfGraph = 2;
             }
-        }
-
-        private void menuGraph3_MouseDown(object sender, MouseEventArgs e)
-        {
             if (e.Button == MouseButtons.Right)
             {
                 menuGrDraw_Click(sender, e);
             }
+        }
+
+        private void menuGraph3_MouseDown(object sender, MouseEventArgs e)
+        {
             if (!menuGraph3.Checked)
             {
                 disableAllGraphs();
                 menuGraph3.Checked = true;
                 typeOfGraph = 3;
             }
-        }
-
-        private void menuGraph4_MouseDown(object sender, MouseEventArgs e)
-        {
             if (e.Button == MouseButtons.Right)
             {
                 menuGrDraw_Click(sender, e);
             }
+        }
+
+        private void menuGraph4_MouseDown(object sender, MouseEventArgs e)
+        {
             if (!menuGraph4.Checked)
             {
                 disableAllGraphs();
@@ -1466,14 +1462,14 @@ namespace FrameViewGraph
                 menuGrDataDiagram.Enabled = true;
                 menuGrDataTempAndPower.Enabled = true;
             }
-        }
-
-        private void menuGraph5_MouseDown(object sender, MouseEventArgs e)
-        {
             if (e.Button == MouseButtons.Right)
             {
                 menuGrDraw_Click(sender, e);
             }
+        }
+
+        private void menuGraph5_MouseDown(object sender, MouseEventArgs e)
+        {
             if (!menuGraph5.Checked)
             {
                 disableAllGraphs();
@@ -1481,6 +1477,10 @@ namespace FrameViewGraph
                 typeOfGraph = 5;
                 menuGrDataDiagram.Enabled = true;
                 menuGrDataTempAndPower.Enabled = true;
+            }
+            if (e.Button == MouseButtons.Right)
+            {
+                menuGrDraw_Click(sender, e);
             }
         }
 
@@ -1739,71 +1739,71 @@ namespace FrameViewGraph
 
         private void menuGraph6_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
-            {
-                menuGrDraw_Click(sender, e);
-            }
             if (!menuGraph6.Checked)
             {
                 disableAllGraphs();
                 menuGraph6.Checked = true;
                 typeOfGraph = 6;
             }
-        }
-
-        private void menuGraph7_MouseDown(object sender, MouseEventArgs e)
-        {
             if (e.Button == MouseButtons.Right)
             {
                 menuGrDraw_Click(sender, e);
             }
+        }
+
+        private void menuGraph7_MouseDown(object sender, MouseEventArgs e)
+        {
             if (!menuGraph7.Checked)
             {
                 disableAllGraphs();
                 menuGraph7.Checked = true;
                 typeOfGraph = 7;
             }
-        }
-
-        private void menuGraph8_MouseDown(object sender, MouseEventArgs e)
-        {
             if (e.Button == MouseButtons.Right)
             {
                 menuGrDraw_Click(sender, e);
             }
+        }
+
+        private void menuGraph8_MouseDown(object sender, MouseEventArgs e)
+        {
             if (!menuGraph8.Checked)
             {
                 disableAllGraphs();
                 menuGraph8.Checked = true;
                 typeOfGraph = 8;
             }
-        }
-
-        private void menuGraph9_MouseDown(object sender, MouseEventArgs e)
-        {
             if (e.Button == MouseButtons.Right)
             {
                 menuGrDraw_Click(sender, e);
             }
+        }
+
+        private void menuGraph9_MouseDown(object sender, MouseEventArgs e)
+        {
             if (!menuGraph9.Checked)
             {
                 disableAllGraphs();
                 menuGraph9.Checked = true;
                 typeOfGraph = 9;
             }
-        }
-
-        private void menuGraph0_MouseDown(object sender, MouseEventArgs e)
-        {
             if (e.Button == MouseButtons.Right)
             {
                 menuGrDraw_Click(sender, e);
             }
+        }
+
+        private void menuGraph0_MouseDown(object sender, MouseEventArgs e)
+        {
             if (!menuGraph0.Checked)
             {
                 disableAllGraphs();
                 menuGraph0.Checked = true;
                 typeOfGraph = 0;
+            }
+            if (e.Button == MouseButtons.Right)
+            {
+                menuGrDraw_Click(sender, e);
             }
         }
     }
