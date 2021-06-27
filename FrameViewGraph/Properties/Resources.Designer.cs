@@ -61,15 +61,6 @@ namespace FrameViewGraph.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Application,SwapChainAddress,Runtime,SyncInterval,PresentFlags,AllowsTearing,PresentMode,Dropped,TimeInSeconds,MsBetweenPresents,MsBetweenDisplayChangeActual,MsUntilRenderComplete,MsUntilDisplayed,GPUOnlyPower(W),TotalMinusUSBCPower(W),TotalPower(W),AMDPower(W),PerfPerWattGPUOnly(F/J),PerfPerWattTotalMinusUSBC(F/J),PerfPerWattTotal(F/J),PerfPerWattAMD(F/J).
-        /// </summary>
-        public static string FV09 {
-            get {
-                return ResourceManager.GetString("FV09", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Ищет локализованную строку, похожую на Application,GPU,CPU,Resolution,Runtime,AllowsTearing,ProcessID,SwapChainAddress,SyncInterval,PresentFlags,PresentMode,Dropped,TimeInSeconds,MsBetweenPresents,MsBetweenDisplayChange,MsInPresentAPI,MsRenderPresentLatency,MsUntilDisplayed,Render Queue Depth,GPU0Clk(MHz),GPU0Util(%),GPU0Temp(C),GPU1Clk(MHz),GPU1Util(%),GPU1Temp(C),PCAT Power Total(W),Perf/W Total(F/J) (PCAT),Perf/W Total(F/J) (API),Perf/W GPUOnly(F/J) (API),Perf/W Total-USBC(F/J) (API),GPUOnlyPwr(W) (API),NV-Total-USBCPwr(W) (API),NV Pwr(W) (AP [остаток строки не уместился]&quot;;.
         /// </summary>
         public static string FV11 {

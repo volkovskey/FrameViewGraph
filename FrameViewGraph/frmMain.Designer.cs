@@ -59,6 +59,9 @@
             this.menuGraph8 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGraph9 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGraph0 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGraph11 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGraph12 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuGraph13 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGr = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGrDraw = new System.Windows.Forms.ToolStripMenuItem();
             this.menuGrClear = new System.Windows.Forms.ToolStripMenuItem();
@@ -315,7 +318,10 @@
             this.menuGraph7,
             this.menuGraph8,
             this.menuGraph9,
-            this.menuGraph0});
+            this.menuGraph0,
+            this.menuGraph11,
+            this.menuGraph12,
+            this.menuGraph13});
             this.menuGraph.Name = "menuGraph";
             this.menuGraph.Size = new System.Drawing.Size(88, 23);
             this.menuGraph.Text = "Тип графика";
@@ -370,7 +376,6 @@
             // menuGraph6
             // 
             this.menuGraph6.Name = "menuGraph6";
-            this.menuGraph6.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D6)));
             this.menuGraph6.Size = new System.Drawing.Size(267, 22);
             this.menuGraph6.Text = "Уровня заряда батареи";
             this.menuGraph6.Click += new System.EventHandler(this.menuGraph6_Click);
@@ -379,7 +384,6 @@
             // menuGraph7
             // 
             this.menuGraph7.Name = "menuGraph7";
-            this.menuGraph7.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D7)));
             this.menuGraph7.Size = new System.Drawing.Size(267, 22);
             this.menuGraph7.Text = "Температуры CPU";
             this.menuGraph7.Click += new System.EventHandler(this.menuGraph7_Click);
@@ -388,7 +392,6 @@
             // menuGraph8
             // 
             this.menuGraph8.Name = "menuGraph8";
-            this.menuGraph8.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D8)));
             this.menuGraph8.Size = new System.Drawing.Size(267, 22);
             this.menuGraph8.Text = "Температуры GPU";
             this.menuGraph8.Click += new System.EventHandler(this.menuGraph8_Click);
@@ -397,7 +400,6 @@
             // menuGraph9
             // 
             this.menuGraph9.Name = "menuGraph9";
-            this.menuGraph9.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D9)));
             this.menuGraph9.Size = new System.Drawing.Size(267, 22);
             this.menuGraph9.Text = "Потребление CPU";
             this.menuGraph9.Click += new System.EventHandler(this.menuGraph9_Click);
@@ -406,11 +408,34 @@
             // menuGraph0
             // 
             this.menuGraph0.Name = "menuGraph0";
-            this.menuGraph0.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D0)));
             this.menuGraph0.Size = new System.Drawing.Size(267, 22);
             this.menuGraph0.Text = "Потребление GPU";
             this.menuGraph0.Click += new System.EventHandler(this.menuGraph0_Click);
             this.menuGraph0.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuGraph0_MouseDown);
+            // 
+            // menuGraph11
+            // 
+            this.menuGraph11.Name = "menuGraph11";
+            this.menuGraph11.Size = new System.Drawing.Size(267, 22);
+            this.menuGraph11.Text = "Средней загрузки CPU";
+            this.menuGraph11.Click += new System.EventHandler(this.menuGraph11_Click);
+            this.menuGraph11.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuGraph11_MouseDown);
+            // 
+            // menuGraph12
+            // 
+            this.menuGraph12.Name = "menuGraph12";
+            this.menuGraph12.Size = new System.Drawing.Size(267, 22);
+            this.menuGraph12.Text = "Загрузки CPU по потокам";
+            this.menuGraph12.Click += new System.EventHandler(this.menuGraph12_Click);
+            this.menuGraph12.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuGraph12_MouseDown);
+            // 
+            // menuGraph13
+            // 
+            this.menuGraph13.Name = "menuGraph13";
+            this.menuGraph13.Size = new System.Drawing.Size(267, 22);
+            this.menuGraph13.Text = "Загрузки GPU";
+            this.menuGraph13.Click += new System.EventHandler(this.menuGraph13_Click);
+            this.menuGraph13.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuGraph13_MouseDown);
             // 
             // menuGr
             // 
@@ -1203,6 +1228,9 @@
         private System.Windows.Forms.ToolStripMenuItem menuGraph8;
         private System.Windows.Forms.ToolStripMenuItem menuGraph9;
         private System.Windows.Forms.ToolStripMenuItem menuGraph0;
+        private System.Windows.Forms.ToolStripMenuItem menuGraph11;
+        private System.Windows.Forms.ToolStripMenuItem menuGraph12;
+        private System.Windows.Forms.ToolStripMenuItem menuGraph13;
     }
 }
 
