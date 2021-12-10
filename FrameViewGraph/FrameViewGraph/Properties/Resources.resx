@@ -147,6 +147,15 @@
   <data name="EN_Menu_GraphType" xml:space="preserve">
     <value>Graph type</value>
   </data>
+  <data name="EN_Status_End" xml:space="preserve">
+    <value>File uploaded successfully</value>
+  </data>
+  <data name="EN_Status_Load" xml:space="preserve">
+    <value>Reading data from a file ...</value>
+  </data>
+  <data name="EN_Status_Work" xml:space="preserve">
+    <value>Processing data from a file...</value>
+  </data>
   <data name="RU_AppSettings_Language" xml:space="preserve">
     <value>Язык</value>
   </data>
@@ -176,5 +185,14 @@
   </data>
   <data name="RU_Menu_GraphType" xml:space="preserve">
     <value>Тип графика</value>
+  </data>
+  <data name="RU_Status_End" xml:space="preserve">
+    <value>Файл загружен успешно</value>
+  </data>
+  <data name="RU_Status_Load" xml:space="preserve">
+    <value>Чтение данных с файла...</value>
+  </data>
+  <data name="RU_Status_Work" xml:space="preserve">
+    <value>Обработка данных с файла...</value>
   </data>
 </root>

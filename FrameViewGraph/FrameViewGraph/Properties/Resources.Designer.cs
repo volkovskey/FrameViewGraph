@@ -151,6 +151,33 @@ namespace FrameViewGraph.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на File uploaded successfully.
+        /// </summary>
+        internal static string EN_Status_End {
+            get {
+                return ResourceManager.GetString("EN_Status_End", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Reading data from a file ....
+        /// </summary>
+        internal static string EN_Status_Load {
+            get {
+                return ResourceManager.GetString("EN_Status_Load", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Processing data from a file....
+        /// </summary>
+        internal static string EN_Status_Work {
+            get {
+                return ResourceManager.GetString("EN_Status_Work", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Язык.
         /// </summary>
         internal static string RU_AppSettings_Language {
@@ -237,6 +264,33 @@ namespace FrameViewGraph.Properties {
         internal static string RU_Menu_GraphType {
             get {
                 return ResourceManager.GetString("RU_Menu_GraphType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Файл загружен успешно.
+        /// </summary>
+        internal static string RU_Status_End {
+            get {
+                return ResourceManager.GetString("RU_Status_End", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Чтение данных с файла....
+        /// </summary>
+        internal static string RU_Status_Load {
+            get {
+                return ResourceManager.GetString("RU_Status_Load", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Обработка данных с файла....
+        /// </summary>
+        internal static string RU_Status_Work {
+            get {
+                return ResourceManager.GetString("RU_Status_Work", resourceCulture);
             }
         }
     }

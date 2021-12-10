@@ -8,32 +8,46 @@ namespace FrameViewGraph
 {
     internal class GraphData
     {
-        private string Application { get; set; }
-        private string GPU { get; set; }
-        private string CPU { get; set; }
-        private string Resolution { get; set; }
-        private string Runtime { get; set; }
-        private double[] TimeInSeconds { get; set; }
-        private double[] MsBetweenPresents { get; set; }
-        private double[] MsBetweenDisplayChange { get; set; }
-        private int[] GPUClock { get; set; }
-        private int[] GPUMemClock { get; set; }
-        private int[] GPUUtil { get; set; }
-        private int[] GPUTemp { get; set; }
-        private int[] GPUPower { get; set; }
-        private int[] CPUClock { get; set; }
-        private int[] CPUUtil { get; set; }
-        private int[] CPUTemp { get; set; }
-        private double[] CPUPower { get; set; }
-        private int[,] CPUCoresUtil { get; set; }
-        private double[] BatteryCapacity { get; set; }
-        private double[] BatteryPercentage { get; set; }
-        private double[] BatteryDrainRate { get; set; }
-        private double AvgFPS { get; set; }
-        private double ModeFPS { get; set; }
-        private double _50FPS { get; set; }
-        private double _10FPS { get; set; }
-        private double _1FPS { get; set; }
-        private double _01FPS { get; set; }
+        public string Name { get; set; }
+        public string Application { get; set; }
+        public string GPU { get; set; }
+        public string CPU { get; set; }
+        public string Resolution { get; set; }
+        public string Runtime { get; set; }
+        public double[] TimeInSeconds { get; set; }
+        public double[] MsBetweenPresents { get; set; }
+        public double[] MsBetweenDisplayChange { get; set; }
+        public int[] GPUClock { get; set; }
+        public double avgGPUClock { get; set; }
+        public int[] GPUMemClock { get; set; }
+        public double avgGPUMemClock { get; set; }
+        public int[] GPUUtil { get; set; }
+        public double avgGPUUtil { get; set; }
+        public int[] GPUTemp { get; set; }
+        public double avgGPUTemp { get; set; }
+        public int[] GPUPower { get; set; }
+        public double avgGPUPower { get; set; }
+        public int[] CPUClock { get; set; }
+        public double avgCPUClock { get; set; }
+        public int[] CPUUtil { get; set; }
+        public double avgCPUUtil { get; set; }
+        public int[] CPUTemp { get; set; }
+        public double avgCPUTemp{ get; set; }
+        public double[] CPUPower { get; set; }
+        public double avgCPUPower{ get; set; }
+        public int[,] CPUCoresUtil { get; set; }
+        public double[] BatteryCapacity { get; set; }
+        public double[] BatteryPercentage { get; set; }
+        public double[] BatteryDrainRate { get; set; }
+        public double AvgFPS { get; set; }
+        public double ModeFPS { get; set; }
+        public double _50FPS { get; set; }
+        public double _10FPS { get; set; }
+        public double _1FPS { get; set; }
+        public double _01FPS { get; set; }
+
+        public GraphData(string path)
+        {
+        }
     }
 }

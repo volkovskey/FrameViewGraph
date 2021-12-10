@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.Menu_Main = new System.Windows.Forms.MenuStrip();
+            this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.Menu_File = new System.Windows.Forms.ToolStripMenuItem();
+            this.File_OpenFile = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_Graph = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_GraphType = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_GraphSettings = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,24 +40,27 @@
             this.Language_EN = new System.Windows.Forms.ToolStripMenuItem();
             this.Language_RU = new System.Windows.Forms.ToolStripMenuItem();
             this.Menu_About = new System.Windows.Forms.ToolStripMenuItem();
-            this.File_OpenFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.Menu_Main.SuspendLayout();
+            this.OpenFile = new System.Windows.Forms.OpenFileDialog();
+            this.StatusMenu = new System.Windows.Forms.StatusStrip();
+            this.FileList = new System.Windows.Forms.CheckedListBox();
+            this.PlotView = new OxyPlot.WindowsForms.PlotView();
+            this.MainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
-            // Menu_Main
+            // MainMenu
             // 
-            this.Menu_Main.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Menu_File,
             this.Menu_Graph,
             this.Menu_GraphType,
             this.Menu_GraphSettings,
             this.Menu_AppSettings,
             this.Menu_About});
-            this.Menu_Main.Location = new System.Drawing.Point(0, 0);
-            this.Menu_Main.Name = "Menu_Main";
-            this.Menu_Main.Size = new System.Drawing.Size(840, 24);
-            this.Menu_Main.TabIndex = 0;
-            this.Menu_Main.Text = "menuStrip1";
+            this.MainMenu.Location = new System.Drawing.Point(0, 0);
+            this.MainMenu.Name = "MainMenu";
+            this.MainMenu.Size = new System.Drawing.Size(1184, 24);
+            this.MainMenu.TabIndex = 0;
+            this.MainMenu.Text = "menuStrip1";
             // 
             // Menu_File
             // 
@@ -65,6 +69,14 @@
             this.Menu_File.Name = "Menu_File";
             this.Menu_File.Size = new System.Drawing.Size(37, 20);
             this.Menu_File.Text = "File";
+            // 
+            // File_OpenFile
+            // 
+            this.File_OpenFile.Name = "File_OpenFile";
+            this.File_OpenFile.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.File_OpenFile.Size = new System.Drawing.Size(174, 22);
+            this.File_OpenFile.Text = "Open file...";
+            this.File_OpenFile.Click += new System.EventHandler(this.File_OpenFile_Click);
             // 
             // Menu_Graph
             // 
@@ -98,13 +110,11 @@
             this.Language_EN,
             this.Language_RU});
             this.AppSettings_Language.Name = "AppSettings_Language";
-            this.AppSettings_Language.Size = new System.Drawing.Size(180, 22);
+            this.AppSettings_Language.Size = new System.Drawing.Size(126, 22);
             this.AppSettings_Language.Text = "Language";
             // 
             // Language_EN
             // 
-            this.Language_EN.Checked = true;
-            this.Language_EN.CheckState = System.Windows.Forms.CheckState.Checked;
             this.Language_EN.Name = "Language_EN";
             this.Language_EN.Size = new System.Drawing.Size(114, 22);
             this.Language_EN.Text = "English";
@@ -123,33 +133,64 @@
             this.Menu_About.Size = new System.Drawing.Size(52, 20);
             this.Menu_About.Text = "About";
             // 
-            // File_OpenFile
+            // OpenFile
             // 
-            this.File_OpenFile.Name = "File_OpenFile";
-            this.File_OpenFile.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.File_OpenFile.Size = new System.Drawing.Size(180, 22);
-            this.File_OpenFile.Text = "Open file...";
+            this.OpenFile.FileName = "openFileDialog1";
+            // 
+            // StatusMenu
+            // 
+            this.StatusMenu.Location = new System.Drawing.Point(0, 539);
+            this.StatusMenu.Name = "StatusMenu";
+            this.StatusMenu.Size = new System.Drawing.Size(1184, 22);
+            this.StatusMenu.TabIndex = 1;
+            this.StatusMenu.Text = "statusStrip1";
+            // 
+            // FileList
+            // 
+            this.FileList.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.FileList.FormattingEnabled = true;
+            this.FileList.Location = new System.Drawing.Point(12, 27);
+            this.FileList.Name = "FileList";
+            this.FileList.Size = new System.Drawing.Size(220, 508);
+            this.FileList.TabIndex = 2;
+            // 
+            // PlotView
+            // 
+            this.PlotView.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.PlotView.Location = new System.Drawing.Point(238, 26);
+            this.PlotView.Name = "PlotView";
+            this.PlotView.PanCursor = System.Windows.Forms.Cursors.Hand;
+            this.PlotView.Size = new System.Drawing.Size(764, 509);
+            this.PlotView.TabIndex = 4;
+            this.PlotView.Text = "Test";
+            this.PlotView.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
+            this.PlotView.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.PlotView.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(840, 441);
-            this.Controls.Add(this.Menu_Main);
+            this.ClientSize = new System.Drawing.Size(1184, 561);
+            this.Controls.Add(this.PlotView);
+            this.Controls.Add(this.FileList);
+            this.Controls.Add(this.StatusMenu);
+            this.Controls.Add(this.MainMenu);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.Menu_Main;
+            this.MainMenuStrip = this.MainMenu;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrameViewGraph";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.Menu_Main.ResumeLayout(false);
-            this.Menu_Main.PerformLayout();
+            this.MainMenu.ResumeLayout(false);
+            this.MainMenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -157,7 +198,7 @@
 
         #endregion
 
-        private MenuStrip Menu_Main;
+        private MenuStrip MainMenu;
         private ToolStripMenuItem Menu_File;
         private ToolStripMenuItem Menu_Graph;
         private ToolStripMenuItem Menu_GraphType;
@@ -168,5 +209,9 @@
         private ToolStripMenuItem Language_EN;
         private ToolStripMenuItem Language_RU;
         private ToolStripMenuItem File_OpenFile;
+        private OpenFileDialog OpenFile;
+        private StatusStrip StatusMenu;
+        private CheckedListBox FileList;
+        private OxyPlot.WindowsForms.PlotView PlotView;
     }
 }
