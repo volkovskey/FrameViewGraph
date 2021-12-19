@@ -11,7 +11,9 @@
     <ApplicationIcon>FVG4.ico</ApplicationIcon>
     <SignAssembly>False</SignAssembly>
     <Copyright>©volkovskey</Copyright>
-    <AssemblyVersion>2.0.0.1</AssemblyVersion>
+    <AssemblyVersion>2.0.0.2</AssemblyVersion>
+    <FileVersion>2.0.0.2</FileVersion>
+    <PackageLicenseFile>C:\Users\volkovskey\Documents\GitHub\FrameViewGraph\LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,6 +26,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Local.ru.Designer.cs">
+      <DependentUpon>Local.ru.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Local.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Local.resx</DependentUpon>
+    </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -37,6 +49,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Local.ru.resx">
+      <LastGenOutput>Local.ru.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Local.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Local.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

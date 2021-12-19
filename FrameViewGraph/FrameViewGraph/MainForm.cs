@@ -6,13 +6,31 @@ namespace FrameViewGraph
     {
         public MainForm()
         {
+            string appLang = Properties.Settings.Default.lang;
+            Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo(appLang);
+            Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.GetCultureInfo(appLang);
             InitializeComponent();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            ChangeLeng();
+            string versionOfProgram = typeof(MainForm).Assembly.GetName().Version.ToString();
+            int lengthOfVersion = versionOfProgram.LastIndexOf('.');
+            Properties.Settings.Default.AppVersion = versionOfProgram.Substring(0, lengthOfVersion);
+            this.Text = "FVG v." + Properties.Settings.Default.AppVersion + " by volkovskey";
+
+            LoadLeng();
+        }
+
+        private void LoadLeng()
+        {
             string appLang = Properties.Settings.Default.lang;
+            if (!string.IsNullOrEmpty(appLang))
+            {
+                Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo(appLang);
+                Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.GetCultureInfo(appLang);  
+            }
+
             switch (appLang)
             {
                 case "en":
@@ -26,77 +44,6 @@ namespace FrameViewGraph
             }
         }
 
-        private void LoadLeng()
-        {
-            AppSettings_Language.Text = Properties.Settings.Default.AppSettings_Language;
-            File_OpenFile.Text = Properties.Settings.Default.File_OpenFile;
-            Language_EN.Text = Properties.Settings.Default.Language_EN;
-            Language_RU.Text = Properties.Settings.Default.Language_RU;
-            Menu_About.Text = Properties.Settings.Default.Menu_About;
-            Menu_AppSettings.Text = Properties.Settings.Default.Menu_AppSettings;
-            Menu_File.Text = Properties.Settings.Default.Menu_File;
-            Menu_Graph.Text = Properties.Settings.Default.Menu_Graph;
-            Menu_GraphSettings.Text = Properties.Settings.Default.Menu_GraphSettings;
-            Menu_GraphType.Text = Properties.Settings.Default.Menu_GraphType;
-        }
-
-        private void ChangeLeng()
-        {
-            string appLang = Properties.Settings.Default.lang;
-            switch (appLang)
-            {
-                case "en":
-                    Properties.Settings.Default.AppSettings_Language = Properties.Resources.EN_AppSettings_Language;
-                    Properties.Settings.Default.File_OpenFile = Properties.Resources.EN_File_OpenFile;
-                    Properties.Settings.Default.Language_EN = Properties.Resources.EN_Language_EN;
-                    Properties.Settings.Default.Language_RU = Properties.Resources.EN_Language_RU;
-                    Properties.Settings.Default.Menu_About = Properties.Resources.EN_Menu_About;
-                    Properties.Settings.Default.Menu_AppSettings = Properties.Resources.EN_Menu_AppSettings;
-                    Properties.Settings.Default.Menu_File = Properties.Resources.EN_Menu_File;
-                    Properties.Settings.Default.Menu_Graph = Properties.Resources.EN_Menu_Graph;
-                    Properties.Settings.Default.Menu_GraphSettings = Properties.Resources.EN_Menu_GraphSettings;
-                    Properties.Settings.Default.Menu_GraphType = Properties.Resources.EN_Menu_GraphType;
-                    Properties.Settings.Default.Status_End = Properties.Resources.EN_Status_End;
-                    Properties.Settings.Default.Status_Load = Properties.Resources.EN_Status_Load;
-                    Properties.Settings.Default.Status_Work = Properties.Resources.EN_Status_Work;
-                    Properties.Settings.Default.Save();
-                    break;
-                case "ru":
-                    Properties.Settings.Default.AppSettings_Language = Properties.Resources.RU_AppSettings_Language;
-                    Properties.Settings.Default.File_OpenFile = Properties.Resources.RU_File_OpenFile;
-                    Properties.Settings.Default.Language_EN = Properties.Resources.RU_Language_EN;
-                    Properties.Settings.Default.Language_RU = Properties.Resources.RU_Language_RU;
-                    Properties.Settings.Default.Menu_About = Properties.Resources.RU_Menu_About;
-                    Properties.Settings.Default.Menu_AppSettings = Properties.Resources.RU_Menu_AppSettings;
-                    Properties.Settings.Default.Menu_File = Properties.Resources.RU_Menu_File;
-                    Properties.Settings.Default.Menu_Graph = Properties.Resources.RU_Menu_Graph;
-                    Properties.Settings.Default.Menu_GraphSettings = Properties.Resources.RU_Menu_GraphSettings;
-                    Properties.Settings.Default.Menu_GraphType = Properties.Resources.RU_Menu_GraphType;
-                    Properties.Settings.Default.Status_End = Properties.Resources.RU_Status_End;
-                    Properties.Settings.Default.Status_Load = Properties.Resources.RU_Status_Load;
-                    Properties.Settings.Default.Status_Work = Properties.Resources.RU_Status_Work;
-                    Properties.Settings.Default.Save();
-                    break;
-                default:
-                    Properties.Settings.Default.AppSettings_Language = Properties.Resources.EN_AppSettings_Language;
-                    Properties.Settings.Default.File_OpenFile = Properties.Resources.EN_File_OpenFile;
-                    Properties.Settings.Default.Language_EN = Properties.Resources.EN_Language_EN;
-                    Properties.Settings.Default.Language_RU = Properties.Resources.EN_Language_RU;
-                    Properties.Settings.Default.Menu_About = Properties.Resources.EN_Menu_About;
-                    Properties.Settings.Default.Menu_AppSettings = Properties.Resources.EN_Menu_AppSettings;
-                    Properties.Settings.Default.Menu_File = Properties.Resources.EN_Menu_File;
-                    Properties.Settings.Default.Menu_Graph = Properties.Resources.EN_Menu_Graph;
-                    Properties.Settings.Default.Menu_GraphSettings = Properties.Resources.EN_Menu_GraphSettings;
-                    Properties.Settings.Default.Menu_GraphType = Properties.Resources.EN_Menu_GraphType;
-                    Properties.Settings.Default.Status_End = Properties.Resources.EN_Status_End;
-                    Properties.Settings.Default.Status_Load = Properties.Resources.EN_Status_Load;
-                    Properties.Settings.Default.Status_Work = Properties.Resources.EN_Status_Work;
-                    Properties.Settings.Default.Save();
-                    break;
-            }
-            LoadLeng();
-        }
-
         private void Language_RU_Click(object sender, EventArgs e)
         {
             if (!Language_RU.Checked)
@@ -105,7 +52,6 @@ namespace FrameViewGraph
                 Language_EN.Checked = false;
                 Properties.Settings.Default.lang = "ru";
                 Properties.Settings.Default.Save();
-                ChangeLeng();
             }
         }
 
@@ -117,7 +63,6 @@ namespace FrameViewGraph
                 Language_RU.Checked = false;
                 Properties.Settings.Default.lang = "en";
                 Properties.Settings.Default.Save();
-                ChangeLeng();
             }
         }
 
@@ -125,11 +70,11 @@ namespace FrameViewGraph
         {
             if (OpenFile.ShowDialog() == DialogResult.OK)
             {
-                StatusMenu.Text = Properties.Settings.Default.Status_Load;
+                StatusText.Text = Local.Status_Load;
                 StatusMenu.Refresh();
                 //добавить проверку правильности файла
                 string[][] dataFromFile = File.ReadAllLines(OpenFile.FileName).Select(line => line.Split(',').ToArray()).ToArray();
-                StatusMenu.Text = Properties.Settings.Default.Status_Work;
+                StatusText.Text = Local.Status_Work;
                 StatusMenu.Refresh();
             }
         }

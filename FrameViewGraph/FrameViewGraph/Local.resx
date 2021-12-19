@@ -117,4 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Status_End" xml:space="preserve">
+    <value>File uploaded successfully</value>
+  </data>
+  <data name="Status_Load" xml:space="preserve">
+    <value>Reading data from a file ...</value>
+  </data>
+  <data name="Status_Work" xml:space="preserve">
+    <value>Processing data from a file...</value>
+  </data>
 </root>
