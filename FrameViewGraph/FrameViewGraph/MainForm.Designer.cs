@@ -64,6 +64,7 @@
             this.AppSettings_Language = new System.Windows.Forms.ToolStripMenuItem();
             this.Language_EN = new System.Windows.Forms.ToolStripMenuItem();
             this.Language_RU = new System.Windows.Forms.ToolStripMenuItem();
+            this.Language_UK = new System.Windows.Forms.ToolStripMenuItem();
             this.AppSettings_Theme = new System.Windows.Forms.ToolStripMenuItem();
             this.Theme_Lite = new System.Windows.Forms.ToolStripMenuItem();
             this.Theme_Dark = new System.Windows.Forms.ToolStripMenuItem();
@@ -226,13 +227,13 @@
             // MainColumns_10low
             // 
             resources.ApplyResources(this.MainColumns_10low, "MainColumns_10low");
-            this.MainColumns_10low.Checked = true;
-            this.MainColumns_10low.CheckState = System.Windows.Forms.CheckState.Checked;
             this.MainColumns_10low.Name = "MainColumns_10low";
             // 
             // MainColumns_1low
             // 
             resources.ApplyResources(this.MainColumns_1low, "MainColumns_1low");
+            this.MainColumns_1low.Checked = true;
+            this.MainColumns_1low.CheckState = System.Windows.Forms.CheckState.Checked;
             this.MainColumns_1low.Name = "MainColumns_1low";
             // 
             // MainColumns_01low
@@ -271,6 +272,7 @@
             // 
             resources.ApplyResources(this.AdditionalColumns_GPUPower, "AdditionalColumns_GPUPower");
             this.AdditionalColumns_GPUPower.Name = "AdditionalColumns_GPUPower";
+            this.AdditionalColumns_GPUPower.Tag = "";
             // 
             // Data_DataSource
             // 
@@ -305,7 +307,8 @@
             resources.ApplyResources(this.AppSettings_Language, "AppSettings_Language");
             this.AppSettings_Language.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Language_EN,
-            this.Language_RU});
+            this.Language_RU,
+            this.Language_UK});
             this.AppSettings_Language.Name = "AppSettings_Language";
             // 
             // Language_EN
@@ -319,6 +322,12 @@
             resources.ApplyResources(this.Language_RU, "Language_RU");
             this.Language_RU.Name = "Language_RU";
             this.Language_RU.Click += new System.EventHandler(this.Language_RU_Click);
+            // 
+            // Language_UK
+            // 
+            resources.ApplyResources(this.Language_UK, "Language_UK");
+            this.Language_UK.Name = "Language_UK";
+            this.Language_UK.Click += new System.EventHandler(this.Language_UK_Click);
             // 
             // AppSettings_Theme
             // 
@@ -453,5 +462,6 @@
         private ToolStripMenuItem Data_DataSource;
         private ToolStripMenuItem DataSource_API;
         private ToolStripMenuItem DataSource_Display;
+        private ToolStripMenuItem Language_UK;
     }
 }

@@ -59,164 +59,236 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="File_OpenFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 22</value>
+    <value>206, 22</value>
+  </data>
+  <data name="File_OpenFile.Text" xml:space="preserve">
+    <value>Відкрити файл...</value>
+  </data>
+  <data name="Menu_File.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 20</value>
+  </data>
+  <data name="Menu_File.Text" xml:space="preserve">
+    <value>Файл</value>
   </data>
   <data name="Graph_Plot.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 22</value>
+    <value>181, 22</value>
+  </data>
+  <data name="Graph_Plot.Text" xml:space="preserve">
+    <value>Побудувати</value>
   </data>
   <data name="Graph_Clear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 22</value>
+    <value>181, 22</value>
+  </data>
+  <data name="Graph_Clear.Text" xml:space="preserve">
+    <value>Очистити</value>
+  </data>
+  <data name="Menu_Graph.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 20</value>
+  </data>
+  <data name="Menu_Graph.Text" xml:space="preserve">
+    <value>Графік</value>
+  </data>
+  <data name="Menu_GraphType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 20</value>
+  </data>
+  <data name="Menu_GraphType.Text" xml:space="preserve">
+    <value>Тип графіку</value>
+  </data>
+  <data name="Filter_No.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 22</value>
+  </data>
+  <data name="Filter_No.Text" xml:space="preserve">
+    <value>Без фільтру</value>
+  </data>
+  <data name="Filter_Low.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 22</value>
+  </data>
+  <data name="Filter_Low.Text" xml:space="preserve">
+    <value>Слабкий</value>
+  </data>
+  <data name="Filter_Middle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 22</value>
+  </data>
+  <data name="Filter_Middle.Text" xml:space="preserve">
+    <value>Середній</value>
+  </data>
+  <data name="Filter_High.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 22</value>
+  </data>
+  <data name="Filter_High.Text" xml:space="preserve">
+    <value>Сильний</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="GraphSettings_Filter.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="GraphSettings_Filter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 22</value>
+  </data>
   <data name="GraphSettings_Filter.Text" xml:space="preserve">
-    <value>Filter</value>
+    <value>Фільтр</value>
   </data>
-  <data name="Filter_No.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 22</value>
+  <data name="Apprearance_Legend.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 22</value>
   </data>
-  <data name="Filter_No.Text" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="Filter_Low.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 22</value>
-  </data>
-  <data name="Filter_Low.Text" xml:space="preserve">
-    <value>Low</value>
-  </data>
-  <data name="Filter_Middle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 22</value>
-  </data>
-  <data name="Filter_Middle.Text" xml:space="preserve">
-    <value>Middle</value>
-  </data>
-  <data name="Filter_High.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 22</value>
-  </data>
-  <data name="Filter_High.Text" xml:space="preserve">
-    <value>High</value>
+  <data name="Apprearance_Legend.Text" xml:space="preserve">
+    <value>Легенда</value>
   </data>
   <data name="GraphSettings_Apprearance.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="GraphSettings_Apprearance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 22</value>
+  </data>
   <data name="GraphSettings_Apprearance.Text" xml:space="preserve">
-    <value>Appearance</value>
+    <value>Зовнішній вигляд</value>
   </data>
-  <data name="Apprearance_Legend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 22</value>
+  <data name="MainColumns_AvgFPS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 22</value>
   </data>
-  <data name="Apprearance_Legend.Text" xml:space="preserve">
-    <value>Legend</value>
+  <data name="MainColumns_AvgFPS.Text" xml:space="preserve">
+    <value>Середній FPS</value>
+  </data>
+  <data name="MainColumns_ModeFPS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 22</value>
+  </data>
+  <data name="MainColumns_ModeFPS.Text" xml:space="preserve">
+    <value>Мода FPS</value>
+  </data>
+  <data name="MainColumns_MedianFPS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 22</value>
+  </data>
+  <data name="MainColumns_MedianFPS.Text" xml:space="preserve">
+    <value>Медіанний FPS</value>
+  </data>
+  <data name="MainColumns_10low.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 22</value>
+  </data>
+  <data name="MainColumns_10low.Text" xml:space="preserve">
+    <value>10% FPS</value>
+  </data>
+  <data name="MainColumns_1low.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 22</value>
+  </data>
+  <data name="MainColumns_1low.Text" xml:space="preserve">
+    <value>1% FPS</value>
+  </data>
+  <data name="MainColumns_01low.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 22</value>
+  </data>
+  <data name="MainColumns_01low.Text" xml:space="preserve">
+    <value>0.1% FPS</value>
+  </data>
+  <data name="Data_MainColumns.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 22</value>
+  </data>
+  <data name="Data_MainColumns.Text" xml:space="preserve">
+    <value>Основні стовпці</value>
+  </data>
+  <data name="AdditionalColumns_CPUTemp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 22</value>
+  </data>
+  <data name="AdditionalColumns_CPUTemp.Text" xml:space="preserve">
+    <value>Температура CPU</value>
+  </data>
+  <data name="AdditionalColumns_GPUTemp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 22</value>
+  </data>
+  <data name="AdditionalColumns_GPUTemp.Text" xml:space="preserve">
+    <value>Температура GPU</value>
+  </data>
+  <data name="AdditionalColumns_CPUPower.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 22</value>
+  </data>
+  <data name="AdditionalColumns_CPUPower.Text" xml:space="preserve">
+    <value>Споживання CPU</value>
+  </data>
+  <data name="AdditionalColumns_GPUPower.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 22</value>
+  </data>
+  <data name="AdditionalColumns_GPUPower.Text" xml:space="preserve">
+    <value>Споживання GPU</value>
+  </data>
+  <data name="Data_AdditionalColumns.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 22</value>
+  </data>
+  <data name="Data_AdditionalColumns.Text" xml:space="preserve">
+    <value>Додаткові стовпці</value>
+  </data>
+  <data name="DataSource_API.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="DataSource_API.Text" xml:space="preserve">
+    <value>API</value>
+  </data>
+  <data name="DataSource_Display.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="DataSource_Display.Text" xml:space="preserve">
+    <value>Монітор</value>
+  </data>
+  <data name="Data_DataSource.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 22</value>
+  </data>
+  <data name="Data_DataSource.Text" xml:space="preserve">
+    <value>Джерело даних</value>
   </data>
   <data name="GraphSettings_Data.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="GraphSettings_Data.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 22</value>
+  </data>
   <data name="GraphSettings_Data.Text" xml:space="preserve">
-    <value>Data</value>
+    <value>Дані</value>
   </data>
-  <data name="Data_MainColumns.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
+  <data name="Menu_GraphSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>146, 20</value>
   </data>
-  <data name="Data_MainColumns.Text" xml:space="preserve">
-    <value>Main columns</value>
-  </data>
-  <data name="MainColumns_AvgFPS.Text" xml:space="preserve">
-    <value>Average FPS</value>
-  </data>
-  <data name="MainColumns_ModeFPS.Text" xml:space="preserve">
-    <value>Mode FPS</value>
-  </data>
-  <data name="MainColumns_MedianFPS.Text" xml:space="preserve">
-    <value>Median FPS (50% low)</value>
-  </data>
-  <data name="MainColumns_10low.Text" xml:space="preserve">
-    <value>10% low</value>
-  </data>
-  <data name="MainColumns_1low.Text" xml:space="preserve">
-    <value>1% low</value>
-  </data>
-  <data name="MainColumns_01low.Text" xml:space="preserve">
-    <value>0.1% low</value>
-  </data>
-  <data name="Data_AdditionalColumns.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
-  </data>
-  <data name="Data_AdditionalColumns.Text" xml:space="preserve">
-    <value>Additional columns</value>
-  </data>
-  <data name="AdditionalColumns_CPUTemp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 22</value>
-  </data>
-  <data name="AdditionalColumns_CPUTemp.Text" xml:space="preserve">
-    <value>CPU temperature</value>
-  </data>
-  <data name="AdditionalColumns_GPUTemp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 22</value>
-  </data>
-  <data name="AdditionalColumns_GPUTemp.Text" xml:space="preserve">
-    <value>GPU temperature</value>
-  </data>
-  <data name="AdditionalColumns_CPUPower.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 22</value>
-  </data>
-  <data name="AdditionalColumns_CPUPower.Text" xml:space="preserve">
-    <value>CPU power</value>
-  </data>
-  <data name="AdditionalColumns_GPUPower.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 22</value>
-  </data>
-  <data name="AdditionalColumns_GPUPower.Text" xml:space="preserve">
-    <value>GPU power</value>
-  </data>
-  <data name="Data_DataSource.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 22</value>
-  </data>
-  <data name="Data_DataSource.Text" xml:space="preserve">
-    <value>Data source</value>
-  </data>
-  <data name="DataSource_API.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
-  </data>
-  <data name="DataSource_API.Text" xml:space="preserve">
-    <value>API frame time</value>
-  </data>
-  <data name="DataSource_Display.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 22</value>
-  </data>
-  <data name="DataSource_Display.Text" xml:space="preserve">
-    <value>Display frame time</value>
+  <data name="Menu_GraphSettings.Text" xml:space="preserve">
+    <value>Налаштування графіку</value>
   </data>
   <data name="Language_EN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
+    <value>180, 22</value>
+  </data>
+  <data name="Language_EN.Text" xml:space="preserve">
+    <value>Англійська</value>
   </data>
   <data name="Language_RU.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
+    <value>180, 22</value>
   </data>
-  <data name="Language_UA.Size" type="System.Drawing.Size, System.Drawing">
-    <value>124, 22</value>
+  <data name="Language_RU.Text" xml:space="preserve">
+    <value>Російська</value>
   </data>
-  <data name="Language_UA.Text" xml:space="preserve">
-    <value>Ukrainian</value>
+  <data name="Language_UK.Text" xml:space="preserve">
+    <value>Українська</value>
+  </data>
+  <data name="AppSettings_Language.Text" xml:space="preserve">
+    <value>Мова</value>
+  </data>
+  <data name="Theme_Lite.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 22</value>
+  </data>
+  <data name="Theme_Lite.Text" xml:space="preserve">
+    <value>Світла</value>
+  </data>
+  <data name="Theme_Dark.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 22</value>
+  </data>
+  <data name="Theme_Dark.Text" xml:space="preserve">
+    <value>Темна</value>
   </data>
   <data name="AppSettings_Theme.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="AppSettings_Theme.Text" xml:space="preserve">
-    <value>Theme</value>
+    <value>Тема</value>
   </data>
-  <data name="Theme_Lite.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 22</value>
+  <data name="Menu_AppSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>159, 20</value>
   </data>
-  <data name="Theme_Lite.Text" xml:space="preserve">
-    <value>Lite</value>
-  </data>
-  <data name="Theme_Dark.Size" type="System.Drawing.Size, System.Drawing">
-    <value>98, 22</value>
-  </data>
-  <data name="Theme_Dark.Text" xml:space="preserve">
-    <value>Dark</value>
+  <data name="Menu_AppSettings.Text" xml:space="preserve">
+    <value>Налаштування програми</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

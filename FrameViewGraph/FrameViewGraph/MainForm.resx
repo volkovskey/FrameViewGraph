@@ -58,250 +58,383 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="FileList.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 12pt</value>
+  <data name="lowToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 22</value>
   </data>
-  <data name="&gt;&gt;AdditionalColumns_CPUTemp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="File_OpenFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="Menu_GraphSettings.Text" xml:space="preserve">
-    <value>Graph settings</value>
-  </data>
-  <data name="Menu_About.Text" xml:space="preserve">
-    <value>About</value>
-  </data>
-  <data name="&gt;&gt;dataSourceToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="PlotView.Text" xml:space="preserve">
-    <value>Test</value>
-  </data>
-  <data name="MainMenu.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="FileList.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;avgToolStripMenuItem.Name" xml:space="preserve">
-    <value>avgToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;Filter_High.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="MainColumns_01low.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
-  </data>
-  <data name="&gt;&gt;lowToolStripMenuItem.Name" xml:space="preserve">
-    <value>lowToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;FileList.Name" xml:space="preserve">
-    <value>FileList</value>
-  </data>
-  <data name="&gt;&gt;AdditionalColumns_CPUPower.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Filter_Low.Type" xml:space="preserve">
+  <data name="&gt;&gt;File_OpenFile.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;legendToolStripMenuItem.Name" xml:space="preserve">
     <value>legendToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;additionalColumnsToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;liteToolStripMenuItem.Name" xml:space="preserve">
+    <value>liteToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;middleToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Theme_Dark.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
   </data>
-  <data name="&gt;&gt;File_OpenFile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="dataToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
   </data>
-  <data name="&gt;&gt;highToolStripMenuItem1.Name" xml:space="preserve">
-    <value>highToolStripMenuItem1</value>
-  </data>
-  <data name="&gt;&gt;Data_AdditionalColumns.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;modeFPSToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="StatusText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 17</value>
-  </data>
-  <data name="&gt;&gt;additionalColumnsToolStripMenuItem.Name" xml:space="preserve">
-    <value>additionalColumnsToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;Language_EN.Name" xml:space="preserve">
-    <value>Language_EN</value>
-  </data>
-  <data name="&gt;&gt;MainColumns_01low.Name" xml:space="preserve">
-    <value>MainColumns_01low</value>
-  </data>
-  <data name="&gt;&gt;GraphSettings_Data.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Menu_Graph.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cPUPowerToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AppSettings_Theme.Name" xml:space="preserve">
-    <value>AppSettings_Theme</value>
-  </data>
-  <data name="&gt;&gt;lowToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;StatusMenu.Name" xml:space="preserve">
-    <value>StatusMenu</value>
+  <data name="&gt;&gt;Menu_About.Name" xml:space="preserve">
+    <value>Menu_About</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial Narrow, 12pt</value>
   </data>
-  <data name="&gt;&gt;appearanceToolStripMenuItem.Type" xml:space="preserve">
+  <data name="StatusText.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 17</value>
+  </data>
+  <data name="&gt;&gt;liteToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;Menu_AppSettings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;filterToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;StatusText.Name" xml:space="preserve">
-    <value>StatusText</value>
-  </data>
-  <data name="&gt;&gt;Theme_Dark.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;температураCPUToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Menu_Graph.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 20</value>
-  </data>
-  <data name="&gt;&gt;FileList.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="Language_EN.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 22</value>
-  </data>
-  <data name="Menu_Graph.Text" xml:space="preserve">
-    <value>Graph</value>
-  </data>
-  <data name="&gt;&gt;displayFrameTimeToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AppSettings_Language.Name" xml:space="preserve">
-    <value>AppSettings_Language</value>
-  </data>
-  <data name="&gt;&gt;MainColumns_10low.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="aPIFrameTimeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="&gt;&gt;Language_EN.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AdditionalColumns_GPUPower.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="AppSettings_Language.Text" xml:space="preserve">
-    <value>Language</value>
-  </data>
-  <data name="&gt;&gt;MainColumns_10low.Name" xml:space="preserve">
-    <value>MainColumns_10low</value>
-  </data>
-  <data name="&gt;&gt;Menu_About.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;температураCPUToolStripMenuItem.Name" xml:space="preserve">
-    <value>температураCPUToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;Filter_Middle.Name" xml:space="preserve">
-    <value>Filter_Middle</value>
-  </data>
-  <data name="&gt;&gt;gPUTemperatureToolStripMenuItem.Name" xml:space="preserve">
-    <value>gPUTemperatureToolStripMenuItem</value>
-  </data>
-  <data name="StatusMenu.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 539</value>
+  <data name="&gt;&gt;lowToolStripMenuItem.Name" xml:space="preserve">
+    <value>lowToolStripMenuItem</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>
-  <data name="Graph_Plot.Text" xml:space="preserve">
-    <value>Plot</value>
+  <data name="Filter_High.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
   </data>
-  <data name="&gt;&gt;AdditionalColumns_GPUTemp.Name" xml:space="preserve">
-    <value>AdditionalColumns_GPUTemp</value>
+  <data name="&gt;&gt;Theme_Lite.Name" xml:space="preserve">
+    <value>Theme_Lite</value>
   </data>
-  <data name="&gt;&gt;MainMenu.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;gPUTemperatureToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="lowToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 22</value>
+  <data name="&gt;&gt;AppSettings_Theme.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="lowToolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 22</value>
+  </data>
+  <data name="&gt;&gt;lowToolStripMenuItem3.Name" xml:space="preserve">
+    <value>lowToolStripMenuItem3</value>
+  </data>
+  <data name="Language_RU.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 22</value>
+  </data>
+  <data name="&gt;&gt;GraphSettings_Filter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lowToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Data_AdditionalColumns.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="&gt;&gt;Filter_Middle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MainColumns_AvgFPS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Menu_AppSettings.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AdditionalColumns_CPUPower.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="additionalColumnsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="&gt;&gt;температураCPUToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;StatusMenu.Name" xml:space="preserve">
+    <value>StatusMenu</value>
+  </data>
+  <data name="AppSettings_Language.Text" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="&gt;&gt;avgToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;aPIFrameTimeToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="AdditionalColumns_CPUPower.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="MainColumns_MedianFPS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 22</value>
+  </data>
+  <data name="GraphSettings_Data.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="StatusMenu.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 539</value>
+  </data>
+  <data name="&gt;&gt;MainColumns_MedianFPS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="PlotView.Text" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  <data name="&gt;&gt;dataToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="AdditionalColumns_CPUTemp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="AppSettings_Language.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="&gt;&gt;Menu_GraphSettings.Name" xml:space="preserve">
+    <value>Menu_GraphSettings</value>
+  </data>
+  <data name="&gt;&gt;Menu_GraphType.Name" xml:space="preserve">
+    <value>Menu_GraphType</value>
+  </data>
+  <data name="&gt;&gt;Apprearance_Legend.Name" xml:space="preserve">
+    <value>Apprearance_Legend</value>
+  </data>
+  <data name="&gt;&gt;Language_EN.Name" xml:space="preserve">
+    <value>Language_EN</value>
   </data>
   <data name="avgToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 22</value>
   </data>
-  <data name="middleToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 22</value>
+  <data name="&gt;&gt;modeFPSToolStripMenuItem.Name" xml:space="preserve">
+    <value>modeFPSToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;PlotView.Type" xml:space="preserve">
+    <value>OxyPlot.WindowsForms.PlotView, OxyPlot.WindowsForms, Culture=neutral, PublicKeyToken=245eacd6b5d2d338</value>
+  </data>
+  <data name="&gt;&gt;legendToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;highToolStripMenuItem.Name" xml:space="preserve">
+    <value>highToolStripMenuItem</value>
+  </data>
+  <data name="File_OpenFile.Text" xml:space="preserve">
+    <value>Open file...</value>
+  </data>
+  <data name="gPUPowerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="&gt;&gt;Menu_Graph.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gPUPowerToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cPUPowerToolStripMenuItem.Name" xml:space="preserve">
+    <value>cPUPowerToolStripMenuItem</value>
+  </data>
+  <data name="Data_MainColumns.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="MainMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1384, 24</value>
+  </data>
+  <data name="&gt;&gt;filterToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Apprearance_Legend.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>FrameViewGraph</value>
+  </data>
+  <data name="themeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="appearanceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="&gt;&gt;additionalColumnsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Language_RU.Name" xml:space="preserve">
     <value>Language_RU</value>
   </data>
-  <data name="lowToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
+  <data name="&gt;&gt;OpenFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;MainColumns_ModeFPS.Name" xml:space="preserve">
-    <value>MainColumns_ModeFPS</value>
+  <data name="&gt;&gt;AdditionalColumns_CPUTemp.Name" xml:space="preserve">
+    <value>AdditionalColumns_CPUTemp</value>
   </data>
-  <data name="&gt;&gt;PlotView.Name" xml:space="preserve">
-    <value>PlotView</value>
+  <data name="&gt;&gt;Filter_High.Name" xml:space="preserve">
+    <value>Filter_High</value>
   </data>
-  <data name="&gt;&gt;FileList.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckedListBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="displayFrameTimeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="Filter_High.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="&gt;&gt;AppSettings_Language.Type" xml:space="preserve">
+  <data name="&gt;&gt;appearanceToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="darkToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="&gt;&gt;highToolStripMenuItem1.Type" xml:space="preserve">
+  <data name="&gt;&gt;lowToolStripMenuItem3.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="PlotView.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
   </data>
   <data name="medianFPSToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 22</value>
   </data>
+  <data name="&gt;&gt;Menu_GraphType.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Menu_File.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 20</value>
+  </data>
+  <data name="Menu_About.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="MainMenu.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;Menu_File.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;FileList.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="Menu_File.Text" xml:space="preserve">
-    <value>File</value>
+  <data name="PlotView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>904, 509</value>
   </data>
-  <data name="PlotView.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
+  <data name="Language_EN.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 22</value>
   </data>
-  <data name="&gt;&gt;Graph_Clear.Name" xml:space="preserve">
-    <value>Graph_Clear</value>
+  <data name="highToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 22</value>
   </data>
-  <data name="&gt;&gt;Apprearance_Legend.Type" xml:space="preserve">
+  <data name="GraphSettings_Apprearance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="&gt;&gt;MainColumns_10low.Name" xml:space="preserve">
+    <value>MainColumns_10low</value>
+  </data>
+  <data name="&gt;&gt;Menu_Graph.Name" xml:space="preserve">
+    <value>Menu_Graph</value>
+  </data>
+  <data name="&gt;&gt;Data_DataSource.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Graph_Clear.Text" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="&gt;&gt;MainColumns_01low.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Filter_Middle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="&gt;&gt;температураCPUToolStripMenuItem.Name" xml:space="preserve">
+    <value>температураCPUToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;gPUPowerToolStripMenuItem.Name" xml:space="preserve">
+    <value>gPUPowerToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;MainColumns_1low.Name" xml:space="preserve">
+    <value>MainColumns_1low</value>
+  </data>
+  <data name="&gt;&gt;Graph_Plot.Name" xml:space="preserve">
+    <value>Graph_Plot</value>
+  </data>
+  <data name="&gt;&gt;columnsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cPUPowerToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Menu_GraphType.Text" xml:space="preserve">
+    <value>Graph type</value>
+  </data>
+  <data name="&gt;&gt;Theme_Lite.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;highToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="PlotView.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;StatusMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;StatusMenu.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;Data_AdditionalColumns.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;highToolStripMenuItem1.Name" xml:space="preserve">
+    <value>highToolStripMenuItem1</value>
+  </data>
+  <data name="&gt;&gt;Menu_AppSettings.Name" xml:space="preserve">
+    <value>Menu_AppSettings</value>
+  </data>
+  <data name="&gt;&gt;Theme_Dark.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MainColumns_MedianFPS.Name" xml:space="preserve">
+    <value>MainColumns_MedianFPS</value>
+  </data>
+  <data name="MainColumns_ModeFPS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 22</value>
+  </data>
+  <data name="gPUTemperatureToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="DataSource_Display.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="lowToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 22</value>
+  </data>
+  <data name="&gt;&gt;Language_UK.Name" xml:space="preserve">
+    <value>Language_UK</value>
+  </data>
+  <data name="lowToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 22</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>MainForm</value>
+  </data>
+  <data name="&gt;&gt;dataToolStripMenuItem.Name" xml:space="preserve">
+    <value>dataToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;highToolStripMenuItem1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="liteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="&gt;&gt;MainColumns_1low.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lowToolStripMenuItem2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="AdditionalColumns_GPUTemp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="aPIFrameTimeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="MainColumns_01low.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 22</value>
+  </data>
+  <data name="AdditionalColumns_GPUPower.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="&gt;&gt;filterToolStripMenuItem.Name" xml:space="preserve">
+    <value>filterToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;Data_DataSource.Name" xml:space="preserve">
+    <value>Data_DataSource</value>
+  </data>
+  <data name="displayFrameTimeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="AppSettings_Theme.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="FileList.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial Narrow, 12pt</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -896,517 +1029,408 @@
         pppqqqn2I9r/AYeEl7Gm4oZEAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="&gt;&gt;GraphSettings_Filter.Type" xml:space="preserve">
+  <data name="&gt;&gt;Filter_Low.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Theme_Dark.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="&gt;&gt;medianFPSToolStripMenuItem.Name" xml:space="preserve">
-    <value>medianFPSToolStripMenuItem</value>
-  </data>
-  <data name="legendToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="lowToolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
-  </data>
-  <data name="gPUPowerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="Graph_Plot.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+G</value>
-  </data>
-  <data name="Menu_File.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 20</value>
-  </data>
-  <data name="&gt;&gt;OpenFile.Name" xml:space="preserve">
-    <value>OpenFile</value>
-  </data>
-  <data name="&gt;&gt;StatusMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AdditionalColumns_GPUPower.Name" xml:space="preserve">
-    <value>AdditionalColumns_GPUPower</value>
-  </data>
-  <data name="Graph_Clear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="cPUPowerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="&gt;&gt;lowToolStripMenuItem2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="MainColumns_AvgFPS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
-  </data>
-  <data name="&gt;&gt;displayFrameTimeToolStripMenuItem.Name" xml:space="preserve">
-    <value>displayFrameTimeToolStripMenuItem</value>
-  </data>
-  <data name="GraphSettings_Apprearance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="Filter_Low.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="lowToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
-  </data>
-  <data name="&gt;&gt;gPUPowerToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Filter_Middle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Theme_Dark.Name" xml:space="preserve">
-    <value>Theme_Dark</value>
-  </data>
-  <data name="&gt;&gt;Menu_Graph.Name" xml:space="preserve">
-    <value>Menu_Graph</value>
-  </data>
-  <data name="&gt;&gt;Menu_GraphType.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Graph_Plot.Name" xml:space="preserve">
-    <value>Graph_Plot</value>
-  </data>
-  <data name="&gt;&gt;dataToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MainColumns_MedianFPS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="AppSettings_Theme.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="&gt;&gt;liteToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Data_AdditionalColumns.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="highToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 22</value>
-  </data>
-  <data name="&gt;&gt;filterToolStripMenuItem.Name" xml:space="preserve">
-    <value>filterToolStripMenuItem</value>
-  </data>
-  <data name="PlotView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>904, 509</value>
-  </data>
-  <data name="&gt;&gt;MainMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="MainColumns_10low.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
-  </data>
-  <data name="&gt;&gt;PlotView.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;Menu_GraphSettings.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="columnsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="dataSourceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="&gt;&gt;GraphSettings_Data.Name" xml:space="preserve">
-    <value>GraphSettings_Data</value>
-  </data>
-  <data name="&gt;&gt;columnsToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="AdditionalColumns_CPUPower.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="&gt;&gt;Menu_File.Name" xml:space="preserve">
-    <value>Menu_File</value>
-  </data>
-  <data name="&gt;&gt;Data_AdditionalColumns.Name" xml:space="preserve">
-    <value>Data_AdditionalColumns</value>
-  </data>
-  <data name="MainColumns_ModeFPS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
-  </data>
-  <data name="&gt;&gt;Language_RU.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;themeToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="StatusMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1384, 22</value>
-  </data>
-  <data name="Language_EN.Text" xml:space="preserve">
-    <value>English</value>
-  </data>
-  <data name="&gt;&gt;columnsToolStripMenuItem.Name" xml:space="preserve">
-    <value>columnsToolStripMenuItem</value>
-  </data>
-  <data name="themeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="AdditionalColumns_GPUTemp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="&gt;&gt;PlotView.Type" xml:space="preserve">
-    <value>OxyPlot.WindowsForms.PlotView, OxyPlot.WindowsForms, Culture=neutral, PublicKeyToken=245eacd6b5d2d338</value>
-  </data>
-  <data name="&gt;&gt;GraphSettings_Filter.Name" xml:space="preserve">
-    <value>GraphSettings_Filter</value>
-  </data>
-  <data name="&gt;&gt;Theme_Lite.Name" xml:space="preserve">
-    <value>Theme_Lite</value>
-  </data>
-  <data name="modeFPSToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
-  </data>
-  <data name="Language_RU.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 22</value>
-  </data>
-  <data name="Graph_Clear.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+R</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>FrameViewGraph</value>
-  </data>
-  <data name="&gt;&gt;StatusText.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="appearanceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="Menu_GraphType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 20</value>
-  </data>
-  <data name="&gt;&gt;MainColumns_AvgFPS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;gPUTemperatureToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;modeFPSToolStripMenuItem.Name" xml:space="preserve">
-    <value>modeFPSToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;cPUPowerToolStripMenuItem.Name" xml:space="preserve">
-    <value>cPUPowerToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;StatusMenu.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;Data_MainColumns.Name" xml:space="preserve">
-    <value>Data_MainColumns</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="&gt;&gt;Menu_GraphSettings.Name" xml:space="preserve">
-    <value>Menu_GraphSettings</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="GraphSettings_Data.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="Menu_AppSettings.Text" xml:space="preserve">
-    <value>App settings</value>
-  </data>
-  <data name="FileList.HorizontalScrollbar" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;Menu_File.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Filter_No.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lowToolStripMenuItem3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;MainColumns_1low.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1384, 561</value>
-  </data>
-  <data name="highToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 22</value>
-  </data>
-  <data name="&gt;&gt;dataSourceToolStripMenuItem.Name" xml:space="preserve">
-    <value>dataSourceToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;highToolStripMenuItem.Name" xml:space="preserve">
-    <value>highToolStripMenuItem</value>
-  </data>
-  <data name="Data_MainColumns.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="&gt;&gt;liteToolStripMenuItem.Name" xml:space="preserve">
-    <value>liteToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;Graph_Clear.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="FileList.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 27</value>
-  </data>
-  <data name="Graph_Clear.Text" xml:space="preserve">
-    <value>Clear</value>
-  </data>
-  <data name="&gt;&gt;Menu_About.Name" xml:space="preserve">
-    <value>Menu_About</value>
-  </data>
-  <data name="MainColumns_1low.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
-  </data>
-  <data name="Language_RU.Text" xml:space="preserve">
-    <value>Russian</value>
-  </data>
-  <data name="Menu_AppSettings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 20</value>
-  </data>
-  <data name="Filter_Middle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="&gt;&gt;Menu_AppSettings.Name" xml:space="preserve">
-    <value>Menu_AppSettings</value>
-  </data>
-  <data name="&gt;&gt;MainColumns_1low.Name" xml:space="preserve">
-    <value>MainColumns_1low</value>
   </data>
   <data name="&gt;&gt;DataSource_API.Name" xml:space="preserve">
     <value>DataSource_API</value>
   </data>
-  <data name="Apprearance_Legend.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="dataSourceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
-  <data name="температураCPUToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="File_OpenFile.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+O</value>
-  </data>
-  <data name="AdditionalColumns_GPUPower.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="&gt;&gt;GraphSettings_Apprearance.Type" xml:space="preserve">
+  <data name="&gt;&gt;Language_UK.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;medianFPSToolStripMenuItem.Type" xml:space="preserve">
+  <data name="MainColumns_10low.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 22</value>
+  </data>
+  <data name="&gt;&gt;Data_AdditionalColumns.Name" xml:space="preserve">
+    <value>Data_AdditionalColumns</value>
+  </data>
+  <data name="&gt;&gt;GraphSettings_Apprearance.Name" xml:space="preserve">
+    <value>GraphSettings_Apprearance</value>
+  </data>
+  <data name="Menu_Graph.Text" xml:space="preserve">
+    <value>Graph</value>
+  </data>
+  <data name="&gt;&gt;modeFPSToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Menu_GraphType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 20</value>
+  </data>
+  <data name="Graph_Plot.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+G</value>
+  </data>
+  <data name="&gt;&gt;GraphSettings_Data.Name" xml:space="preserve">
+    <value>GraphSettings_Data</value>
+  </data>
+  <data name="&gt;&gt;File_OpenFile.Name" xml:space="preserve">
+    <value>File_OpenFile</value>
+  </data>
+  <data name="columnsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="&gt;&gt;AdditionalColumns_GPUTemp.Name" xml:space="preserve">
+    <value>AdditionalColumns_GPUTemp</value>
+  </data>
+  <data name="Menu_File.Text" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="&gt;&gt;Language_RU.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Language_RU.Text" xml:space="preserve">
+    <value>Russian</value>
+  </data>
+  <data name="&gt;&gt;AdditionalColumns_GPUTemp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MainMenu.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="Menu_Graph.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 20</value>
+  </data>
+  <data name="MainMenu.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;displayFrameTimeToolStripMenuItem.Name" xml:space="preserve">
+    <value>displayFrameTimeToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;Theme_Dark.Name" xml:space="preserve">
+    <value>Theme_Dark</value>
+  </data>
+  <data name="&gt;&gt;gPUTemperatureToolStripMenuItem.Name" xml:space="preserve">
+    <value>gPUTemperatureToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;GraphSettings_Data.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;themeToolStripMenuItem.Name" xml:space="preserve">
     <value>themeToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;lowToolStripMenuItem3.Name" xml:space="preserve">
-    <value>lowToolStripMenuItem3</value>
+  <data name="&gt;&gt;Filter_No.Name" xml:space="preserve">
+    <value>Filter_No</value>
+  </data>
+  <data name="&gt;&gt;Language_EN.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MainMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;additionalColumnsToolStripMenuItem.Name" xml:space="preserve">
+    <value>additionalColumnsToolStripMenuItem</value>
+  </data>
+  <data name="FileList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 508</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1384, 561</value>
+  </data>
+  <data name="&gt;&gt;MainColumns_10low.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;lowToolStripMenuItem1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;StatusMenu.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="middleToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 22</value>
   </data>
-  <data name="&gt;&gt;Filter_Low.Name" xml:space="preserve">
-    <value>Filter_Low</value>
-  </data>
-  <data name="AdditionalColumns_CPUTemp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="DataSource_Display.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="AppSettings_Language.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="&gt;&gt;AdditionalColumns_CPUPower.Name" xml:space="preserve">
-    <value>AdditionalColumns_CPUPower</value>
+  <data name="&gt;&gt;columnsToolStripMenuItem.Name" xml:space="preserve">
+    <value>columnsToolStripMenuItem</value>
   </data>
   <data name="Menu_GraphSettings.Size" type="System.Drawing.Size, System.Drawing">
     <value>95, 20</value>
   </data>
-  <data name="&gt;&gt;MainColumns_01low.Type" xml:space="preserve">
+  <data name="Menu_About.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 20</value>
+  </data>
+  <data name="Filter_Low.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="MainColumns_1low.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 22</value>
+  </data>
+  <data name="&gt;&gt;MainColumns_ModeFPS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="modeFPSToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 22</value>
+  </data>
+  <data name="Menu_AppSettings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 20</value>
+  </data>
+  <data name="&gt;&gt;middleToolStripMenuItem.Name" xml:space="preserve">
+    <value>middleToolStripMenuItem</value>
+  </data>
+  <data name="Menu_AppSettings.Text" xml:space="preserve">
+    <value>App settings</value>
+  </data>
+  <data name="&gt;&gt;FileList.Name" xml:space="preserve">
+    <value>FileList</value>
+  </data>
+  <data name="&gt;&gt;AppSettings_Language.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;Graph_Plot.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;aPIFrameTimeToolStripMenuItem.Type" xml:space="preserve">
+  <data name="StatusMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1384, 22</value>
+  </data>
+  <data name="&gt;&gt;themeToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Menu_GraphSettings.Text" xml:space="preserve">
+    <value>Graph settings</value>
+  </data>
+  <data name="PlotView.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="StatusMenu.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;Filter_Low.Name" xml:space="preserve">
+    <value>Filter_Low</value>
+  </data>
+  <data name="&gt;&gt;dataSourceToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;darkToolStripMenuItem.Name" xml:space="preserve">
+    <value>darkToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;AdditionalColumns_GPUPower.Name" xml:space="preserve">
+    <value>AdditionalColumns_GPUPower</value>
+  </data>
+  <data name="FileList.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;GraphSettings_Apprearance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FileList.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="Language_EN.Text" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Graph_Plot.Text" xml:space="preserve">
+    <value>Plot</value>
+  </data>
+  <data name="&gt;&gt;MainMenu.Name" xml:space="preserve">
+    <value>MainMenu</value>
+  </data>
+  <data name="&gt;&gt;Filter_High.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AdditionalColumns_GPUPower.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;medianFPSToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="FileList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 27</value>
+  </data>
+  <data name="Theme_Lite.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="&gt;&gt;Menu_GraphSettings.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;DataSource_Display.Name" xml:space="preserve">
     <value>DataSource_Display</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>MainForm</value>
+  <data name="legendToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="&gt;&gt;lowToolStripMenuItem2.Name" xml:space="preserve">
+    <value>lowToolStripMenuItem2</value>
+  </data>
+  <data name="Graph_Plot.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="&gt;&gt;Menu_About.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;middleToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;AdditionalColumns_CPUTemp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GraphSettings_Filter.Name" xml:space="preserve">
+    <value>GraphSettings_Filter</value>
+  </data>
+  <data name="&gt;&gt;DataSource_API.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Filter_No.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
-  <data name="dataToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="&gt;&gt;OpenFile.Name" xml:space="preserve">
+    <value>OpenFile</value>
+  </data>
+  <data name="highToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 22</value>
+  </data>
+  <data name="&gt;&gt;Language_UA.Name" xml:space="preserve">
+    <value>Language_UA</value>
+  </data>
+  <data name="&gt;&gt;Data_MainColumns.Name" xml:space="preserve">
+    <value>Data_MainColumns</value>
+  </data>
+  <data name="darkToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="&gt;&gt;StatusText.Name" xml:space="preserve">
+    <value>StatusText</value>
+  </data>
+  <data name="&gt;&gt;Filter_No.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PlotView.Name" xml:space="preserve">
+    <value>PlotView</value>
+  </data>
+  <data name="&gt;&gt;DataSource_Display.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PlotView.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;Graph_Clear.Name" xml:space="preserve">
+    <value>Graph_Clear</value>
+  </data>
+  <data name="Data_DataSource.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="&gt;&gt;Graph_Clear.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FileList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckedListBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MainColumns_AvgFPS.Name" xml:space="preserve">
+    <value>MainColumns_AvgFPS</value>
+  </data>
+  <data name="&gt;&gt;StatusMenu.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;MainMenu.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;MainColumns_ModeFPS.Name" xml:space="preserve">
+    <value>MainColumns_ModeFPS</value>
+  </data>
+  <data name="&gt;&gt;AdditionalColumns_CPUPower.Name" xml:space="preserve">
+    <value>AdditionalColumns_CPUPower</value>
+  </data>
+  <data name="&gt;&gt;Apprearance_Legend.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Menu_File.Name" xml:space="preserve">
+    <value>Menu_File</value>
+  </data>
+  <data name="&gt;&gt;MainColumns_01low.Name" xml:space="preserve">
+    <value>MainColumns_01low</value>
+  </data>
+  <data name="Language_UK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="PlotView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>238, 26</value>
+  </data>
+  <data name="&gt;&gt;Filter_Middle.Name" xml:space="preserve">
+    <value>Filter_Middle</value>
+  </data>
+  <data name="filterToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="&gt;&gt;Language_UA.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="File_OpenFile.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
   <data name="GraphSettings_Filter.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
-  <data name="&gt;&gt;middleToolStripMenuItem.Name" xml:space="preserve">
-    <value>middleToolStripMenuItem</value>
+  <data name="Language_UA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
   </data>
-  <data name="MainMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1384, 24</value>
+  <data name="&gt;&gt;AppSettings_Theme.Name" xml:space="preserve">
+    <value>AppSettings_Theme</value>
   </data>
-  <data name="MainMenu.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;lowToolStripMenuItem1.Name" xml:space="preserve">
+    <value>lowToolStripMenuItem1</value>
   </data>
-  <data name="&gt;&gt;Theme_Lite.Type" xml:space="preserve">
+  <data name="&gt;&gt;aPIFrameTimeToolStripMenuItem.Name" xml:space="preserve">
+    <value>aPIFrameTimeToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;avgToolStripMenuItem.Name" xml:space="preserve">
+    <value>avgToolStripMenuItem</value>
+  </data>
+  <data name="Graph_Clear.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+R</value>
+  </data>
+  <data name="FileList.HorizontalScrollbar" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="MainColumns_AvgFPS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 22</value>
+  </data>
+  <data name="&gt;&gt;darkToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;highToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Graph_Clear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="&gt;&gt;displayFrameTimeToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;appearanceToolStripMenuItem.Name" xml:space="preserve">
     <value>appearanceToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;AdditionalColumns_CPUTemp.Name" xml:space="preserve">
-    <value>AdditionalColumns_CPUTemp</value>
+  <data name="&gt;&gt;Data_MainColumns.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Data_DataSource.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="File_OpenFile.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+O</value>
+  </data>
+  <data name="&gt;&gt;AppSettings_Language.Name" xml:space="preserve">
+    <value>AppSettings_Language</value>
+  </data>
+  <data name="&gt;&gt;PlotView.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="температураCPUToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
-  <data name="&gt;&gt;MainColumns_MedianFPS.Name" xml:space="preserve">
-    <value>MainColumns_MedianFPS</value>
-  </data>
-  <data name="&gt;&gt;gPUPowerToolStripMenuItem.Name" xml:space="preserve">
-    <value>gPUPowerToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;Filter_No.Name" xml:space="preserve">
-    <value>Filter_No</value>
-  </data>
-  <data name="&gt;&gt;MainColumns_ModeFPS.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;AppSettings_Theme.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Theme_Lite.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="cPUPowerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
   <data name="DataSource_API.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
-  <data name="&gt;&gt;dataToolStripMenuItem.Name" xml:space="preserve">
-    <value>dataToolStripMenuItem</value>
+  <data name="&gt;&gt;StatusText.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;MainMenu.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;dataSourceToolStripMenuItem.Name" xml:space="preserve">
+    <value>dataSourceToolStripMenuItem</value>
   </data>
-  <data name="PlotView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>238, 26</value>
+  <data name="&gt;&gt;medianFPSToolStripMenuItem.Name" xml:space="preserve">
+    <value>medianFPSToolStripMenuItem</value>
   </data>
-  <data name="additionalColumnsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="&gt;&gt;AdditionalColumns_GPUTemp.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Data_DataSource.Name" xml:space="preserve">
-    <value>Data_DataSource</value>
-  </data>
-  <data name="&gt;&gt;DataSource_Display.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lowToolStripMenuItem1.Name" xml:space="preserve">
-    <value>lowToolStripMenuItem1</value>
-  </data>
-  <data name="&gt;&gt;Data_DataSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="liteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="&gt;&gt;DataSource_API.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;GraphSettings_Apprearance.Name" xml:space="preserve">
-    <value>GraphSettings_Apprearance</value>
-  </data>
-  <data name="gPUTemperatureToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="&gt;&gt;darkToolStripMenuItem.Name" xml:space="preserve">
-    <value>darkToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;Filter_High.Name" xml:space="preserve">
-    <value>Filter_High</value>
-  </data>
-  <data name="&gt;&gt;PlotView.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;darkToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;legendToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lowToolStripMenuItem2.Name" xml:space="preserve">
-    <value>lowToolStripMenuItem2</value>
-  </data>
-  <data name="&gt;&gt;Data_MainColumns.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Menu_GraphType.Text" xml:space="preserve">
-    <value>Graph type</value>
-  </data>
-  <data name="File_OpenFile.Text" xml:space="preserve">
-    <value>Open file...</value>
-  </data>
-  <data name="&gt;&gt;Apprearance_Legend.Name" xml:space="preserve">
-    <value>Apprearance_Legend</value>
-  </data>
-  <data name="StatusMenu.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;aPIFrameTimeToolStripMenuItem.Name" xml:space="preserve">
-    <value>aPIFrameTimeToolStripMenuItem</value>
-  </data>
-  <data name="Graph_Plot.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="&gt;&gt;OpenFile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.OpenFileDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;avgToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Menu_About.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 20</value>
-  </data>
-  <data name="filterToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="FileList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 508</value>
-  </data>
-  <data name="MainColumns_MedianFPS.Size" type="System.Drawing.Size, System.Drawing">
-    <value>191, 22</value>
-  </data>
-  <data name="&gt;&gt;File_OpenFile.Name" xml:space="preserve">
-    <value>File_OpenFile</value>
-  </data>
-  <data name="&gt;&gt;MainColumns_AvgFPS.Name" xml:space="preserve">
-    <value>MainColumns_AvgFPS</value>
-  </data>
-  <data name="&gt;&gt;MainMenu.Name" xml:space="preserve">
-    <value>MainMenu</value>
-  </data>
-  <data name="&gt;&gt;Menu_GraphType.Name" xml:space="preserve">
-    <value>Menu_GraphType</value>
-  </data>
+  <metadata name="OpenFile.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>133, 17</value>
+  </metadata>
+  <metadata name="MainMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="StatusMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>233, 17</value>
   </metadata>
@@ -1415,11 +1439,5 @@
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </metadata>
-  <metadata name="OpenFile.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>133, 17</value>
-  </metadata>
-  <metadata name="MainMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
   </metadata>
 </root>

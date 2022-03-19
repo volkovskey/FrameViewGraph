@@ -39,6 +39,9 @@ namespace FrameViewGraph
                 case "ru":
                     Language_RU.Checked = true;
                     break;
+                case "uk":
+                    Language_UK.Checked = true;
+                    break;
                 default:
                     break;
             }
@@ -50,6 +53,7 @@ namespace FrameViewGraph
             {
                 Language_RU.Checked = true;
                 Language_EN.Checked = false;
+                Language_UK.Checked = false;
                 Properties.Settings.Default.lang = "ru";
                 Properties.Settings.Default.Save();
             }
@@ -61,7 +65,20 @@ namespace FrameViewGraph
             {
                 Language_EN.Checked = true;
                 Language_RU.Checked = false;
+                Language_UK.Checked = false;
                 Properties.Settings.Default.lang = "en";
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void Language_UK_Click(object sender, EventArgs e)
+        {
+            if (!Language_UK.Checked)
+            {
+                Language_UK.Checked = true;
+                Language_RU.Checked = false;
+                Language_EN.Checked = false;
+                Properties.Settings.Default.lang = "uk";
                 Properties.Settings.Default.Save();
             }
         }
@@ -83,5 +100,7 @@ namespace FrameViewGraph
         {
             Application.Exit();
         }
+
+        
     }
 }
